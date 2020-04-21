@@ -80,9 +80,9 @@ const introduceMe2 = myNameIs('shoo', 'choo')
 console.log(introduceMe, introduceMe2)
 
 function feedJack(breakfast,lunch, dinner){
-  console.log(breakfast, lunch, dinner);
+  // console.log(breakfast, lunch, dinner);
   // const meals = `${breakfast} ${lunch} ${dinner}`;
-  const meals = 'I AM FULL';
+  const meals = `I AM FULL ON ${breakfast}, ${lunch}, AND ${dinner}`;
   const meals1 = meals
   return meals1;
 }

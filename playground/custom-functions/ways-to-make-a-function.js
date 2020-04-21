@@ -32,8 +32,13 @@ const doctorize = function(firstName) {
   //   return total;
   // }
   // console.log(inchToCM)
+
+  const inchToCM = function(inches) {
+    return inches * 2.54;
+  }
+  console.log(inchToCM)
   
-  const inchToCM = inches => inches * 2.54;
+  // const inchToCM = inches => inches * 2.54;
   
   
   // Function definition with function keyword
@@ -42,14 +47,10 @@ const doctorize = function(firstName) {
     //   return total;
     // }
     
-    
-  
-    // const add = (a, b = 3) => a + b;
-    // console.log(add)
-
-  
 
 // const add = (a, b = 3) => a + b;
+// console.log(add)
+
 
 // returning an object
 
@@ -61,7 +62,17 @@ const doctorize = function(firstName) {
 //   return baby;
 // }
 
-const makeABaby = (first, last) => ({ name: `${first} ${last}`, age: 0 });
+
+
+const makeABaby = (first, last, age) => {
+
+  return {
+    name: `${first} ${last}`,
+    age: `${age}`
+  }
+}
+
+// const makeABaby = (first, last) => ({ name: `${first} ${last}`, age: 0 });
 
 
 // IIFE
