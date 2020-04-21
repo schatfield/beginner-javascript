@@ -23,7 +23,7 @@
 // // Function Definition
 
 function calculateBill(billAmount, taxRate = 0.13){
-  console.log(billAmount, taxRate)
+  console.log(billAmount, taxRate);
   // this is the function body
   // console.log('Running calculateBill!!!');
   const total = billAmount * (1 + taxRate);
@@ -75,7 +75,23 @@ const name1 = 'Shoonoo';
 const name2 = 'Choochoo';
 
 const introduceMe = myNameIs(name1, name2);
-console.log(introduceMe)
+const introduceMe2 = myNameIs('shoo', 'choo')
+
+console.log(introduceMe, introduceMe2)
+
+function feedJack(breakfast,lunch, dinner){
+  console.log(breakfast, lunch, dinner);
+  // const meals = `${breakfast} ${lunch} ${dinner}`;
+  const meals = 'I AM FULL';
+  const meals1 = meals
+  return meals1;
+}
+const breakfast1 = 'french toast';
+const lunch1 = 'carrot'
+const dinner1 = 'beef'
+const survived = feedJack(breakfast1, lunch1, dinner1)
+console.log(survived)
+
 
 // // Function Definition
 // function sayHiTo(firstName) {
@@ -86,17 +102,17 @@ console.log(introduceMe)
 // // console.log(greeting);
 
 
-function doctorize(name = 'shoo') {
-  return `Dr. ${name}`;
-}
+// function doctorize(name = 'shoo') {
+//   return `Dr. ${name}`;
+// }
 
-function yell(name = '') {
-  return `HEY ${name.toUpperCase()}`;
-}
+// function yell(name = '') {
+//   return `HEY ${name.toUpperCase()}`;
+// }
 
-yell(doctorize('shoo'))
-const nameTime = yell(myNameIs('shoo', 'choo'))
-console.log(nameTime)
+// yell(doctorize('shoo'))
+// const nameTime = yell(myNameIs('shoo', 'choo'))
+// console.log(nameTime)
 
 
 

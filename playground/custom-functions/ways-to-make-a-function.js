@@ -1,19 +1,52 @@
+/* eslint-disable prettier/prettier */
+console.log('IT ALSO WORKS')
+
+
+// function doctorize(firstName) {
+//   return `Dr. ${firstName}`;
+// }
+
 // function doctorize(firstName) {
 //   return `Dr. ${firstName}`;
 // }
 
 // Anon Function
+
 // function (firstName) {
 //   return `Dr. ${firstName}`;
-// }
+// } 
+      
 
-// Function Expression
-// const doctorize = function(firstName) {
-//   return `Dr. ${firstName}`;
-// };
+// function add(a, b=3) {
+  //   const total = a + b;
+  //   return total;
+  // }
+  
+  
+  const add = (a, b=3) => a + b;
+  console.log(add)
+  
+  
+  
+  // Function Expression
+  
+  
+  function (firstName) {
+    return `Dr. ${firstName}`;
+  } 
+
+const doctorize = firstName => `Dr. ${firstName}`;
+console.log(doctorize)
 
 /* eslint-disable */
+  // const inchToCM = (inches) => {
+  //   const total = inches * 2.54;
+  //   return total;
+  // }
+  // console.log(inchToCM)
+
 const inchToCM = inches => inches * 2.54;
+
 
 // function add(a, b = 3) {
 //   const total = a + b;
