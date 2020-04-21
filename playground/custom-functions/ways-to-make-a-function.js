@@ -1,57 +1,53 @@
 /* eslint-disable prettier/prettier */
-console.log('IT ALSO WORKS')
+console.log('IT WORKS')
 
 
-// function doctorize(firstName) {
-//   return `Dr. ${firstName}`;
-// }
+// Function definition with function keyword
 
 // function doctorize(firstName) {
 //   return `Dr. ${firstName}`;
 // }
 
 // Anon Function
-
 // function (firstName) {
 //   return `Dr. ${firstName}`;
 // } 
-      
 
-// function add(a, b=3) {
-  //   const total = a + b;
-  //   return total;
-  // }
-  
-  
-  const add = (a, b=3) => a + b;
-  console.log(add)
-  
-  
-  
-  // Function Expression
-  
-  
-  function (firstName) {
-    return `Dr. ${firstName}`;
-  } 
 
-const doctorize = firstName => `Dr. ${firstName}`;
-console.log(doctorize)
+
+
+// Function Expression
+
+
+const doctorize = function(firstName) {
+  return `Dr. ${firstName}`;
+} 
+
+// const doctorize = firstName => `Dr. ${firstName}`;
+// console.log(doctorize)
 
 /* eslint-disable */
-  // const inchToCM = (inches) => {
+// const inchToCM = (inches) => {
   //   const total = inches * 2.54;
   //   return total;
   // }
   // console.log(inchToCM)
+  
+  const inchToCM = inches => inches * 2.54;
+  
+  
+  // Function definition with function keyword
+  // function add(a, b = 3) {
+    //   const total = a + b;
+    //   return total;
+    // }
+    
+    
+  
+    // const add = (a, b = 3) => a + b;
+    // console.log(add)
 
-const inchToCM = inches => inches * 2.54;
-
-
-// function add(a, b = 3) {
-//   const total = a + b;
-//   return total;
-// }
+  
 
 // const add = (a, b = 3) => a + b;
 
