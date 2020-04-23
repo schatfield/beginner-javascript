@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 /* eslint-desable */
 
+// in debugging there are 2 parts- the tools and the mindset. this is practice with the tools
+
 const people = [
   { name: 'Wes', cool: true, country: 'Canada' },
   { name: 'Scott', cool: true, country: 'Merica' },
