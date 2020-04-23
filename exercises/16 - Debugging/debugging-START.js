@@ -3,11 +3,19 @@
 
 // in debugging there are 2 parts- the tools and the mindset. this is practice with the tools
 
+// this is an array of objects
 const people = [
   { name: 'Wes', cool: true, country: 'Canada' },
   { name: 'Scott', cool: true, country: 'Merica' },
   { name: 'Snickers', cool: false, country: 'Dog Country' },
 ];
+
+// this is a loop
+people.forEach((person, index) => {
+  if (person.name === 'Wes') {
+    console.warn('dumb name')
+  }
+ })
 
 people.forEach((person, index) => {
   console.log(person.name);
@@ -30,6 +38,7 @@ people.forEach((person, index) => {
 // Some Setup Code
 
 function doctorize(name) {
+  console.count('running doctor eyes')
   return `Dr. ${name}`;
 }
 
