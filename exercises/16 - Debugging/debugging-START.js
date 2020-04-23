@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-desable */
+
 const people = [
   { name: 'Wes', cool: true, country: 'Canada' },
   { name: 'Scott', cool: true, country: 'Merica' },

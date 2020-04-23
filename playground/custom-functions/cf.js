@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 
+
 // function calculateBill() {
 //   // this is the function body everything in here is part of the function
 //   // console.log('Running calculateBill!!!!');
