@@ -1,11 +1,31 @@
 /* eslint-disable prettier/prettier */
 /* eslint-desable */
 
+// in debugging there are 2 parts- the tools and the mindset. this is practice with the tools
+
+// this is an array of objects
 const people = [
   { name: 'Wes', cool: true, country: 'Canada' },
   { name: 'Scott', cool: true, country: 'Merica' },
   { name: 'Snickers', cool: false, country: 'Dog Country' },
 ];
+
+// this is a loop
+
+people.forEach((person, index) => {
+  console.group(person.name);
+  console.log(person.country);
+  console.log(`${person.cool}`);
+  console.log('DONE!'); 
+  console.groupEnd(`${person.name}`);
+})
+
+
+people.forEach((person, index) => {
+  if (person.name === 'Wes') {
+    console.warn('dumb name')
+  }
+ })
 
 people.forEach((person, index) => {
   console.log(person.name);
@@ -28,7 +48,15 @@ people.forEach((person, index) => {
 // Some Setup Code
 
 function doctorize(name) {
+  console.count(`running doctor eyes for ${name}`)
   return `Dr. ${name}`;
+}
+
+function doAlotOfStuff() {
+  console.group('do so much stuff');
+  console.log('doing a thing');
+  console.log('doing another thing');
+  console.groupEnd('do so much stuff');
 }
 
 function greet(name) {
