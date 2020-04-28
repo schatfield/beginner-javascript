@@ -29,7 +29,25 @@ const item2Image = item2.querySelector('img');
 console.log(item2Image)
 
 const heading = document.querySelector('h2');
-heading.textContent ='shawna is great!';
+// set the textContent property on that element
+// heading.textContent ='shawna is great!';
 console.log(heading.textContent);
 
+console.log(heading.innerText);
+console.log(heading.innerHTML);
+console.log(heading.outerHTML);
 
+const pizza = document.querySelectorAll('.pizza');
+console.log(pizza);
+
+const pizzaList = document.querySelector('.pizza');
+console.log(pizzaList.textContent);
+
+// ways to insert text 
+// pizzaList.textContent = `${pizzaList.textContent} pizza`;
+pizzaList.insertAdjacentText('beforeend', 'pizza');
+pizzaList.insertAdjacentText('beforebegin', 'pizza');
+pizzaList.insertAdjacentText('afterbegin', 'pizza');
+
+
+// elements vs nodes - everything is a node but becomes an element if it;s wrapped in a tag of some kind
