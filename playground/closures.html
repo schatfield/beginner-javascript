@@ -10,7 +10,20 @@
 
 <body>
   <script>
-    // function outer() {
+
+ function outer() {
+   const outerVar = 'Hey I am the outer var';
+   function inner() {
+     const innerVar = 'Hey I am the inner var';
+     console.log(innerVar);
+     console.log(outerVar);
+   }
+   return inner;
+ }
+
+const innerFn = outer();
+
+    //the ability to access a parent level scope from a child scope even after the parent function has been terminated function outer() { 
     //   const outerVar = 'Hey I am the outer Var!';
     //   function inner() {
     //     const innerVar = 'Hey I am an inner var!';

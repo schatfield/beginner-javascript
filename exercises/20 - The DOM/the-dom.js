@@ -1,0 +1,35 @@
+/* eslint-disable */
+
+// before you can work with elenments on a page you need to go get them or select them- querySelector used to select elements
+// querySelector takes the css selector as an argument
+
+// function that finds p tag on dom
+// function init() {
+    // gives you the first matching element that matches what you're looking for
+//     const p = document.querySelector('p');
+// console.log(p);
+// }
+
+// this tells JS to wait to run the init function until the dom content has loaded so that the JS isn't run before the dom is loaded. this is if you don't want to put your script tag before the clsing body tag for some reason
+// document.addEventListener('DOMContentLoaded', init)
+
+
+
+const divs = document.querySelectorAll('div');
+console.log(divs)
+
+const imgs = document.querySelectorAll('.item img');
+console.log(imgs)
+
+
+const item2 = document.querySelector('.item2');
+console.log(item2)
+
+const item2Image = item2.querySelector('img');
+console.log(item2Image)
+
+const heading = document.querySelector('h2');
+heading.textContent ='shawna is great!';
+console.log(heading.textContent);
+
+
