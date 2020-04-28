@@ -1,5 +1,9 @@
 /* eslint-disable */
 
+// practice getting properties from an element and usng methods
+// setting elements on the element
+// using methods on elements like "insertAdjacentText"
+
 // before you can work with elenments on a page you need to go get them or select them- querySelector used to select elements
 // querySelector takes the css selector as an argument
 
@@ -43,7 +47,7 @@ console.log(pizza);
 const pizzaList = document.querySelector('.pizza');
 console.log(pizzaList.textContent);
 
-// ways to insert text 
+// ways to insert text onto the front or back of the contents of an element
 // pizzaList.textContent = `${pizzaList.textContent} pizza`;
 pizzaList.insertAdjacentText('beforeend', 'pizza');
 pizzaList.insertAdjacentText('beforebegin', 'pizza');
