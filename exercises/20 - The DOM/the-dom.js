@@ -1,5 +1,9 @@
 /* eslint-disable */
 
+// practice getting properties from an element and usng methods
+// setting elements on the element
+// using methods on elements like "insertAdjacentText"
+
 // before you can work with elenments on a page you need to go get them or select them- querySelector used to select elements
 // querySelector takes the css selector as an argument
 
@@ -43,7 +47,7 @@ console.log(pizza);
 const pizzaList = document.querySelector('.pizza');
 console.log(pizzaList.textContent);
 
-// ways to insert text 
+// ways to insert text onto the front or back of the contents of an element
 // pizzaList.textContent = `${pizzaList.textContent} pizza`;
 pizzaList.insertAdjacentText('beforeend', 'pizza');
 pizzaList.insertAdjacentText('beforebegin', 'pizza');
@@ -51,3 +55,46 @@ pizzaList.insertAdjacentText('afterbegin', 'pizza');
 
 
 // elements vs nodes - everything is a node but becomes an element if it;s wrapped in a tag of some kind
+
+// Classes
+
+const pic = document.querySelector('.nice');
+pic.classList.add('open');
+console.log(pic.classList);
+pic.classList.remove('open');
+
+function toggleRound() {
+    pic.classList.toggle('round');
+}
+
+pic.addEventListener('click', toggleRound)
+
+
+
+// Attributes
+// Attributes are anything that is provided to an HTML element as additional info- things like classes, src, alt, etc.
+
+// Custom Attributes and Data Attributes
+
+// setter
+pic.alt = 'Cute Pup';
+// getter  
+console.log(pic.alt);   
+// getter
+console.log(pic.naturalWidth);
+
+pic.addEventListener('load', function() {
+    // getter
+    console.log(pic.naturalWidth);
+})
+
+// pic.setAttribute('alt', 'really cute pup');
+// console.log(pic.getAttribute('alt'));
+
+const custom = document.querySelector('.custom');
+console.log(custom.dataset);
+
+custom.addEventListener('click', function() {
+    alert(`Welcome ${custom.dataset.name} 
+    ${custom.dataset.last}`);
+})
