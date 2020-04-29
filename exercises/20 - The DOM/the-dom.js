@@ -68,3 +68,33 @@ function toggleRound() {
 }
 
 pic.addEventListener('click', toggleRound)
+
+
+
+// Attributes
+// Attributes are anything that is provided to an HTML element as additional info- things like classes, src, alt, etc.
+
+// Custom Attributes and Data Attributes
+
+// setter
+pic.alt = 'Cute Pup';
+// getter  
+console.log(pic.alt);   
+// getter
+console.log(pic.naturalWidth);
+
+pic.addEventListener('load', function() {
+    // getter
+    console.log(pic.naturalWidth);
+})
+
+// pic.setAttribute('alt', 'really cute pup');
+// console.log(pic.getAttribute('alt'));
+
+const custom = document.querySelector('.custom');
+console.log(custom.dataset);
+
+custom.addEventListener('click', function() {
+    alert(`Welcome ${custom.dataset.name} 
+    ${custom.dataset.last}`);
+})
