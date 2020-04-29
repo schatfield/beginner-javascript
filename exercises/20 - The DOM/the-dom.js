@@ -55,3 +55,16 @@ pizzaList.insertAdjacentText('afterbegin', 'pizza');
 
 
 // elements vs nodes - everything is a node but becomes an element if it;s wrapped in a tag of some kind
+
+// Classes
+
+const pic = document.querySelector('.nice');
+pic.classList.add('open');
+console.log(pic.classList);
+pic.classList.remove('open');
+
+function toggleRound() {
+    pic.classList.toggle('round');
+}
+
+pic.addEventListener('click', toggleRound)
