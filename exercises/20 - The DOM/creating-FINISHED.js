@@ -17,10 +17,35 @@ console.log(myDiv);
 
 // appendChild() addsa node- a node can be either an element or a plain piece of text
 
-document.body.appendChild(myDiv);
 myDiv.appendChild(myParagraph);
 myDiv.appendChild(myImage);
 
+document.body.appendChild(myDiv);
+
+// oh no! I need to add soemthing to the top- like a heading!
+
+// const heading = document.createElement('h2');
+// heading.textContent = 'cool things';
+
+// myDiv.insertAdjacentElement('beforebegin', heading);
+
+// making an Unordered List with 5 items in it with the apis we've been using and inject it into the DOM
+
+const list = document.createElement('ul');
+
+document.body.insertAdjacentElement('afterbegin', list);
+
+const li5 = document.createElement('li');
+li5.textContent = 'five';
+list.append(li5);
+
+const li1 = li5.cloneNode(true);
+li1.textContent = 'one';
+list.insertAdjacentElement('afterbegin', li1);
+
+const li4 = document.createElement('li');
+li4.textContent = 'four';
+li4.insertAdjacentElement('afterbegin', li4);
 // console.log('it works!');
 
 // const myParagraph = document.createElement('p');
