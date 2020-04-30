@@ -46,6 +46,8 @@ document.body.append(myFragment)
 // myFragment - the fragment that turns the raw string into a fragment that can be dumped into the DOM as an HTML element
 
 // IMPORTANT-
+// innerHtml can be used as both a getter and a setter. as a getter it can GET the innerHtml that exists as part of something on your page.
+// as a setter you are setting something to be a part of that page and putting it into the DOM
 // if you want to create html from a string you can either dump it straight into an element with .innerHtml
 //OR  if you do need to add event listeners or change classes add classes change attributes you can turn into DOM nodes before it's dumped in with createContextualFragment and pass it a string.
 
