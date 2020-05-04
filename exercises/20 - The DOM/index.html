@@ -51,9 +51,25 @@
       transform: rotate(1turn) scale(2);
       box-shadow: 0 0 10px black;
     }
-  </style>
 
-  <script src="./traversing.js"></script>
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-gap: 20px;
+      padding:20px;
+    }
+
+    .playerCard {
+      background: white;
+      padding: 20px;
+    }
+
+    .playerCard h2 {
+      color:black;
+    }
+  </style>
+  <script src="./DOM-Cardio.js"></script>
+  {% comment %} <script src="./traversing.js"></script> {% endcomment %}
   {% comment %} <script src="./the-dom.js"></script> {% endcomment %}
   {% comment %} <script src="./creating-with-strings-FINISHED.js"></script> {% endcomment %}
 </body>

@@ -35,6 +35,8 @@ unorderedList.append(li3);
 // put that list into the above wrapper
 div.append(unorderedList)
 
+// div.innerHTML = unorderedList;
+
 // create an image
 
 const image = document.createElement('img');
@@ -53,19 +55,23 @@ div.append(image);
 
 // with HTML string, make a div, with two paragraphs inside of it
 
-const htmlString = `
-<div>
-<p></p>
-<p></p>
+const divString = `
+<div class="myDiv">
+<p>paragraph one</p>
+<p>paragraph two</p>
 </div>
 `;
 
 // put this div before the unordered list from above
-unorderedList.insertAdjacentHTML('beforebegin', htmlString);
+unorderedList.insertAdjacentHTML('beforebegin', divString);
 
 // add a class to the second paragraph called warning
 
+const myDiv = div.querySelector('.myDiv');
+myDiv.children[1].classList.add('WARNING');
+
 // remove the first paragraph
+myDiv.firstElementChild.remove();
 
 // create a function called generatePlayerCard that takes in three arguments: name, age, and height
 
@@ -73,11 +79,14 @@ function generatePlayerCard(name, age, height) {
     const html = `
     <div class="playerCard">
      <h2>${name} — ${age}</h2>
-     <p>They are ${height} and ${age} years old. In Dog years this person would be AGEINDOGYEARS. 
+     <p>They are ${height} and ${age} years old. In Dog years this person would be ${age * 7}. 
      That would be a tall dog!</p>
+     <button class="delete" type="button">&times delete</button>
     </div>`;
     return html;
 }
+
+// write a function that takes in cm and converts it to feet and inches- would it be as a part of the other function above?
 
 // have that function return html that looks like this:
 // <div class="playerCard">
@@ -86,13 +95,42 @@ function generatePlayerCard(name, age, height) {
 // </div>
 
 // make a new div with a class of cards
+const cards = document.createElement('div');
+// console.log(cards);
+cards.classList.add('cards');
 
 // Have that function make 4 cards
 
+let playerCards = generatePlayerCard('shawna', 35, 100);
+playerCards += generatePlayerCard('ed', 35, 100);
+playerCards += generatePlayerCard('jack', 35, 100);
+playerCards += generatePlayerCard('enki', 35, 100);
+
+
 // append those cards to the div
+cards.innerHTML = playerCards;
+div.append(cards);
+
 // put the div into the DOM just before the wrapper element
+
+myDiv.insertAdjacentElement("beforebegin", cards);
+
+
 // Bonus, put a delete Button on each card so when you click it, the whole card is removed
 
 // select all the buttons!
+// const buttons = document.querySelectorAll('.delete');
+
 // make out delete function
+// function deleteCard() {
+//     const buttonThatGotClicked = event.currentTarget;
+//     // buttonThatGotClicked.parentElement.remove();
+//     console.log(event.currentTarget);
+//     console.log('DELETE CARD TO DO')
+// }
+
 // loop over them and attach a listener
+
+
+// buttons.forEach(button => button.addEventListener('click',
+// deleteCard));
