@@ -51,14 +51,40 @@ coolButton.addEventListener('click', hooray);
   const buyButtons = document.querySelectorAll('button.buy');
 
 function handleBuyButtonClick(event) {
-  console.log('you are buying it!!!');
+  const button = event.target;
+  console.log(event.target);
+  console.log(event.currentTarget);
+  console.log(event.target === event.currentTarget);
+  // Stop this event from bubbling up
+  event.stopPropagation();
+  // console.log(button.textContent);
+  // // remember, parseFloat() keeps decimals while parseInt() doesn't
+  // console.log(parseFloat(event.target.dataset.price));
 }
 
 buyButtons.forEach(function(buyButton) {
   buyButton.addEventListener('click', handleBuyButtonClick);
 }) 
 
+window.addEventListener(
+  'click', 
+ function(event) {
+  this.console.log('you clicked the window');
+  this.console.log(event.target);
+  // stop the event from propagating down "ca[ture it"- stop it at the window level
+  event.stopPropagation();
+},
+ { capture: true }
+);
 
+const photoEl = dpcument.querySelector('.photo');
+photoEl.addEventListener('mousemove', function(e) {
+  console.log(e.currentTarget);
+  // this keyword is equal to whatever is to the left of the dot- so it would be photoEl here
+  console.log(this);
+})
+
+// callbackfunction is a function that is passed in as a parameter
   
   // function buyItem() {
   //   console.log('buying items');
