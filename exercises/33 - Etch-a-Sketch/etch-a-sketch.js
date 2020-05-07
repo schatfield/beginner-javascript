@@ -84,15 +84,21 @@ function handleKey(e) {
 
 
 function clearCanvas() {
+    // add the shake
     canvas.classList.add('shake');
+    // clear the canvas
+    ctx.clearRect(0, 0, width, height);
     // add an event listener to our canvas and listen for the shake to end with 'animationend'
     canvas.addEventListener('animationend', function() {
+        console.log('done the shake');
         canvas.classList.remove('shake');
-        // console.log('done the shake');
-    });
+    }, 
+    { once: true}
+  );
 }
 
 
 // listen for arrow keys
 // to listen sitewide, listen on the window
 window.addEventListener('keydown', handleKey);
+shakebutton.addEventListener('click', clearCanvas);
