@@ -40,8 +40,11 @@ function closeModal() {
   modalOuter.classList.remove('open');
 }
 
+// this function listens for a click outside the pop up part of the modal- the other part of the modal or modalOuter
 modalOuter.addEventListener('click', function(event) {
   // .closest() is similar to queryselectorall but opposite- it climbs up the DOM tree of elements instead down
+  // we can use the closest method to see if we are clicking inside the modalInner AT ALL by searching for the closest class of .modal-inner
+  // make this .closest() a boolean so if it finds something called .modal-inner it will be FALSE that you're clicking outside and if doesn't find something it will be TRUE that you are clicking outside and then it will close the modal window
   const isOutside = !event.target.closest('.modal-inner');
   if (isOutside) {
     closeModal();
