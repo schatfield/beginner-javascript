@@ -5,7 +5,7 @@ console.log('it works');
 // select the buttons with a class of cardbutton
 const cardButtons = document.querySelectorAll('.card button');
 
-// grab the modal. do it here becaue we ony need to select it once, if we needed to selectit with every click we would put it in the handlecardbuttonclick function
+// grab the modal. do it here becaue we ony need to select it once, if we needed to select it with every click we would put it in the handlecardbuttonclick function
 const modalInner = document.querySelector('.modal-inner');
 const modalOuter = document.querySelector('.modal-outer');
 
@@ -44,12 +44,19 @@ modalOuter.addEventListener('click', function(event) {
   // .closest() is similar to queryselectorall but opposite- it climbs up the DOM tree of elements instead down
   const isOutside = !event.target.closest('.modal-inner');
   if (isOutside) {
-    modalOuter.classList.remove('open');
+    closeModal();
   }
   // console.log(event.target);
   // console.log(event.currentTarget);
   console.log(isOutside);
-})
+});
+
+window.addEventListener('keydown', (event) => {
+  console.log(event);
+  if (event.key ==='Escape') {
+    closeModal();
+  }
+});
 
 // const cardButtons = document.querySelectorAll('.card button');
 // const modalOuter = document.querySelector('.modal-outer');
