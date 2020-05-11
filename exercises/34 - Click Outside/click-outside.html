@@ -71,7 +71,7 @@
       left: 0;
       justify-content: center;
       align-items: center;
-      /* Hide this modal until we need it */
+      /* Hide this modal until we need it- pointer events none means you can access the stuff behind the modal*/
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s;
@@ -80,7 +80,7 @@
     .modal-outer img {
       width: 100%;
     }
-
+/* when the modal-outer has a class of open let pointer events happen  and we cannot click on stuff outside the modal*/
     .modal-outer.open {
       opacity: 1;
       pointer-events: all;
