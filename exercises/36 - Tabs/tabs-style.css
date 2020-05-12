@@ -23,11 +23,13 @@ button {
   cursor:pointer;
 }
 
+/*aria-selected attribute is how we maintain if that tab is currently active, if it's true it's active*/
+ 
 button[aria-selected="true"] {
   background: var(--yellow);
   box-shadow: none;
   color: rgba(0,0,0,0.7);
-}
+} 
 
 button:focus {
   outline: 0;
