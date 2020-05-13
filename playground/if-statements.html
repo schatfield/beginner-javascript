@@ -9,17 +9,22 @@
 </head>
 
 <body>
-  * empty array
-  * empty object
+
+  <h2>Truthy Values</h2>
   * 1
   * -10
-  * full string
+  * full string - any string with content in it will be true
   * a string of "0"
+  * empty array - unless you run .length on it and it returns 0 (0 is a falsey val)
+  * empty object - works just like the array, if you want to check if anything is in the object you can use Object.keys
+
+  <h2>Falsey Values</h2>
+  * empty string
   * 0
   * undefined variable
   * Variable set to null
   * a variable set to `"hello" - 10` NaN
-  * empty string
+
 
   <script>
     /* (10 > 2) is the condition- the thing that is going to be evaluated to either true or flase
@@ -172,7 +177,135 @@ if (isAwesomeName) {
   console.log('SUPER COOL IS SO AWESOME');
 }
 
-/* we can also make our functions that return true or false*/
+/* we can also make our functions that return true or false */
+
+/*function declaraion*/
+
+function nameIsAwesome(name) {
+  return 'awesome'.includes(name);
+}
+
+/* you can go ahead and use that function in your If statement like this : 
+*/
+
+if (nameIsAwesome('wes')) {
+  console.log('cool name wes');
+}
+
+/* Truthy and Falsey 
+
+if statements wil also take values are what are known as Truthy and Falsey
+
+*/
+
+const dog = 'snickers';
+
+/* if we instead left this variable 'dog' empty like this:
+
+const dog = '';
+
+the else portion of the if statement will run
+
+An empty string is not True and it is also not False - it is an empty string.
+
+So why does this work: If statements will take in a number of different values and try to coerce them, or try to turn them into a boolena of TRUE or FALSE. So values that are Truthy and Falsey will also work.
+
+*/
+
+if (dog) {
+  console.log('you have a dog');
+} else {
+  console.log('you dont have a dog');
+}
+
+
+/* Falsey: 0 is a falsey value 
+
+const score = 0;
+*/
+
+/* Truthy: 1 is a truthy value, ALL other numbers are a truthy value
+ including negative numbers like -10
+
+const score = -10;
+*/
+
+/* undefined variable like this:
+
+let score;
+
+is a faley value */
+
+/* a variable set to `"hello" - 10` or something like this that equals NaN
+
+let score = 'wes' * 100;
+
+is a Falsey value */
+
+/* a string of '0' will be truthy
+
+let score = '0'; 
+
+even a sting with just a space like this 
+
+let score = ' '; is Truthy
+
+The only ting about a string that will be Falsey is a string of nothing like this 
+
+let score = '';
+
+*/
+
+/* an array that has nothing in it is Truthy
+let score = [];
+
+to check how many items are in an array you can use .length() to check
+
+seomthing cool here is that if you run .length on an empty array and it returns zero, it now evaulates to Falsey because it returns 0 which is a falsey value
+
+let score = [];
+
+if (score.length) {
+  console.log('there is a score already');
+} else {
+  console.log('no score yet');
+} 
+
+*/
+
+/* Empty object is a truthy value 
+
+let score = {};
+ 
+ you can use Object.keys({}); which will return to you an empty array
+
+ you can then run .length on that returned empty array like this 
+ 
+ Object.keys({}).length which will equal 0 and then be falsey
+
+We can also so do something like this :
+
+Object.keys({ name: 'wes'}).length 
+
+"Object.keys" will give us all the properties on the object, in this case "name" is the property returned and then we can check for the length of that array 
+
+which would be equal to 1
+
+
+*/
+
+let score = {};
+
+if (score) {
+  /*true*/
+  console.log('there is a score already');
+  /*false*/
+} else {
+  console.log('no score yet');
+}
+
+
+
 
   </script>
 </body>
