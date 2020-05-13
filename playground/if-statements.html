@@ -22,6 +22,52 @@
   * empty string
 
   <script>
+    /* (10 > 2) is the condition- the thing that is going to be evaluated to either true or flase
+    if you were to take 10 > 2 out of this if statemnt and run it true or false are the only two things that can be returnded from this */
+    
+    if (10 > 2) {
+      /*curly brackets opening a block
+      any code that needs to happen when the condition is TRUE would go inside of here*/
+      console.log('yep 1');
+    } else if (11 > 10) {
+      console.log('yep 2');
+    } else if (3 > 1) {
+      console.log('yep 3');
+    }
+
+    /* as soon as an if statement finds itself to be true it stops evaluating. If there are true statements following that the ones after the first one, they will never be reached- it will skip the rest of the if statements and move onto the code under it.
+    
+    if you want to check that all 3 are true you will need to be aware of the order that you check your if statements OR write three separate if statements rather than one big else if statement like this
+
+    if (10 > 2) {
+      console.log('yep 1');
+    } 
+    
+    if (11 > 10) {
+      console.log('yep 2');
+    } 
+    
+    if (3 > 1) {
+      console.log('yep 3');
+    }
+    */
+
+    /* additionally if nothing is matched you can chain a 'else' onto the end like this */
+    /*
+     you'll notice there's no else () paranthesis here at the end. that is becaseue an else never has a condition- if nothing was true, run me. similar to the default in a switch statment*/
+
+    const age = 50;
+    if (age > 70) {
+      console.log('In your Seventies');
+    } else if (age > 60) {
+      console.log('In your sixties');
+    } else if (age > 50) {
+      console.log('In your fifties');
+    } else {
+      console.log('nothing was true');
+    }
+
+/* /\s/g is a regex or regular expression- it is a way to match characters in some text. it always starts and closes with a forward slash*/
 
     function slugify(sentence, lowercase) {
       let slug = sentence.replace(/\s/g, '-');

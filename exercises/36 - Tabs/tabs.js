@@ -39,7 +39,8 @@ function handleTabClick(event) {
   // console.log(tabPanels)
   // .find only works on arrays, we made tabpanels an array above in the variable
   // .find loops, it takes a callback function
-  const tabPanel =tabPanels.find(
+  // we are going to find the panel where the panel is labbelledby is equal to the id
+  const tabPanel = tabPanels.find(
   panel => panel.getAttribute('aria-labelledby') === id
   );
   console.log(tabPanel);
