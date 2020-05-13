@@ -67,15 +67,112 @@
       console.log('nothing was true');
     }
 
-/* /\s/g is a regex or regular expression- it is a way to match characters in some text. it always starts and closes with a forward slash*/
+/* 
+this function takes in a sentence as it's first parameter and a boolean as it's second
 
+/\s/g is a regex or regular expression- it is a way to match characters in some text. it always starts and closes with a forward slash. this reg ex specifically passes the space character which is '\s' and the 'g' means glbal or find them all. this finds all the spaces in the sentence.
+
+
+it returns the sentence that is passed and we will run the .replace method on it which will replace all the spaces found by the reg ex with a '-'
+
+*/
+
+    function slugify(sentence, lowercase) {
+      if (lowercase) {
+        return sentence.replace(/\s/g, '-').toLowerCase();
+      } /* there is no else keyword here but it still works like that because of the return keyword BECAUSE return means to return a value froma  function and stop that function from running
+      
+      */
+        return sentence.replace(/\s/g, '-');
+    }
+
+    /*
+    
+    Another way to write this function:
+  
     function slugify(sentence, lowercase) {
       let slug = sentence.replace(/\s/g, '-');
       if (lowercase) {
         return slug.toLowerCase();
       }
       return slug;
+    }*/
+
+
+
+    /* Operators 
+    
+    you can use === to check if a variable is null or undefined
+    
+    with a == null == undefined would be true whereas null === undefined would be false
+    
+    */
+
+    const name = 'wes';
+    const last = 'bos';
+    /* if the name is equal ro wes OR scott then console log cool name*/
+
+    if (name === 'wes' || name === 'scott') {
+      console.log('cool name');
     }
+
+    if (name === 'wes' && last === 'bos') {
+      console.log('cool name!!!');
+    }
+
+    /* applying bedmas principles to the last if statement here below:
+
+    Parenthesis will be evealuated first and then:
+
+      This thing will need to be true 
+      (name === 'wes' 
+
+      AND this thing will need to be true
+      && == 'bos'))\
+
+      in order for the whole thing to be true 
+      
+      THE WHOLE THING IS THIS : (name === 'wes' && == 'bos')
+
+      If one thing is false along the way, it posions the well and makes the whole thing false
+
+      examples:
+
+      true && true is true
+
+      true && true && false && true is false
+
+      true || true || false || true is equal to true because of the 'or' op ||
+    */
+
+    if (name === 'scott' || (name === 'wes' && last === 'bos')) {
+      console.log('cooler namessssss');
+    }
+
+/* Using functions with If statements 
+
+.includes() is a method that will return true or false
+
+pretty often we have methods that return true or flase and we can use those directly inside of our if statments
+
+ALSO- name is a variable we defined up above and is being used here again
+
+*/
+
+if ('awesome'.includes(name)) {
+  console.log('super cool awesome name');
+}
+
+
+/* you can also put these methods inside of their own variables so it makes it easier to read */
+
+const isAwesomeName = 'awesome'.includes(name);
+
+if (isAwesomeName) {
+  console.log('SUPER COOL IS SO AWESOME');
+}
+
+/* we can also make our functions that return true or false*/
 
   </script>
 </body>
