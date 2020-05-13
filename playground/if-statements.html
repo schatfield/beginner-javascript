@@ -9,27 +9,310 @@
 </head>
 
 <body>
-  * empty array
-  * empty object
+
+  <h2>Truthy Values</h2>
   * 1
   * -10
-  * full string
+  * full string - any string with content in it will be true
   * a string of "0"
+  * empty array - unless you run .length on it and it returns 0 (0 is a falsey val)
+  * empty object - works just like the array, if you want to check if anything is in the object you can use Object.keys
+
+  <h2>Falsey Values</h2>
+  * empty string
   * 0
   * undefined variable
   * Variable set to null
   * a variable set to `"hello" - 10` NaN
-  * empty string
+
 
   <script>
+    /* (10 > 2) is the condition- the thing that is going to be evaluated to either true or flase
+    if you were to take 10 > 2 out of this if statemnt and run it true or false are the only two things that can be returnded from this */
+    
+    if (10 > 2) {
+      /*curly brackets opening a block
+      any code that needs to happen when the condition is TRUE would go inside of here*/
+      console.log('yep 1');
+    } else if (11 > 10) {
+      console.log('yep 2');
+    } else if (3 > 1) {
+      console.log('yep 3');
+    }
 
+    /* as soon as an if statement finds itself to be true it stops evaluating. If there are true statements following that the ones after the first one, they will never be reached- it will skip the rest of the if statements and move onto the code under it.
+    
+    if you want to check that all 3 are true you will need to be aware of the order that you check your if statements OR write three separate if statements rather than one big else if statement like this
+
+    if (10 > 2) {
+      console.log('yep 1');
+    } 
+    
+    if (11 > 10) {
+      console.log('yep 2');
+    } 
+    
+    if (3 > 1) {
+      console.log('yep 3');
+    }
+    */
+
+    /* additionally if nothing is matched you can chain a 'else' onto the end like this */
+    /*
+     you'll notice there's no else () paranthesis here at the end. that is becaseue an else never has a condition- if nothing was true, run me. similar to the default in a switch statment*/
+
+    const age = 50;
+    if (age > 70) {
+      console.log('In your Seventies');
+    } else if (age > 60) {
+      console.log('In your sixties');
+    } else if (age > 50) {
+      console.log('In your fifties');
+    } else {
+      console.log('nothing was true');
+    }
+
+/* 
+this function takes in a sentence as it's first parameter and a boolean as it's second
+
+/\s/g is a regex or regular expression- it is a way to match characters in some text. it always starts and closes with a forward slash. this reg ex specifically passes the space character which is '\s' and the 'g' means glbal or find them all. this finds all the spaces in the sentence.
+
+
+it returns the sentence that is passed and we will run the .replace method on it which will replace all the spaces found by the reg ex with a '-'
+
+*/
+
+    function slugify(sentence, lowercase) {
+      if (lowercase) {
+        return sentence.replace(/\s/g, '-').toLowerCase();
+      } /* there is no else keyword here but it still works like that because of the return keyword BECAUSE return means to return a value froma  function and stop that function from running
+      
+      */
+        return sentence.replace(/\s/g, '-');
+    }
+
+    /*
+    
+    Another way to write this function:
+  
     function slugify(sentence, lowercase) {
       let slug = sentence.replace(/\s/g, '-');
       if (lowercase) {
         return slug.toLowerCase();
       }
       return slug;
+    }*/
+
+
+
+    /* Operators 
+    
+    you can use === to check if a variable is null or undefined
+    
+    with a == null == undefined would be true whereas null === undefined would be false
+    
+    */
+
+    const name = 'wes';
+    const last = 'bos';
+    /* if the name is equal ro wes OR scott then console log cool name*/
+
+    if (name === 'wes' || name === 'scott') {
+      console.log('cool name');
     }
+
+    if (name === 'wes' && last === 'bos') {
+      console.log('cool name!!!');
+    }
+
+    /* applying bedmas principles to the last if statement here below:
+
+    Parenthesis will be evealuated first and then:
+
+      This thing will need to be true 
+      (name === 'wes' 
+
+      AND this thing will need to be true
+      && == 'bos'))\
+
+      in order for the whole thing to be true 
+      
+      THE WHOLE THING IS THIS : (name === 'wes' && == 'bos')
+
+      If one thing is false along the way, it posions the well and makes the whole thing false
+
+      examples:
+
+      true && true is true
+
+      true && true && false && true is false
+
+      true || true || false || true is equal to true because of the 'or' op ||
+    */
+
+    if (name === 'scott' || (name === 'wes' && last === 'bos')) {
+      console.log('cooler namessssss');
+    }
+
+/* Using functions with If statements 
+
+.includes() is a method that will return true or false
+
+pretty often we have methods that return true or flase and we can use those directly inside of our if statments
+
+ALSO- name is a variable we defined up above and is being used here again
+
+*/
+
+if ('awesome'.includes(name)) {
+  console.log('super cool awesome name');
+}
+
+
+/* you can also put these methods inside of their own variables so it makes it easier to read */
+
+const isAwesomeName = 'awesome'.includes(name);
+
+if (isAwesomeName) {
+  console.log('SUPER COOL IS SO AWESOME');
+}
+
+/* we can also make our functions that return true or false */
+
+/*function declaraion*/
+
+function nameIsAwesome(name) {
+  return 'awesome'.includes(name);
+}
+
+/* you can go ahead and use that function in your If statement like this : 
+*/
+
+if (nameIsAwesome('wes')) {
+  console.log('cool name wes');
+}
+
+/* Truthy and Falsey 
+
+if statements wil also take values are what are known as Truthy and Falsey
+
+*/
+
+const dog = 'snickers';
+
+/* if we instead left this variable 'dog' empty like this:
+
+const dog = '';
+
+the else portion of the if statement will run
+
+An empty string is not True and it is also not False - it is an empty string.
+
+So why does this work: If statements will take in a number of different values and try to coerce them, or try to turn them into a boolena of TRUE or FALSE. So values that are Truthy and Falsey will also work.
+
+*/
+
+if (dog) {
+  console.log('you have a dog');
+} else {
+  console.log('you dont have a dog');
+}
+
+
+/* Falsey: 0 is a falsey value 
+
+const score = 0;
+*/
+
+/* Truthy: 1 is a truthy value, ALL other numbers are a truthy value
+ including negative numbers like -10
+
+const score = -10;
+*/
+
+/* undefined variable like this:
+
+let score;
+
+is a faley value */
+
+/* a variable set to `"hello" - 10` or something like this that equals NaN
+
+let score = 'wes' * 100;
+
+is a Falsey value */
+
+/* a string of '0' will be truthy
+
+let score = '0'; 
+
+even a sting with just a space like this 
+
+let score = ' '; is Truthy
+
+The only ting about a string that will be Falsey is a string of nothing like this 
+
+let score = '';
+
+*/
+
+/* an array that has nothing in it is Truthy
+let score = [];
+
+to check how many items are in an array you can use .length() to check
+
+seomthing cool here is that if you run .length on an empty array and it returns zero, it now evaulates to Falsey because it returns 0 which is a falsey value
+
+let score = [];
+
+if (score.length) {
+  console.log('there is a score already');
+} else {
+  console.log('no score yet');
+} 
+
+*/
+
+/* Empty object is a truthy value 
+
+let score = {};
+ 
+you can use Object.keys({}) to return an array
+ 
+Just using Object.keys({}) will return to you an EMPTY array
+
+ you can then run .length on that returned empty array like this 
+ 
+ Object.keys({}).length which will equal 0 and then be falsey
+
+We can also so do something like this :
+
+Object.keys({ name: 'wes'})
+
+"Object.keys" will give us all the properties on this object, in this case "name" is the property returned 
+
+We then we can check for the length of that array 
+
+Object.keys({ name: 'wes'}).length 
+
+which would be equal to 1 because
+
+this is a good way to get Truthy and Falsey out of Objects
+
+*/
+
+let score = {};
+
+if (score) {
+  /*true*/
+  console.log('there is a score already');
+  /*false*/
+} else {
+  console.log('no score yet');
+}
+
+
+
 
   </script>
 </body>
