@@ -277,7 +277,9 @@ if (score.length) {
 
 let score = {};
  
- you can use Object.keys({}); which will return to you an empty array
+you can use Object.keys({}) to return an array
+ 
+Just using Object.keys({}) will return to you an EMPTY array
 
  you can then run .length on that returned empty array like this 
  
@@ -285,12 +287,17 @@ let score = {};
 
 We can also so do something like this :
 
+Object.keys({ name: 'wes'})
+
+"Object.keys" will give us all the properties on this object, in this case "name" is the property returned 
+
+We then we can check for the length of that array 
+
 Object.keys({ name: 'wes'}).length 
 
-"Object.keys" will give us all the properties on the object, in this case "name" is the property returned and then we can check for the length of that array 
+which would be equal to 1 because
 
-which would be equal to 1
-
+this is a good way to get Truthy and Falsey out of Objects
 
 */
 
