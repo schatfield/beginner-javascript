@@ -402,6 +402,61 @@ console.log(sentence)
 const sentence = `You have ${count} item${count === 1 ? '' : 's'} in your cart;`
 console.log(sentence)
 
+
+/* We can also use Ternaries for running functions 
+
+We can just run a function based on if we have it or not
+
+If it's true we will run a function  to show the admin bar and if it's false it will do nothing
+
+so if it's true that there is an admin show the admin bar, otherwise do nothiing
+
+*/
+
+function showAdminBar() {
+  console.log('showing admin bar');
+}
+const isAdmin = true;
+/* isAdmin ? showAdminBar() : null; */
+
+/* AND AND Trick! */
+
+function check1() {
+ console.log('running check 1');
+  return true;
+}
+function check2() {
+ console.log('running check 2');
+  return false;
+}
+function check3() {
+ console.log('running check 3');
+  return true;
+}
+
+if (check1() && check2() && check3()){
+  console.log('all checks passed');
+} else {
+  console.log('some checks failed');
+}
+
+/* Abuse */
+
+isAdmin ? showAdminBar() : null;
+
+/* another way to write the above line */
+/* JS detects teh condition of isAdmin and if it's present it will run the function. if it isn't it won't 
+
+if isAdmin is ever false the function never runs
+
+*/
+isAdmin && showAdminBar()
+
+/* one line if without block */
+if (isAdmin) { showAdminBar() };
+
+
+
   </script>
 </body>
 
