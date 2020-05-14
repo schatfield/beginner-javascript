@@ -333,16 +333,29 @@ it's when we force a truthy or falsey value- something that's of a different typ
 
 name = 'wes'
 
-to check that there is no name do this:
+to check if there is no name do this:
 
 !name  ?it will be false because there is a name?
 
-this is coercion 
+Tp check if there is a name- is there as name TRUE or False
 
-!!name 
+!!name (this is coercion) TRUE- there is a name and it's "wes"
 
-!!name is asking if name exists or not?
+it will coerce name into whether it exists or not
 
+it is taking a truthy or falsey value and converting it to a boolean
+
+here's a variable equal to an empty string (a FALSEY value)
+
+const middle = " "
+
+middle
+""
+!middle
+true
+
+!!middle
+false
 
  */
 
@@ -352,8 +365,42 @@ if (!isCool) {
   console.log('you are not cool, bro');
 }
 
+/* Ternaries 
 
+helpful when youw an to quickly run some functionality based on whether soemthing is TRUE or FALSE
 
+Needs 3 things:
+
+-A CONDITION
+-WHAT TO DO IF IT'S TRUE
+-WHAT TO DO IF IT'S FALSE
+
+*/
+
+const count = 2268632;
+
+/* let word;
+if (count === 1) {
+  word = 'item';
+} else {
+  word = 'items';
+} */
+
+/* if the count is = 1 then the word is going to be = item, otherwise the word is going to be = items */
+
+/* -A CONDITION- something that will be TRUE or FALSE count === 1 ?
+-WHAT TO DO IF IT'S TRUE 'item'
+-WHAT TO DO IF IT'S FALSE 'items'
+*/
+
+/*const word = count === 1 ? 'item' : 'items';
+
+const sentence = `You have ${count} ${word} in your cart;`
+console.log(sentence)
+*/
+
+const sentence = `You have ${count} item${count === 1 ? '' : 's'} in your cart;`
+console.log(sentence)
 
   </script>
 </body>
