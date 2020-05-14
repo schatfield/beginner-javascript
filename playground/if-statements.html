@@ -311,6 +311,149 @@ if (score) {
   console.log('no score yet');
 }
 
+const values = [[], {}, -10, 1, 0, '', 'full string', ' ', undefined, NaN, null];
+
+console.group('truthy or falsey values');
+values.forEach(value => {
+  if (value) {
+    console.log(value, 'is truthy');
+  } else {
+    console.log(value, 'is falsey');
+  }
+});
+console.groupEnd();
+
+console.clear();
+
+/* Coercion
+
+the bang operator twice !! can perform Coercion 
+
+it's when we force a truthy or falsey value- something that's of a different type like a string or a number or an object, you can COERCE it to being a real boolean 
+
+name = 'wes'
+
+to check if there is no name do this:
+
+!name  ?it will be false because there is a name?
+
+Tp check if there is a name- is there as name TRUE or False
+
+!!name (this is coercion) TRUE- there is a name and it's "wes"
+
+it will coerce name into whether it exists or not
+
+it is taking a truthy or falsey value and converting it to a boolean
+
+here's a variable equal to an empty string (a FALSEY value)
+
+const middle = " "
+
+middle
+""
+!middle
+true
+
+!!middle
+false
+
+ */
+
+const isCool = true;
+
+if (!isCool) {
+  console.log('you are not cool, bro');
+}
+
+/* Ternaries 
+
+helpful when youw an to quickly run some functionality based on whether soemthing is TRUE or FALSE
+
+Needs 3 things:
+
+-A CONDITION
+-WHAT TO DO IF IT'S TRUE
+-WHAT TO DO IF IT'S FALSE
+
+*/
+
+const count = 2268632;
+
+/* let word;
+if (count === 1) {
+  word = 'item';
+} else {
+  word = 'items';
+} */
+
+/* if the count is = 1 then the word is going to be = item, otherwise the word is going to be = items */
+
+/* -A CONDITION- something that will be TRUE or FALSE count === 1 ?
+-WHAT TO DO IF IT'S TRUE 'item'
+-WHAT TO DO IF IT'S FALSE 'items'
+*/
+
+/*const word = count === 1 ? 'item' : 'items';
+
+const sentence = `You have ${count} ${word} in your cart;`
+console.log(sentence)
+*/
+
+const sentence = `You have ${count} item${count === 1 ? '' : 's'} in your cart;`
+console.log(sentence)
+
+
+/* We can also use Ternaries for running functions 
+
+We can just run a function based on if we have it or not
+
+If it's true we will run a function  to show the admin bar and if it's false it will do nothing
+
+so if it's true that there is an admin show the admin bar, otherwise do nothiing
+
+*/
+
+function showAdminBar() {
+  console.log('showing admin bar');
+}
+const isAdmin = true;
+/* isAdmin ? showAdminBar() : null; */
+
+/* AND AND Trick! */
+
+function check1() {
+ console.log('running check 1');
+  return true;
+}
+function check2() {
+ console.log('running check 2');
+  return false;
+}
+function check3() {
+ console.log('running check 3');
+  return true;
+}
+
+if (check1() && check2() && check3()){
+  console.log('all checks passed');
+} else {
+  console.log('some checks failed');
+}
+
+/* Abuse */
+
+isAdmin ? showAdminBar() : null;
+
+/* another way to write the above line */
+/* JS detects teh condition of isAdmin and if it's present it will run the function. if it isn't it won't 
+
+if isAdmin is ever false the function never runs
+
+*/
+isAdmin && showAdminBar()
+
+/* one line if without block */
+if (isAdmin) { showAdminBar() };
 
 
 
