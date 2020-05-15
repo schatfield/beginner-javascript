@@ -16,7 +16,7 @@ Timeout - run something after 5 seconds
 
 Interval- run something every 5 seconds
 
-When you want to run something you can type setTimeout() and it takes a couple of arguments. A callback, and the number of miliseconds to run it after
+When you want to run something you can type setTimeout() and it takes a couple of arguments. A callback (we come back and call the function at a later point in time), and the number of miliseconds to run it after
 
 it is a method that is just available to us
 
@@ -25,9 +25,31 @@ it is a method that is just available to us
 function buzzer() {
   console.log('ennnnnng');
 }
-console.log('starting');
-setTimeout(buzzer, 500);
-console.log('finishing');
+//console.log('starting');
+setTimeout(buzzer, 2000);
+//console.log('finishing');
+
+
+function setImmediateInterval(funcToRun, ms) {
+  //right away call that function
+  funcToRun();
+  //run a regular Interval
+  return setInterval(funcToRun, ms);
+}
+
+setImmediateInterval(buzzer, 4000);
+
+function sayHi() {
+  console.log('heeeeeeyyyy');
+}
+
+setImmediateInterval(sayHi, 4000);
+
+function sayBye() {
+  console.log('byyyyyyyye');
+}
+
+setImmediateInterval(sayBye, 4000)
 
   </script>
 </body>
