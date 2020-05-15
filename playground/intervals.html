@@ -10,7 +10,31 @@
 
 <body>
   <script>
-    function buzzer() {
+/*
+
+Timeout - run something after 5 seconds
+
+Interval- run something every 5 seconds
+
+When you want to run something you can type setTimeout() and it takes a couple of arguments. A callback, and the number of miliseconds to run it after
+
+it is a method that is just available to us
+
+*/
+
+function buzzer() {
+  console.log('ennnnnng');
+}
+console.log('starting');
+setTimeout(buzzer, 500);
+console.log('finishing');
+
+  </script>
+</body>
+
+</html>
+
+   {% comment %} function buzzer() {
       console.log('ENNGGGGGGG');
     }
 
@@ -51,8 +75,4 @@
 
     setTimeout(function () {
       clearInterval(poopInterval);
-    }, 3000);
-  </script>
-</body>
-
-</html>
+    }, 3000); */ {% endcomment %}
