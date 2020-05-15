@@ -10,19 +10,65 @@
 
 
 <body>
+  <style>
+    .turt {
+      position: relative;
+      --x: 0px;
+      --y: 0px;
+      --rotate: 0;
+      transform: rotateY(180) translateX(var(--x)) translateY(var(--y));
+      transition: transform 0.2s;
+    }
+</style>
   <img width="200" src="./turtle.png" alt="Turt" class="turt">
+  
   <script>
-
   const turtle = document.querySelector('.turt');
-  let x = 0; /*if they move right, increase the x, move left, decrease the x*/
+
+  /*Switch statements- the way a switch will work is you'll type switch and pass it the thing you're testing. so the word switch swtiches something on
+  
+  this is saying switch on these actions for each case and do something to the event.key we are passing it
+
+  if the case is that the ArrowUp key has been hit, then y = y - 1;
+  
+  switch (event.key) {
+    case 'ArrowUp':
+      y = y - 1;
+      break;
+  
+  */
+
+  let x = 0;  /*if they move right, increase the x, move left, decrease the x*/
   let y = 0;
+
+  const speed = 50;
+  let flipped = false;
+
   function handleKeyDown(event) {
   /*if it's not an arrow key, we don't care. if the event does not include an arrow*/
   if (!event.key.includes('Arrow')) { return };
   switch (event.key) {
-
-  }
-
+    case 'ArrowUp':
+      y = y - 1;
+      break;
+    case 'ArrowDown':
+      y = y + 1;
+      break;
+    case 'ArrowLeft':
+      x = x  - 1;
+      flipped = true;
+      break;
+    case 'ArrowRight':
+      x = x + 1;
+      flipped = false;
+      break;
+    default:  
+      console.log('that is not a valid move');
+      break;
+     }
+ 
+   
+    turtle.setAttribute('style',`--x: ${x * speed}px; --y: ${y * speed}px;`);
   }
   window.addEventListener('keydown', handleKeyDown);
 
