@@ -10,7 +10,76 @@
 
 <body>
   <script>
-    function buzzer() {
+/*
+
+Timeout - run something after 5 seconds
+
+Interval- run something every 5 seconds
+
+When you want to run something you can type setTimeout() and it takes a couple of arguments. A callback (we come back and call the function at a later point in time), and the number of miliseconds to run it after
+
+it is a method that is just available to us
+
+*/
+
+function buzzer() {
+  console.log('ennnnnng');
+}
+//console.log('starting');
+//setTimeout(buzzer, 2000);
+//console.log('finishing');
+
+
+function setImmediateInterval(funcToRun, ms) {
+  //right away call that function
+  funcToRun();
+  //run a regular Interval
+  return setInterval(funcToRun, ms);
+}
+
+setImmediateInterval(buzzer, 4000);
+
+function sayHi() {
+  console.log('heeeeeeyyyy');
+}
+
+//setImmediateInterval(sayHi, 4000);
+
+function sayBye() {
+  console.log('byyyyyyyye');
+}
+
+//setImmediateInterval(sayBye, 4000)
+
+function destroy() {
+  document.body.innerHTML = `<p>DESTROYED</P>`;
+}
+
+const bombTimer = setTimeout(destroy, 5000);
+console.log(bombTimer);
+
+window.addEventListener('click', function() {
+  console.log('you saved the world');
+  //how do i stop the timer from running? you can save reference to the setTimeout timer * setTimeout(destroy, 5000) * by storing it in a variable- that's what saving a reference is. our refernce above is const bombTimer and it will equal 2. if you need to stop your timer save refernce to it in a variable
+
+  clearTimeout(bombTimer); //this stops the timer from running
+})
+
+const poopInterval = setInterval(function () {
+  console.log('poop');
+}, 100);
+
+//stops the poopInterval after 5 seconds
+setTimeout(function () {
+  clearInterval(poopInterval);
+}, 5000);
+
+  </script>
+</body>
+
+</html>
+
+   {% comment %} function buzzer() {
       console.log('ENNGGGGGGG');
     }
 
@@ -51,8 +120,4 @@
 
     setTimeout(function () {
       clearInterval(poopInterval);
-    }, 3000);
-  </script>
-</body>
-
-</html>
+    }, 3000); */ {% endcomment %}
