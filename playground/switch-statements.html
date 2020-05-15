@@ -11,6 +11,22 @@
 
 <body>
   <img width="200" src="./turtle.png" alt="Turt" class="turt">
+  <script>
+
+  const turtle = document.querySelector('.turt');
+  let x = 0; /*if they move right, increase the x, move left, decrease the x*/
+  let y = 0;
+  function handleKeyDown(event) {
+  /*if it's not an arrow key, we don't care. if the event does not include an arrow*/
+  if (!event.key.includes('Arrow')) { return };
+  switch (event.key) {
+
+  }
+
+  }
+  window.addEventListener('keydown', handleKeyDown);
+
+  </script>
 
 </body>
 
