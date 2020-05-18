@@ -18,9 +18,40 @@
   <script>
 //what are Ojects? Objects allow us to group together properties (or keys) and values. Object are used to storingrelated data, functionality, custom types. Objects are used for where the order of your properties does NOT meatInventory
 
+const age = 100;
+const wes = {
+  age,
+  name: 'wes',
+  propertyToCheck: 'NEVER',
+  'cool-dude': true,
+  'really cool': false,
+  '777': true,
+  dog: 'snicker',
+  clothing: {
+    shirts: 10,
+    pants: 2
+  },
+  sayHello: function(greeting= 'Hey') {
+    retuen `${greeting} ${this.name}`
+  }
+};
+
+wes.job = 'web dev';
+wes.age = 50;
+console.log(wes.age);
+
+const propertyToCheck = prompt('what do you want to check?');
+console.log(propertyToCheck)
+
+//when the property of an object is store din a variable, you can use square bracket notation to access it
+
+//Mathods are functions that live inside an object
+
+//const nameInput = document.querySelector('[name=first"]');
 
 
-    const age = 100;
+
+    /* const age = 100;
     const wes = {
       age,
       name: 'wes',
@@ -77,7 +108,7 @@
     const person2 = {
       first: 'wes',
       last: 'bos'
-    };
+    }; 
 
     // const person3 = person1;
     // person3.first = 'Larry';
@@ -117,6 +148,8 @@
     }
 
     doStuff2(inventory);
+
+    */
 
 
   </script>
