@@ -11,31 +11,59 @@
 <body>
   <ul class="prizes"></ul>
   <script>
-    const person1 = {
-      name: 'wes',
-      age: 200
-    };
 
-    const myMap = new Map();
+  const person1 = {
+    name: 'shawna',
+    age: 200
+  }
+  
+  const myMap = new Map();
+  //.set()
+  //first arg is the key of the map will be and the second set the value of it
+  //a map allows us to put any type in both the key and the value
+  myMap.set('name', 'shawna');
+  myMap.set(100, 'this is a number')
+  //the key here is an object. You can use that reference to that object as a key in your map to store additional info in your map
+  myMap.set(person1, 'really cool');
+  //you'll see your Entries in the console. Entries are the actual values in the map
+  console.log(myMap);
+  //.has()
+  // .delete()
+  //passing the reference person1 hhere- this returns the value which is the strong of 'really cool'
+  console.log(myMap.get(person1));
+
+  const score = 100;
+  const prizes = new Map();
+  prizes.set(100, 'bear');
+  prizes.set(200, 'duck');
+  prizes.set(300, 'car');
+  console.log(`you win a ${prizes.get(score)}`);
+
+   // const person1 = {
+      //name: 'wes',
+      //age: 200
+    //};
+
+    //const myMap = new Map();
     // .set()
-    myMap.set('name', 'wes');
-    myMap.set(100, 'This is a number');
-    myMap.set(person1, 'Really Cool');
-    console.log(myMap);
+    //myMap.set('name', 'wes');
+    //myMap.set(100, 'This is a number');
+    //myMap.set(person1, 'Really Cool');
+    //console.log(myMap);
 
-    const score = 200;
-    const prizes = new Map();
-    prizes.set(100, 'Bear');
-    prizes.set(200, 'Duck');
-    prizes.set(300, 'Car');
-    console.log(`you win a ${prizes.get(score)}`);
+    //const score = 200;
+    //const prizes = new Map();
+    //prizes.set(100, 'Bear');
+    //prizes.set(200, 'Duck');
+   // prizes.set(300, 'Car');
+    //console.log(`you win a ${prizes.get(score)}`);
 
     // select that ul
-    const ul = document.querySelector('.prizes');
-    for (const [points, prize] of prizes) {
-      const li = `<li>${points} - ${prize}</li>`;
-      ul.insertAdjacentHTML('beforeend', li);
-    }
+    //const ul = document.querySelector('.prizes');
+    //for (const [points, prize] of prizes) {
+      //const li = `<li>${points} - ${prize}</li>`;
+      //ul.insertAdjacentHTML('beforeend', li);
+   // }
     // .has()
     // .delete()
   </script>
