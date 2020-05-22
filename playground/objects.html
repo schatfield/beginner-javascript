@@ -79,6 +79,10 @@ name2 = 'westopher';
 const person1 = {
   first:'wes',
   last: 'bos',
+  clothing: {
+    shirts: 10,
+    pants: 2
+  }
 };
 
 const person2 = {
@@ -90,13 +94,31 @@ const person2 = {
 // person3 is a reference (variable) that points to an original variable holding the object. you are NOT making a copy of the value of person1 
 //so when we update the variable reference person3 it makes changes to the variable reference it's pointing to, which is person1
 //objects and arrays are updated by reference and NOT copied over
-const person3 = person1;
+//const person3 = person1;
+//person3.first = 'larry';
+//console.log(person3.first);
+//console.log(person1.first);
+
+//to copy things over for objects you can use the spread operator
+//this is saying that person3 is equal to a new object using object literal
+//this only does ahsallow clone one level deep however
+const person3 = { ...person1 };
 person3.first = 'larry';
-console.log(person3.first);
-console.log(person1.first);
 
-//to copy things over for objects you can uze the spread operator
+//for example this line of code below wuld take the shirts property and it would be changed in both the person1 object and person3 change
+person3.clothing.shirts = 100;
 
+const meatInventory = {
+  bacon: 2,
+  sausage: 3
+};
+
+const veggieInventory = {
+  lettuce: 4,
+  tomatoes: 3
+};
+
+const inventory = { ...meatInventory, ...veggieInventory};
 
     /* const age = 100;
     const wes = {
