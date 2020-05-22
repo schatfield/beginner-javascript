@@ -118,7 +118,29 @@ const veggieInventory = {
   tomatoes: 3
 };
 
-const inventory = { ...meatInventory, ...veggieInventory};
+const inventory = { 
+  ...meatInventory, 
+  ...veggieInventory,
+  oysters: 10
+  };
+
+//passing in via refernce via copy with functions
+
+  function doStuff(data) {
+    data = 'something else';
+    console.log(data)
+  };
+
+//here name1 only passes in it's value, the value of wes 
+  doStuff(name1);
+
+
+function doStuff2(data) {
+  data.tomatoes = 10000000000;
+  console.log(data);
+}
+
+doStuff2(inventory);
 
     /* const age = 100;
     const wes = {
