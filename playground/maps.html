@@ -11,31 +11,79 @@
 <body>
   <ul class="prizes"></ul>
   <script>
-    const person1 = {
-      name: 'wes',
-      age: 200
-    };
 
-    const myMap = new Map();
+  const person1 = {
+    name: 'shawna',
+    age: 200
+  }
+  
+  const myMap = new Map();
+  //.set()
+  //first arg is the key of the map will be and the second set the value of it
+  //a map allows us to put any type in both the key and the value
+  myMap.set('name', 'shawna');
+  myMap.set(100, 'this is a number')
+  //the key here is an object. You can use that reference to that object as a key in your map to store additional info in your map
+  myMap.set(person1, 'really cool');
+  //you'll see your Entries in the console. Entries are the actual values in the map
+  console.log(myMap);
+  //.has()
+  // .delete()
+  //passing the reference person1 hhere- this returns the value which is the strong of 'really cool'
+  console.log(myMap.get(person1));
+
+  const score = 300;
+  const prizes = new Map();
+  prizes.set(100, 'bear');
+  prizes.set(200, 'duck');
+  prizes.set(300, 'car');
+  console.log(`you win a ${prizes.get(score)}`);
+
+  //Map will guarntee an order whereas objects do not
+
+//select the ul we made above with the class of prizes
+  const ul = document.querySelector('.prizes');
+  //loop over the entries in our Map, using for of gets us both the the key and the actual value. we are looping over each of our entries  in our prizes Map and creating a temp variable named prize and we are loggin it
+  for (const prize of prizes) {
+    console.log(prize[0], prize[1]);
+  }
+//destructuring the array- create variables of the items in the array by their index]
+//[points, prize] is representing the [key, value] in the map array
+  for (const [points, prize] of prizes) {
+    const li = `<li>${points} - ${prize}</li>`;
+    ul.insertAdjacentHTML('beforeend', li);
+    console.log(points, prize);
+  }
+
+//do for of loops return an array?
+//you should use a map over an object if you need to keep the order of your items
+
+
+   // const person1 = {
+      //name: 'wes',
+      //age: 200
+    //};
+
+    //const myMap = new Map();
     // .set()
-    myMap.set('name', 'wes');
-    myMap.set(100, 'This is a number');
-    myMap.set(person1, 'Really Cool');
-    console.log(myMap);
+    //myMap.set('name', 'wes');
+    //myMap.set(100, 'This is a number');
+    //myMap.set(person1, 'Really Cool');
+    //console.log(myMap);
 
-    const score = 200;
-    const prizes = new Map();
-    prizes.set(100, 'Bear');
-    prizes.set(200, 'Duck');
-    prizes.set(300, 'Car');
-    console.log(`you win a ${prizes.get(score)}`);
+    //const score = 200;
+    //const prizes = new Map();
+    //prizes.set(100, 'Bear');
+    //prizes.set(200, 'Duck');
+   // prizes.set(300, 'Car');
+    //console.log(`you win a ${prizes.get(score)}`);
 
     // select that ul
-    const ul = document.querySelector('.prizes');
-    for (const [points, prize] of prizes) {
-      const li = `<li>${points} - ${prize}</li>`;
-      ul.insertAdjacentHTML('beforeend', li);
-    }
+    //const ul = document.querySelector('.prizes');
+    //for (const [points, prize] of prizes) {
+      //const li = `<li>${points} - ${prize}</li>`;
+      //ul.insertAdjacentHTML('beforeend', li);
+   // }
     // .has()
     // .delete()
   </script>

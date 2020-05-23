@@ -12,8 +12,137 @@
   <input type="text" name="first" value="wes">
 
   <script src="https://unpkg.com/lodash"></script>
+
+
+
   <script>
-    const age = 100;
+//what are Ojects? Objects allow us to group together properties (or keys) and values. Object are used to storingrelated data, functionality, all the way through to creating youw own custom types. Objects are used for where the order of your properties does NOT meatInventory. Never rely on the order of which you've put the properties into the object to be maintained in the same way. and it's ok.
+
+const age = 100;
+const wes = {
+  age,
+  name: 'wes',
+  propertyToCheck: 'NEVER',
+  'cool-dude': true,
+  'really cool': false,
+  '777': true,
+  dog: 'snicker',
+  clothing: {
+    shirts: 10,
+    pants: 2
+  },
+  sayHello: function(greeting= 'Hey') {
+    return `${greeting} ${this.name}`
+  }
+};
+
+wes.job = 'web dev';
+wes.age = 50;
+console.log(wes.age);
+
+//const propertyToCheck = prompt('what do you want to check?');
+//console.log(wes[propertyToCheck])
+
+//when the property of an object is store din a variable, you can use square bracket notation to access it
+
+//Mathods are functions that live inside an object
+
+const nameInput = document.querySelector('[name="first"]');
+console.log(nameInput);
+//const name = nameInput.value;
+//console.log(name);
+
+//if it is true that nameInput exists, we take the nameInput and return the value, otherwise just return an empty string
+const name = nameInput ? nameInput.value : '';
+console.log(name);
+
+//console.log(delete wes.job);
+
+let name1 = 'wes';
+let name2 = 'wes';
+
+console.log(name1 === name2);
+name1 = 'scott';
+console.log(name1 === name2);
+//update name1 to be what is name2
+name1 = name2;
+console.log(name1 === name2);
+name2 = name1;
+name2 = 'westopher';
+
+//when we set one string variable to another, the VALUE is copied from one to another. when we take name1 and set it to name 2, it takes whatever the value of name2 is it copies that value into name1
+
+//It does not work the same way for objects
+
+//person1 === person2 will be false because when you are comparing objects you are comparing them to the reference itself and not what is inside of it
+
+const person1 = {
+  first:'wes',
+  last: 'bos',
+  clothing: {
+    shirts: 10,
+    pants: 2
+  }
+};
+
+const person2 = {
+  first: 'wes',
+  last: 'bos',
+};
+
+
+// person3 is a reference (variable) that points to an original variable holding the object. you are NOT making a copy of the value of person1 
+//so when we update the variable reference person3 it makes changes to the variable reference it's pointing to, which is person1
+//objects and arrays are updated by reference and NOT copied over
+//const person3 = person1;
+//person3.first = 'larry';
+//console.log(person3.first);
+//console.log(person1.first);
+
+//to copy things over for objects you can use the spread operator
+//this is saying that person3 is equal to a new object using object literal
+//this only does ahsallow clone one level deep however
+const person3 = { ...person1 };
+person3.first = 'larry';
+
+//for example this line of code below wuld take the shirts property and it would be changed in both the person1 object and person3 change
+person3.clothing.shirts = 100;
+
+const meatInventory = {
+  bacon: 2,
+  sausage: 3
+};
+
+const veggieInventory = {
+  lettuce: 4,
+  tomatoes: 3
+};
+
+const inventory = { 
+  ...meatInventory, 
+  ...veggieInventory,
+  oysters: 10
+  };
+
+//passing in via refernce via copy with functions
+
+  function doStuff(data) {
+    data = 'something else';
+    console.log(data)
+  };
+
+//here name1 only passes in it's value, the value of wes 
+  doStuff(name1);
+
+
+function doStuff2(data) {
+  data.tomatoes = 10000000000;
+  console.log(data);
+}
+
+doStuff2(inventory);
+
+    /* const age = 100;
     const wes = {
       age,
       name: 'wes',
@@ -70,7 +199,7 @@
     const person2 = {
       first: 'wes',
       last: 'bos'
-    };
+    }; 
 
     // const person3 = person1;
     // person3.first = 'Larry';
@@ -110,6 +239,8 @@
     }
 
     doStuff2(inventory);
+
+    */
 
 
   </script>
