@@ -23,6 +23,14 @@
   //this will return the item in the last index of the array. .length is looking at the whole length of it and -1 position from the end
   console.log(names[names.length -1]);
 
+  //.push method - add items to an array (mutates)
+  names.push('lux');
+  console.log(names);    
+  //to avoid mutating the original names, take a copy
+  const names2 = [...names, 'lux'];
+
+
+
   //mutability vs Immutability with array methods
   //mutable methods perform mutations to data changing the orginal data
   //immutable methods do not change the original thing but return a new array with the change leaving the original array alone.
@@ -46,9 +54,12 @@
   //this console.log shows that the original array in the variable numbrs is NOT changed from it's original form
   console.log(numbers);    
 
-  //Anytime you want to use a mutation methos and NOT change the original array
+  //Anytime you want to use a mutation method and NOT change the original array
   //you need to take a copy of the array you want to change and then mutate the copy
-
+  //spread operator making a copy of "numbers" and running.reverse on it
+  const numbersReversed = [...numbers].reverse();
+  //if youb look at console.logs for "numbers" on lines 38 and 47, you see the opriginals are NOT changed but that line 54 is changed
+  console.log(numbersReversed);
 
 
 
