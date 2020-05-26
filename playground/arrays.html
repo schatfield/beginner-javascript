@@ -84,6 +84,30 @@
     //take out the item from the 3rd index position and go for 2 positions (remove 2 items). It should remove #'s 4 and 5.
     numbers.splice(3, 2);
     console.log(numbers);
+    
+    // add items to the middle of an array - use the spread operator
+    //we want to add an new item between 'miele' and 'panasonic'
+    const bikes = ['bianchi', 'miele', 'panasonic', 'miyata']
+    
+    //create a new array to do this
+    //bikes.slice(0, 2) copy in the portion of bikes at position 0 and go to 2 and slice, returns this ['bianchi', 'miele']
+   
+   //added in 'benotto', console.log will return ['bianchi', 'miele', 'benotto']
+    
+    //...bikes.slice(2) slice at position 2 and go to the end, this adds in the rest. if uyou want it to go to the end you only need to put in the starting index. this will return ["bianchi", "miele", "benotto", "panasonic", "miyata"]
+    const newBike = [...bikes.slice(0, 2), 'benotto', ...bikes.slice(2)];
+    console.log(newBike);
+
+    //remove an item from the middle of an array - remove panasonic
+    //newBike.slice(0,3)- take everything up to panasonic 
+    //we skip one 
+    //take everything after panasonic and go to the end
+    //find the index of the thing you want to remove and 
+    const newBike2 =[
+      ...newBike.slice(0,3)
+      ...newBike.slice(4)
+    ]
+    console.log(newBike2);
 
     // console.log(numbers);
     // numbers.splice(3, 2);
