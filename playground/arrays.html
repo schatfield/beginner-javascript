@@ -85,7 +85,7 @@
     numbers.splice(3, 2);
     console.log(numbers);
     
-    // add items to the middle of an array - use the spread operator
+    // ADD items to the middle of an array - use the spread operator
     //we want to add an new item between 'miele' and 'panasonic'
     const bikes = ['bianchi', 'miele', 'panasonic', 'miyata']
     
@@ -98,16 +98,66 @@
     const newBike = [...bikes.slice(0, 2), 'benotto', ...bikes.slice(2)];
     console.log(newBike);
 
-    //remove an item from the middle of an array - remove panasonic
-    //newBike.slice(0,3)- take everything up to panasonic 
-    //we skip one 
+    //REMOVE an item from the middle of an array - remove panasonic
+    //newBike.slice(0,3)- take everything up to panasonic, index 3
+    //we skip one - skip over index 3 panasonic
     //take everything after panasonic and go to the end
-    //find the index of the thing you want to remove and 
+    //find where the thing you want to remove is and use it's index position to remove it
     const newBike2 =[
-      ...newBike.slice(0,3)
+      ...newBike.slice(0,3),
       ...newBike.slice(4)
     ]
     console.log(newBike2);
+
+  //Removing items from an array - Finding things you want to remove is use index positions to remove them. Using .findIndex method which is like a loop, it's a callback function?
+
+  //.findIndex how to find an index of the item you are searching for
+
+    const comments = [
+      { text: 'cool beans', id:123 },
+      { text: 'love this', id:133 },
+      { text: 'neato', id:233 },
+      { text: 'good nikes', id:333 },
+      { text: 'so good', id:433 },
+    ];
+
+    //take in the id and the comments array as args
+    function deleteComment(id, comments) {
+      //first find the index of the item you want to remove from the array using .findIndex method
+      //we are looking for an object: if the id of the comment is equal to the id that's passed into this function
+      const commentIndex = comments.findIndex(comment =>
+      comment.id === id);
+      //make a new array without the item in it
+      return [
+        ...comments.slice(0, commentIndex),
+        ...comments.slice
+      ]
+      //return our new array
+    }
+
+    //this will be similar to a loop, we will loop over every single item and when we find the item that we want we return 'true' and that will give us it's index
+    const kaitIndex = names.findIndex(name => {
+      if(name === 'kait') {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    const newNamesWithoutKait = [
+      //get everything up to kait index
+      ...names.slice(0, kaitIndex),
+      //get everything after kait index
+      ...names.slice(kaitIndex + 1)
+    ];
+    console.log(newNamesWithoutKait);
+
+    // gives us the index position of the string that equals 'kait'
+    console.log(kaitIndex);
+    //this verifies the above 
+    console.log(names[kaitIndex]);
+    console.log(names[2]);
+
 
     // console.log(numbers);
     // numbers.splice(3, 2);
