@@ -12,63 +12,158 @@
 
 <body>
   <script>
-    const names = ['wes', 'kait', 'snickers'];
+    //What is an array? A list of items where the order matters. Each thing in the array is called an item and it's position in the array is called the index. The number of items inside of an aray is called the length and each item can be any type- string, number, boolean, nested array, object, etc. 
+    //they have indexes vs keys like objects have- but also arrays are objects because everything is.
+    //zero based index positions- so the first item in the array is index position 0
 
-    console.log(names[0]);
-    console.log(names.length);
-    console.log(names[names.length - 1]);
+//array literal syntax
+  const names = ['wes', 'kait', 'snickers', 'last one'];
+  console.log(names[1]);
+  console.log(names.length);
+  //this will return the item in the last index of the array. .length is looking at the whole length of it and -1 position from the end
+  console.log(names[names.length -1]);
 
-    names.push('lux');
-    console.log(names);
-    const names2 = [...names, 'lux'];
-    names.unshift('poppy');
-    console.log(names);
-    const names3 = ['poppy', ...names];
-    console.log(names3);
+  //.push method - add items to the end of an array (mutates)
+  names.push('lux');
+  console.log(names);    
+  //The immutable way to use .push: to avoid changing original array, take a copy of the original, make a new array with it. take a copy and update instead of "pushing" the change
+  const names2 = [...names, 'lux'];
+  
+  //.unshift method to add items to the front of an array
+  names.unshift('poppy');
+  console.log(names);
 
-    const bikes = ['bianchi', 'miele', 'panasonic', 'miyata'];
-    const newBikes = [
-      ...bikes.slice(0, 2),
-      'benotto',
-      ...bikes.slice(2)
-    ];
+  //the immutable way to use .unshift 
 
-    const newBikes2 = [
-      ...newBikes.slice(0, 3),
-      ...newBikes.slice(4)
-    ];
-    console.log(newBikes2);
+  const names3 = ['poppy', ...names];
+  console.log(names3);
 
-    //
+
+
+
+
+
+
+  //mutability vs Immutability with array methods
+  //mutable methods perform mutations to data changing the orginal data
+  //immutable methods do not change the original thing but return a new array with the change leaving the original array alone.
+
+  //Mutable- DO change the original data. performs a mutation to the original data. 
+ //const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  //numbers.reverse();
+
+  //.reverse mutable method in secondary variable
+  //const numbersBackwards = numbers.reverse();
+  //console.log(numbersBackwards);
+  //this console.log shows us the the original data in the variable numbers has also been changed. making a secondary variable to store numbers.reverse() isn't necessary and won't keep the original data from being mutated.
+  //console.log(numbers);
+
+  //Immutable - do NOT change the original data
+
+  //.slice method- let's us take a portion of the original array and turn that portion into our own new one
+
+  //numbers.slice(2,4); this says take indexes 2-4 and return those items on those positions in a new array. it takes the 2nd and 3rd and STOPS, does not take the 4th(end is not included)
+  
+  //const pizzaSlice = numbers.slice(2,4);
+  //console.log(pizzaSlice);
+  
+  //this console.log shows that the original array in the variable numbrs is NOT changed from it's original form
+  //console.log(numbers);    
+
+  //Anytime you want to use a mutation method and NOT change the original array
+  //you need to take a copy of the array you want to change and then mutate the copy
+  //spread operator making a copy of "numbers" and running.reverse on it
+  //const numbersReversed = [...numbers].reverse();
+  //if youb look at console.logs for "numbers" on lines 38 and 47, you see the opriginals are NOT changed but that line 54 is changed
+  //console.log(numbersReversed);
+
+
+    //.splice - taking something out of an array (mutates original array)
+    //there's not start and end but a starting point and how many indexes should you go on for
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    //take out the item from the 3rd index position and go for 2 positions (remove 2 items). It should remove #'s 4 and 5.
+    numbers.splice(3, 2);
+    console.log(numbers);
+    
+    // ADD items to the middle of an array - use the spread operator
+    //we want to add an new item between 'miele' and 'panasonic'
+    const bikes = ['bianchi', 'miele', 'panasonic', 'miyata']
+    
+    //create a new array to do this
+    //bikes.slice(0, 2) copy in the portion of bikes at position 0 and go to 2 and slice, returns this ['bianchi', 'miele']
+   
+   //added in 'benotto', console.log will return ['bianchi', 'miele', 'benotto']
+    
+    //...bikes.slice(2) slice at position 2 and go to the end, this adds in the rest. if uyou want it to go to the end you only need to put in the starting index. this will return ["bianchi", "miele", "benotto", "panasonic", "miyata"]
+    const newBike = [...bikes.slice(0, 2), 'benotto', ...bikes.slice(2)];
+    console.log(newBike);
+
+    //REMOVE an item from the middle of an array - remove panasonic
+    //newBike.slice(0,3)- take everything up to panasonic, index 3
+    //we skip one - skip over index 3 panasonic
+    //take everything after panasonic and go to the end
+    //find where the thing you want to remove is and use it's index position to remove it
+    const newBike2 =[
+      ...newBike.slice(0,3),
+      ...newBike.slice(4)
+    ]
+    console.log(newBike2);
+
+  //Removing items from an array - Finding things you want to remove is use index positions to remove them. Using .findIndex method which is like a loop, it's a callback function?
+
+  //.findIndex how to find an index of the item you are searching for
+
+//the output of deleteComment doesn't mutate this comments array permanately becasue of the const declaration. if you wanted to overwrite that, change it to let comments and the original array would be chnaged permanately fro the deleteComment function
     const comments = [
-      { text: 'Cool Beans', id: 123 },
-      { text: 'Love this', id: 133 },
-      { text: 'Neato', id: 233 },
-      { text: 'good bikes', id: 333 },
-      { text: 'so good', id: 433 },
+      { text: 'cool beans', id:123 },
+      { text: 'love this', id:133 },
+      { text: 'neato', id:233 },
+      { text: 'good nikes', id:333 },
+      { text: 'so good', id:433 },
     ];
 
+    //take in the id and the comments array as args
     function deleteComment(id, comments) {
-      // first find the index of the item in the array
-      const commentIndex = comments.findIndex(comment => comment.id === id);
-      // make a new array without that item in it
+      //first find the index of the item you want to remove from the array using .findIndex method
+
+      //take each comment and see if the comment.id is equal to the id that has been passed in. we are looking for an object where it's id property is equal to the id that was passed into the function
+      const commentIndex = comments.findIndex(comment =>
+      comment.id === id);
+      //make a new array without the item in it and return our new array
       return [
+      //get everything up until the comment we are removing, so slice starts at index 0 and goes up to the item being held in commentIndex
         ...comments.slice(0, commentIndex),
-        ...comments.slice(commentIndex + 1),
-      ];
-      // return our new array
+        //the comment we are deleting lives in bwteen these 2 slice commands
+        //commentIndex + 1 is saying to start at the comment we are deleting and skip over it 
+        ...comments.slice(commentIndex + 1)
+      ]
     }
 
-    const kaitIndex = names.findIndex(name => name === 'kait');
-    const newNamesWithOutKait = [
-      // get everything up to kait index
+    
+
+    //this will be similar to a loop, we will loop over every single item and when we find the item that we want we return 'true' and that will give us it's index
+    const kaitIndex = names.findIndex(name => {
+      if(name === 'kait') {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    const newNamesWithoutKait = [
+      //get everything up to kait index
       ...names.slice(0, kaitIndex),
-      // everything after Kait index
+      //get everything after kait index
       ...names.slice(kaitIndex + 1)
     ];
-    console.log(newNamesWithOutKait);
+    console.log(newNamesWithoutKait);
 
-    // const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    // gives us the index position of the string that equals 'kait'
+    console.log(kaitIndex);
+    //this verifies the above 
+    console.log(names[kaitIndex]);
+    console.log(names[2]);
+
 
     // console.log(numbers);
     // numbers.splice(3, 2);
