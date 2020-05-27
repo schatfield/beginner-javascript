@@ -41,12 +41,24 @@
 
 
     /*
-      Static Methods
-    */
+      Static Methods - aren't available on every array you create. Utility methods
+    */ //They live on Array.of, Array.from
 
-    // Array.of();
+    // Array.of(); - used for creating an array from it's arguments
+    const arrayOf = Array.of('wes', 'kait');
+    console.log(arrayOf);
 
-    // Make a function that creates a range from x to y with Array.from();
+    // Make a function that creates a range from x to y with Array.from(); 
+    
+    //Array.from will take an iterable or something with a length and it returns to you an array with whatever the length is that you gave it.
+    //for example Array.from ({ length:10 }) returns an empty array with a length of 10
+    //Array.from takes a secondary argument which is called a Map argument. it will tell us what we cna return to put in those empty slot you made
+
+    const range = Array.from({ length: 10 }, function() {
+      return 'shawna';
+    });
+
+
 
     // Check if the last array you created is really an array with Array.isArray();
 
