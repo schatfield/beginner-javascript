@@ -113,6 +113,7 @@
 
   //.findIndex how to find an index of the item you are searching for
 
+//the output of deleteComment doesn't mutate this comments array permanately becasue of the const declaration. if you wanted to overwrite that, change it to let comments and the original array would be chnaged permanately fro the deleteComment function
     const comments = [
       { text: 'cool beans', id:123 },
       { text: 'love this', id:133 },
@@ -124,16 +125,21 @@
     //take in the id and the comments array as args
     function deleteComment(id, comments) {
       //first find the index of the item you want to remove from the array using .findIndex method
-      //we are looking for an object: if the id of the comment is equal to the id that's passed into this function
+
+      //take each comment and see if the comment.id is equal to the id that has been passed in. we are looking for an object where it's id property is equal to the id that was passed into the function
       const commentIndex = comments.findIndex(comment =>
       comment.id === id);
-      //make a new array without the item in it
+      //make a new array without the item in it and return our new array
       return [
+      //get everything up until the comment we are removing, so slice starts at index 0 and goes up to the item being held in commentIndex
         ...comments.slice(0, commentIndex),
-        ...comments.slice
+        //the comment we are deleting lives in bwteen these 2 slice commands
+        //commentIndex + 1 is saying to start at the comment we are deleting and skip over it 
+        ...comments.slice(commentIndex + 1)
       ]
-      //return our new array
     }
+
+    
 
     //this will be similar to a loop, we will loop over every single item and when we find the item that we want we return 'true' and that will give us it's index
     const kaitIndex = names.findIndex(name => {
