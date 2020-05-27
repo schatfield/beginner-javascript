@@ -48,15 +48,20 @@
     const arrayOf = Array.of('wes', 'kait');
     console.log(arrayOf);
 
-    // Make a function that creates a range from x to y with Array.from(); 
     
     //Array.from will take an iterable or something with a length and it returns to you an array with whatever the length is that you gave it.
     //for example Array.from ({ length:10 }) returns an empty array with a length of 10
-    //Array.from takes a secondary argument which is called a Map argument. it will tell us what we cna return to put in those empty slot you made
+    //Array.from takes a secondary argument which is called a Map argument. it's a function that will put in those empty slots you made
+    //create an array with 10 spots and then fill it with whatever you return from the callback function
 
-    const range = Array.from({ length: 10 }, function() {
-      return 'shawna';
-    });
+
+    // Make a function that creates a range from x to y with Array.from(); 
+  function creatRange(start, end) {
+    const range = Array.from({ length: end - start }, function(item, index) {
+      return index;
+      });
+      return range;
+    };
 
 
 
