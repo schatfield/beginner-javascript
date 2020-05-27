@@ -74,10 +74,21 @@
     //if you pass these static helper methods of.entries, .keys, .values an object, they will return an array of the thing you ran on the object
     //for example Object.keys() returns and array of all the keys in the meat object
 
+    //entries gives us an array where each item is a nested array that has the key and the value, so we get 3 nested arrays
     console.log(Object.entries(meats))
     console.log(Object.keys(meats))
     console.log(Object.values(meats))
+//loop that returns the values of each key- the quantities of each meat
+    Object.values(meats).forEach(qty => {
+      console.log(qty);
+    });
 
+    Object.entries(meats).forEach(entry => {
+      //const key = entry[0];
+      //const value = entry[1];
+      const [key, value] = entry;
+      console.log(key, value);
+    });
     /*
       Instance Methods
     */
