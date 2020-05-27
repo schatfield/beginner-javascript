@@ -63,11 +63,20 @@
       return range;
     };
 
-
+  const myRange = creatRange(3,7);
 
     // Check if the last array you created is really an array with Array.isArray();
 
+    console.log(Array.isArray(myRange));
+
     // Take the meats object and make three arrays with Object.entries(), Object.keys, Object.values()
+
+    //if you pass these static helper methods of.entries, .keys, .values an object, they will return an array of the thing you ran on the object
+    //for example Object.keys() returns and array of all the keys in the meat object
+
+    console.log(Object.entries(meats))
+    console.log(Object.keys(meats))
+    console.log(Object.values(meats))
 
     /*
       Instance Methods
