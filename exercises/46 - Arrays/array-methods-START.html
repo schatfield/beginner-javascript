@@ -106,8 +106,13 @@
     console.log(foodString.split(','))
 
     // take the last item off toppings with pop()
+    const lastItem = toppings.pop();
+    console.log(lastItem);
     // add it back with push()
+    toppings.push(lastItem);
+    console.log(toppings);
     // take the first item off toppings with shift()
+    
     // add it back in with unshift()
     // Do the last four,but immutable (with spreads and new variables)
 
