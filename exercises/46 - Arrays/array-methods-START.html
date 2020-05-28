@@ -112,18 +112,60 @@
     toppings.push(lastItem);
     console.log(toppings);
     // take the first item off toppings with shift()
-    
+    const firstItem = toppings.shift();
+    console.log(firstItem);
+    console.log(toppings);
     // add it back in with unshift()
-    // Do the last four,but immutable (with spreads and new variables)
+    toppings.unshift(firstItem);
+    console.log(toppings);
+
+    // Do the last four exercises again (do what pop, push, shift, unshift do) ,but immutable (with spreads and new variables)
+    //we will use .slice as it is immutable and the original array will NOT be changed
+    //.slice method- let's us take a portion of the original array and turn that portion into our own new one
+
+    let newToppings = toppings.slice(0, toppings.length - 1)
+    // toppings[toppings.length -1] adds on the last item - cheese
+    newToppings = [...newToppings, toppings[toppings.length - 1]];
+    console.log(newToppings);
 
 
     // Make a copy of the toppings array with slice()
+    const toppingCopy = toppings.slice(0);
+   // toppings[0] = "shoo";
+   // console.log(toppings);
+    console.log(toppingCopy);
     // Make a copy of the toppings array with a spread
-    // take out items 3 to 5 of your new toppings array with splice()
+    const toppingsCopy2 = [...toppings];
+    console.log(toppingsCopy2);
+    // take out items 3 to 5 from your new toppings array with splice()
+    //splice is mutable
+    toppingCopy.splice(3,5);
+    console.log(toppingCopy);
+    console.log(toppings);
     // find the index of Avocado with indexOf() / lastIndexOf()
+    const indexAvo = toppings.indexOf('Avocado');
+    console.log(indexAvo);
+    const shawna = { name: 'shawna' }
+    const people = [{ name: 'scott' }, shawna];
+    console.log(people.indexOf(shawna));
     // Check if hot sauce is in the toppings with includes()
     // add it if it's not
+
+    const isInToppings = toppings.includes('Hot Sauce');
+    console.log(isInToppings);
+    //if hot sauce is NOT included
+    if (!isInToppings) {
+      toppings.push('Hot Sauce');
+    }
+    console.log(toppings);
     // flip those toppings around with reverse()
+    //mutable version- original toppings array will be changed
+    //toppings.reverse();
+    //console.log(toppings);
+    //immutable solution
+    const toppingsReversed = [...toppings].reverse();
+    console.log(toppingsReversed);
+    console.log(toppings);
 
     /*
       Callback Methods
