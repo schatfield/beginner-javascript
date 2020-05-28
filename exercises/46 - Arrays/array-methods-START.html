@@ -90,12 +90,20 @@
       console.log(key, value);
     });
     /*
-      Instance Methods
+      Instance Methods - methods that live on each array and are aviable to us
     */
 
-    // Display all bun types with " or " - use join()
+    //.join() turns an array into a string joining each item with a comma
+    //it takes an argument of what you want to "join" the items on
 
-    // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into a string
+    // Display all bun types with " or " - use join()
+    //spaces around ' or ' create spaces in the string like a sentence
+    console.log(buns.join( ' or ' ));
+
+    // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into an array
+    //.split  is a string method, it will split what ever you pass into it into an array
+    const foodString = "hot dogs,hamburgers,sausages,corn";
+    console.log(foodString.split(','))
 
     // take the last item off toppings with pop()
     // add it back with push()
