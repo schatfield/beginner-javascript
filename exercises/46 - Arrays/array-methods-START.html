@@ -168,10 +168,21 @@
     console.log(toppings);
 
     /*
-      Callback Methods
+      Callback Methods - this is a made up term, but a lot of these methods take a function as an argument called a CAllBACK 
     */
 
     // find the first rating that talks about a burger with find()
+    //the argument of find is going to be a function (callback functions are functions that take a function as an argument) that will either return true or false when it has found the item that it wants
+
+//first arg is representing each individual item in the array the element
+  function findBurgerRating(feedback) {
+    console.log(feedback);
+  }
+
+
+  const burgerRating = feedback.find(findBurgerRating);
+  console.log(burgerRating);
+
     // find all ratings that are above 2 with filter()
     // find all ratings that talk about a burger with filter()
     // Remove the one star rating however you like!
