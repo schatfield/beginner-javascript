@@ -191,15 +191,15 @@
 
 //function inside of an object - Makes it a METHOD 
 //you could now pass util.findBurgerRating 
-const util = {
-  findBurgerRating:  function (feedback) {
-    return feedback.comment.includes('burg');
-  }
-}
+//const util = {
+  //findBurgerRating:  function (feedback) {
+    //return feedback.comment.includes('burg');
+  //}
+//}
 
-const findSmoothieRating = function (feedback) {
-    return feedback.comment.includes('Smoothie');
-  }
+//const findSmoothieRating = function (feedback) {
+    //return feedback.comment.includes('Smoothie');
+  //}
 
 //here's a function that will create the functions above for us- it will create a function for each keyword we are trying to find 
 //it's a function that returns a function
@@ -209,11 +209,16 @@ function findByWord(word) {
   }
 }
 
+
 //notice we dont call the function we passed, we are just passing reference to the function- it's because JS itself will run it once for each of the feedbacks in our feedback array .find is expecting a function as an arg 
-  const burgerRating = feedback.find(util.findBurgerRating);
+  const burgerRating = feedback.find(findByWord('burg'));
   console.log(burgerRating);
-  const smoothieRating = feedback.find(findSmoothieRating);
+
+  const smoothieRating = feedback.find(findByWord('Smoothie'));
   console.log(smoothieRating);
+
+  const ambianceRating = feedback.find(findByWord('Ambiance'));
+  console.log(ambianceRating);
 
     // find all ratings that are above 2 with filter()
     // find all ratings that talk about a burger with filter()
