@@ -174,14 +174,46 @@
     // find the first rating that talks about a burger with find()
     //the argument of find is going to be a function (callback functions are functions that take a function as an argument) that will either return true or false when it has found the item that it wants
 
-//first arg is representing each individual item in the array the element
-  function findBurgerRating(feedback) {
-    console.log(feedback);
+//first arg is representing each individual item in the array (the first arg is known in the docs as the element- we are naming it what it is "feedback". ask yourself- what is each individual thing in the array I am dealing with? in this case it's individual feedbacks.
+
+//second arg is the index if you need to knwo what index position smething is, and the third is the entire array if you ever need to reference the entire array while you're inside of it
+
+  //function findBurgerRating(feedback) {
+    //condition- something that tests is something is true or false
+    //because .includes is a mthod that only ever returns true or false we don't need an if statement and return and true and false oursleves, we can do it this way instead
+    //return feedback.comment.includes('burg'); 
+  //}
+
+//Arrow function syntax
+  //const findBurgerRating = (feedback) => {
+    //return feedback.comment.includes('burg'); 
+//}
+
+//function inside of an object - Makes it a METHOD 
+//you could now pass util.findBurgerRating 
+const util = {
+  findBurgerRating:  function (feedback) {
+    return feedback.comment.includes('burg');
+  }
+}
+
+const findSmoothieRating = function (feedback) {
+    return feedback.comment.includes('Smoothie');
   }
 
+//here's a function that will create the functions above for us- it will create a function for each keyword we are trying to find 
+//it's a function that returns a function
+function findByWord(word) {
+  return function (feedback) {
+    return feedback.comment.includes(word);
+  }
+}
 
-  const burgerRating = feedback.find(findBurgerRating);
+//notice we dont call the function we passed, we are just passing reference to the function- it's because JS itself will run it once for each of the feedbacks in our feedback array .find is expecting a function as an arg 
+  const burgerRating = feedback.find(util.findBurgerRating);
   console.log(burgerRating);
+  const smoothieRating = feedback.find(findSmoothieRating);
+  console.log(smoothieRating);
 
     // find all ratings that are above 2 with filter()
     // find all ratings that talk about a burger with filter()
