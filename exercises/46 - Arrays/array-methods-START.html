@@ -221,14 +221,124 @@ function findByWord(word) {
   console.log(ambianceRating);
 
     // find all ratings that are above 2 with filter()
+
+//another function that returns a function
+function filterByMinRating(minRating) {
+  return function (feedback) {
+    return feedback.rating > minRating
+  };
+}
+
+    //filter returns a new array instead of just one item like .find 
+    //filter method will loop over every single item in the feeback array and wither return true (keep it) or false (don't keep it)
+    //const goodReviews = feedback.filter(feedback => {
+      //if (feedback.rating > 2){
+        //return true;
+      //} else {
+      //  return false;
+    //  }
+    //});
+
+// we can simply just return the condition since it only returns true or false
+   
+   // const goodReviews = feedback.filter(feedback => {
+      //return feedback.rating > 2;
+    //});
+
+//here is an implicit return - a return without the return keyword and curly b's
+    
+    //const goodReviews = feedback.filter(feedback => feedback.rating > 2);
+
+// here we are using our helper function that we made and passing it into the .filter method with an arg to minRating
+  const goodReviews = feedback.filter(filterByMinRating(4));
+  console.table(goodReviews);
+
     // find all ratings that talk about a burger with filter()
+    // We could use the .includes method here to see if a comment includes the word burger
+
+    //we can also use our helper function findByWord tht does the same thing
+
+    const burgerRatings = feedback.filter(feedback => feedback.comment.includes('burg'));
+    console.table(burgerRatings);
+
     // Remove the one star rating however you like!
 
-    // check if there is at least 5 of one type of meat with some()
+    const legitRatings = feedback.filter(single => single.rating !== 1);
+    console.log(legitRatings);
+
+    // check if there is at least 5 of one type of meat with .some()
+
+    //the some method tests whether at least ONE element in the array passes the test
+    // meats is an object so we need to convert it to an array to use the some method
+
+    //To convert an object to an array you use one of three methods: Object. keys() , Object. values() , and Object. entries() .
+
+    //we want .values because it will loop over each of the things that's returned, which is the value of each key- the quantities of each meat
+
+    // pass the object you ant to convert into an array into the Object.values method
+
+    const isThereEnoughOfAtLeastOneMeat = Object.values(meats).some(meatValue => meatValue >= 5);
+    console.log(isThereEnoughOfAtLeastOneMeat);
+
     // make sure we have at least 3 of every meat with every()
+    //every() checks to see if every single thing in the converted array meets the set criteria 
+    //returns true or false
+    const isThereEnoughOfEveryMeat = Object.values(meats).every(meatValue => meatValue >= 3);
+    console.log(isThereEnoughOfEveryMeat);
+
     // sort the toppings alphabetically with sort()
+    console.log(toppings.sort());
+
+    //sorts elements alphabetically as strings
+    //to use it with numbers or nested elements you need to use it differently
+    //sort takes a callback function - a compare callback function that gives you the first thing and the second thing in the array
+    //it is up to us to decide whether that thing should go behind or before or stay in place
+
+    //If compareFunction(a, b) returns less than 0, sort a to an index lower than b (i.e. a comes first).
+
+    //If compareFunction(a, b) returns 0, leave a and b unchanged 
+
+    //If compareFunction(a, b) returns greater than 0, b comes first
+
+    //the return of first item and second item are displayed opposite of the order of the parameters
+
+    const numbers = [1,2,100,3,200,400,155];
+    const numbersSorted = numbers.sort(function(firstItem, secondItem) {
+      if (firstItem > secondItem) {
+        return 1;
+      } else if  (secondItem > firstItem) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+    console.log(numbersSorted);
+
+//this also works- the math that happens between the firstItem - secondItem determines the sorting based on the rules of what is returned ( a number greater than 1, a number less than 1, zero)
+// 1-2 = -1 (moves it to the beginning of the array)
+   // const numbersSorted = numbers.sort(function (firstItem, secondItem) {
+      //return firstItem - secondItem
+   // })
+
+
     // sort the order totals from most expensive to least with .sort()
+
+//this is similar to what we did above with the number and firstItem - secondItem math determining the sorting for us
+    function numberSort(a,b) {
+      return a - b;
+    }
+    console.log(orderTotals.sort(numberSort));
+
     // Sort the prices with sort()
+    //prices is an object so we must convert it
+    //we used Object.entries to convert it and this returns an array with each item being each key value pair from the original object as it's own array (each item in the array is an array)
+    const productsSortedByPrice = Object.entries(prices).sort(function(a,b) {
+      const aPrice = a[1];
+      const bPrice = b[1];
+      return aPrice - bPrice;
+      //debugger;
+    });
+    console.log(productsSortedByPrice);
 
     /*
       Looping Methods (next)
