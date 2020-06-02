@@ -147,14 +147,25 @@
       if (prevTopping) {
         console.log(prevTopping);
       }
-      //log the next topping if there is one
-     if (nextTopping) {
-       console.log(nextTopping);
-     }
+      //log the next topping if there is one using a ternary
+     nextTopping ? console.log(nextTopping) : null;
+     
       //if it's the last item in the array, say bye
+      //If we're on the last item the index will be one less than the array length
+      if (index === originalArray.length -1) {
+        console.log('bye');
+      } else {
+        console.log('getting the next topping!')
+      }
+
+      //this works too because it checks the first condition is true it will keep going on to the next conditional, if the first one is false it will short circuit and NOT run the next conditional- it will run the console lof when the first conditional comes out true
+
+      //index === originalArray.length -1 && console.log('GOODBYE');
       console.log('-------');
     }
 
+    //.forEach ia a little different in that it doesn't return anything to us- goes off and does some work for every item that is in that array. 
+    //we don't store the result in variable like this const result = toppings.forEach(logTopping) - we would get "undefined" in a log
     toppings.forEach(logTopping);
 
     //this is the way you are more familar with doing this kind of looping
@@ -163,6 +174,10 @@
     //toppings.forEach(topping => {
       //console.log(topping);
     //})
+
+
+    //The BIG 3- looping Methods
+    //Map, Filter, Reduce
 
   </script>
 </body>
