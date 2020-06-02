@@ -127,7 +127,27 @@
 
     /*
       Looping Methods
+
+      Most looping works like this - we use a method that lives on our array and pass that method a callback function. 
+      
+      That callback fucntion will run once for every item in the array giving us access to each individual item.
     */
+
+    //this is the function we are going to psss the toppings.forEach()
+    //the .forEach method can also return index position of each item and the entire array
+    function logTopping(topping, index, originalArray) {
+     console.log(topping, index, originalArray);
+      //debugger;
+    }
+
+    toppings.forEach(logTopping);
+
+    //this is the way you are more familar with doing this kind of looping
+    // topping here is a paremeter- a PLACEHOLDER for the first argument
+    //to capture the argument we simply define the function with a parameter
+    //toppings.forEach(topping => {
+      //console.log(topping);
+    //})
 
   </script>
 </body>
