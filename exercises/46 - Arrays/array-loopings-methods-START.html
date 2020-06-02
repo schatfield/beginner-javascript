@@ -135,9 +135,24 @@
 
     //this is the function we are going to psss the toppings.forEach()
     //the .forEach method can also return index position of each item and the entire array
+    //if you ever need to reference the items in the original array, returning it is helpful
     function logTopping(topping, index, originalArray) {
-     console.log(topping, index, originalArray);
+      const prevTopping = originalArray[index - 1]
+      const nextTopping = originalArray[index + 1]
+     //console.log(topping, index, originalArray);
       //debugger;
+      //log the topping
+      console.log(topping);
+      //log the previous topping if there is one
+      if (prevTopping) {
+        console.log(prevTopping);
+      }
+      //log the next topping if there is one
+     if (nextTopping) {
+       console.log(nextTopping);
+     }
+      //if it's the last item in the array, say bye
+      console.log('-------');
     }
 
     toppings.forEach(logTopping);
