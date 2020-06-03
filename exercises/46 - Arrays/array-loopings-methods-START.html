@@ -131,7 +131,13 @@
       Most looping works like this - we use a method that lives on our array and pass that method a callback function. 
       
       That callback fucntion will run once for every item in the array giving us access to each individual item.
+      
+      .forEach is handy when you wnat to loop over some data and do something with each piece of data- whether that's logging the value, or attaching an event listenr for a click, or displaying the data on a page.
+      
+      Other types of looping methods- there are other types of loops that simply take in data, do somethig with the data, and then RETURNS that data that has been modified or transformed in some way. MAP, FILTER, REDUCE do this.
     */
+
+
 
     //this is the function we are going to psss the toppings.forEach()
     //the .forEach method can also return index position of each item and the entire array
@@ -177,9 +183,57 @@
 
 
     //The BIG 3- looping Methods
-    //Map, Filter, Reduce
+    //Map, Filter, Reduce 
+    //These take in data, does something with it, and return the data. they don't reach outside their own functions to do any of this.
+
+    console.clear();
+
+    //MAP
+    //it's like a machine in a factory. It takes in data, performs an operation, and spits it out on the other side. It will always produce the megth of the array as the original it starts with (if you put in 100 things you will get 100 things back)
+
+  function addArms(face) {
+    return ` hand ${face} hand`;
+  }
+
+const toys = faces.map(addArms);
+console.log(toys);
+
+function bossify(name) {
+  return `${name} Duquesne`
+}
+
+//The slice() method returns the selected elements in an array, as a new array object.
+
+//The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
+
+//Note: The original array will not be changed.
+// slice returns the index position you start the slice at but not the posotion you end it on.
+function slice(name) {
+  return name.slice(0,3);
+}
+
+//so here positions 0,1,2 are returned and the slice stops before the 3rd index
+// ["cor", "bul"]
+const dogs = ['corgie', 'bulldog'].map(slice);
+console.log(dogs);
+
+//this function is capitalizing the first leter of eahc name- the zero index postion. Next it is slicing at the 1 index position until the end of each item to return th rest of the name 
+function capitalize(word){
+  return `${word[0].toUpperCase()}${word.slice(0)}`;
+}
+
+//const fullNames = ['shawna', 'eddy', 'jack', 'enki'].map(name => `${name} duquesne`);
+
+//const fullNames = ['shawna', 'eddy', 'jack', 'enki'].map(bossify);
+
+//you can chain several .maps that make several separate transforations with their own functions passed in
+// we have an array which .map(capitalize) attached to it, and .map(capitalize) will return another array that we can now run .map(bossify) on
+const fullNames = ['shawna', 'eddy', 'jack', 'enki'].map(slice)
+//map(capitalize).map(bossify);
+console.log(fullNames);   
 
   </script>
 </body>
 
 </html>
+
