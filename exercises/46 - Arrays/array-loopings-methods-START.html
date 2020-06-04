@@ -284,7 +284,7 @@ function findById(id) {
 //this function is awesome and very flexible- it takes in the key ("prop" parameter)and the value ("propWeAreLookingFor" param) for any propery on the student object
 function findByProp(prop, propWeAreLookingFor) {
   return function isStudent(student) {
-    //we use square bracket notation here instead of dot notation because we have prop as a param and here we are using that to represent the argument that gets passed in 
+    //we use square bracket notation here instead of dot notation because the property we are looking for is being passed in as a variable - or arg to the function.
     return student[prop] === propWeAreLookingFor;
   }
 }
@@ -301,6 +301,17 @@ const student = students.find(findByProp('id','565a'));
 const student2 = students.find(findByProp('first_name', 'Micki'));
 console.log(student, student2);
 
+
+//Reduce! 
+//Takes in an array of data (just like Map and Filter) and it will return a result or single value
+//Here's what that means
+console.clear();
+
+let total = 0;
+orderTotals.forEach(singleTotal => {
+  total = total + singleTotal;
+});
+console.log(total);
 
   </script>
 </body>
