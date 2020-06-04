@@ -307,10 +307,22 @@ console.log(student, student2);
 //Here's what that means
 console.clear();
 
-let total = 0;
-orderTotals.forEach(singleTotal => {
-  total = total + singleTotal;
-});
+//a way to add together numbers in an array
+
+//let total = 0;
+//orderTotals.forEach(singleTotal => {
+  //total = total + singleTotal;
+//});
+
+//And now a better way to do that using REDUCE
+
+function tallyNumbers()
+
+// take your orderTotals array that's way above and run reduce against it
+const allOrders = orderTotals.reduce();
+
+
+
 console.log(total);
 
   </script>
