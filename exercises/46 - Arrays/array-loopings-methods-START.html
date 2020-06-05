@@ -127,9 +127,264 @@
 
     /*
       Looping Methods
+
+      Most looping works like this - we use a method that lives on our array and pass that method a callback function. 
+      
+      That callback fucntion will run once for every item in the array giving us access to each individual item.
+      
+      .forEach is handy when you wnat to loop over some data and do something with each piece of data- whether that's logging the value, or attaching an event listenr for a click, or displaying the data on a page.
+      
+      Other types of looping methods- there are other types of loops that simply take in data, do somethig with the data, and then RETURNS that data that has been modified or transformed in some way. MAP, FILTER, REDUCE do this.
     */
+
+
+
+    //this is the function we are going to psss the toppings.forEach()
+    //the .forEach method can also return index position of each item and the entire array
+    //if you ever need to reference the items in the original array, returning it is helpful
+    function logTopping(topping, index, originalArray) {
+      const prevTopping = originalArray[index - 1]
+      const nextTopping = originalArray[index + 1]
+     //console.log(topping, index, originalArray);
+      //debugger;
+      //log the topping
+      console.log(topping);
+      //log the previous topping if there is one
+      if (prevTopping) {
+        console.log(prevTopping);
+      }
+      //log the next topping if there is one using a ternary
+     nextTopping ? console.log(nextTopping) : null;
+     
+      //if it's the last item in the array, say bye
+      //If we're on the last item the index will be one less than the array length
+      if (index === originalArray.length -1) {
+        console.log('bye');
+      } else {
+        console.log('getting the next topping!')
+      }
+
+      //this works too because it checks the first condition is true it will keep going on to the next conditional, if the first one is false it will short circuit and NOT run the next conditional- it will run the console lof when the first conditional comes out true
+
+      //index === originalArray.length -1 && console.log('GOODBYE');
+      console.log('-------');
+    }
+
+    //.forEach ia a little different in that it doesn't return anything to us- goes off and does some work for every item that is in that array. 
+    //we don't store the result in variable like this const result = toppings.forEach(logTopping) - we would get "undefined" in a log
+    toppings.forEach(logTopping);
+
+    //this is the way you are more familar with doing this kind of looping
+    // topping here is a paremeter- a PLACEHOLDER for the first argument
+    //to capture the argument we simply define the function with a parameter
+    //toppings.forEach(topping => {
+      //console.log(topping);
+    //})
+
+
+    //The BIG 3- looping Methods
+    //Map, Filter, Reduce 
+    //These take in data, does something with it, and return the data. they don't reach outside their own functions to do any of this.
+
+    console.clear();
+
+    //MAP
+    //it's like a machine in a factory. It takes in data, performs an operation, and spits it out on the other side. It will always produce the megth of the array as the original it starts with (if you put in 100 things you will get 100 things back)
+
+  function addArms(face) {
+    return ` hand ${face} hand`;
+  }
+
+const toys = faces.map(addArms);
+console.log(toys);
+
+function bossify(name) {
+  return `${name} Duquesne`
+}
+
+//The slice() method returns the selected elements in an array, as a new array object.
+
+//The slice() method selects the elements starting at the given start argument, and ends at, but does not include, the given end argument.
+
+//Note: The original array will not be changed.
+// slice returns the index position you start the slice at but not the posotion you end it on.
+function slice(name) {
+  return name.slice(0,3);
+}
+
+//so here positions 0,1,2 are returned and the slice stops before the 3rd index
+// ["cor", "bul"]
+const dogs = ['corgie', 'bulldog'].map(slice);
+console.log(dogs);
+
+//this function is capitalizing the first leter of eahc name- the zero index postion. Next it is slicing at the 1 index position until the end of each item to return th rest of the name 
+function capitalize(word){
+  return `${word[0].toUpperCase()}${word.slice(1)}`;
+}
+
+//const fullNames = ['shawna', 'eddy', 'jack', 'enki'].map(name => `${name} duquesne`);
+
+//const fullNames = ['shawna', 'eddy', 'jack', 'enki'].map(bossify);
+
+//you can chain several .maps that make several separate transforations with their own functions passed in
+// we have an array which .map(capitalize) attached to it, and .map(capitalize) will return another array that we can now run .map(bossify) on
+const fullNames = ['shawna', 'eddy', 'jack', 'enki'].map(capitalize).map(bossify);
+console.log(fullNames);   
+
+//whatever you return from your map will replace was initially in your map function before the function makes changes
+//it doesn't change the original data though, only the new returned array will be changed
+const orderTotalsWithTax = orderTotals.map(total => total * 1.13);
+console.log(orderTotalsWithTax);
+
+
+//Map can used for any type of data. Here's an example of using it with an array of objects
+
+const cleanPeople = people.map(function(person) {
+  //console.log(person);
+  //get their birthday
+  const birthday = new Date(person.birthday).getTime();;
+  //now timestamp creation using static method .now on the "mama" Date object
+  //the Date object is available to us to create dates and the .now method lives on it
+  const now = Date.now();
+  //console.log(birthday, now);
+  //figure out how old they are - subtract the birthday variable from the now variable
+  const age = Math.floor((now - birthday) / 31536000000);
+  console.log(age);
+  //return their fullname and bday in an object
+  return {
+    age,
+    name: `${person.names.first} ${person.names.last}`,
+    
+  }
+})
+console.table(cleanPeople);
+
+//Filter & Find
+// filter will always return an array
+
+//Filter - loop over every single item in the array and you either say yes TRUE or no FALSE- I want it or I don't want it 
+const over40 = cleanPeople.filter(person => {
+  return (person.age > 40);   
+});
+console.table(over40);
+
+if (over40.length) {
+  console.log('there are some people over 40')
+}
+
+//Find - will return the actual item in the array that you want - this returns to you an object of the student itself
+
+//higher order function- function that returns a function
+function findById(id) {
+  return function isStudent(student) {
+    return student.id === id;
+  }
+}
+
+//this function is awesome and very flexible- it takes in the key ("prop" parameter)and the value ("propWeAreLookingFor" param) for any propery on the student object
+function findByProp(prop, propWeAreLookingFor) {
+  return function isStudent(student) {
+    //we use square bracket notation here instead of dot notation because the property we are looking for is being passed in as a variable - or arg to the function.
+    return student[prop] === propWeAreLookingFor;
+  }
+}
+
+//loop over every single student to find the one with the id of 565a
+//const student = students.find(function (studentId) {
+    //return studentId.id === '565a';
+//});
+
+//arrow function with implicit return
+//const student = students.find(studentId => studentId.id === '565a'); 
+
+const student = students.find(findByProp('id','565a')); 
+const student2 = students.find(findByProp('first_name', 'Micki'));
+console.log(student, student2);
+
+
+//Reduce! 
+//Takes in an array of data (just like Map and Filter) and it will return a result or single value
+//Here's what that means
+console.clear();
+
+//a way to add together numbers in an array
+
+//let total = 0;
+//orderTotals.forEach(singleTotal => {
+  //total = total + singleTotal;
+//});
+//console.log(total);
+
+//And now a better way to do that using REDUCE
+
+//this function has 2 arguments- the ACCUMULATOR and the CURRENT VALUE
+//Accumulator - the thing that has been handed to you from the last instance of the loop
+//Current Value - the current thing in the loop
+//tally- the accumulator ---- currentTotal - the current value
+function tallyNumbers(tally, currentTotal) {
+  console.log(`The current tally is ${tally}`);
+  console.log(`The current total is ${currentTotal}`);
+  console.log('----------');
+  //whatever we RETURN from this function is going to be what the Accumulator is equal to
+  //SO we need to RETURN the tally as it stands currently through each iteration PLUS the amount of the currentTotal (the value of each item in the array)
+  // the first return of tally is 0 and current value is 342 (first item in the array)
+  return tally + currentTotal;
+}
+
+
+// A reduce will loop over items in an array and every iteration gives you th eoption to return a value which we can use to accumulate values or distill them down into one value
+
+
+// take your orderTotals array that's way above and run reduce against it
+//reduce takes a SECOND argument- 'what do you want to start the ACCUMULATOR /counting at ?', we will start counting at zero
+//And a THIRD argument
+
+//const orderTotals = [342, 1002, 523, 34, 634, 854, 1644, 2222];
+
+//const allOrders = orderTotals.reduce(tallyNumbers, 0);
+//console.log(allOrders);
+
+  //const inventory = [
+      //{ type: 'shirt', price: 4000 },
+      //{ type: 'pants', price: 4532 },
+     // { type: 'socks', price: 234 },
+      //{ type: 'shirt', price: 2343 },
+      //{ type: 'pants', price: 2343 },
+      //{ type: 'socks', price: 542 },
+      //{ type: 'pants', price: 123 },
+    //];
+
+//first arg is ACCUMULATOR
+//second arg is the ITEM in the array
+function inventoryReducer(totals, item) {
+  console.log(`looping over ${item.type}`);
+  //increment the type by 1
+  //we are checking if a certain property exists in the accumulator (by way of the loop) before we add 1 to it and if doesn't yet we will set it to 1
+  // if totals.shirt + 1 doesn't exist yet it will return NaN and be Falsey and then go on to the next condition and make it 1
+  totals[item.type] = totals[item.type] + 1 || 1;
+  //return the accumulator- the totals variable so the next iteration can use it
+  return totals;
+}
+
+//Another way to write the one line conditional that's in the function above
+//if the shirts already exist in the accumulator
+  //if (totals.shirt) {
+    //take the total accumulated shirts and add 1 to it
+  //totals.shirt = totals.shirt + 1;
+  //} else {
+    //else if it doesn't exist in the accumulator just yet, we need to add the property of shirt first and set it to 1
+    //totals.shirt = 1;
+  //}
+
+
+const inventoryCounts = inventory.reduce(inventoryReducer, {});
+console.log(inventoryCounts);
+
+const totalInventoryPrice = inventory.reduce((acc, item) => acc + item.price, 0);
+console.log(totalInventoryPrice);
 
   </script>
 </body>
 
 </html>
+
