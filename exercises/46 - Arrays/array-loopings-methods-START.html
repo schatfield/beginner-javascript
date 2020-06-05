@@ -313,17 +313,75 @@ console.clear();
 //orderTotals.forEach(singleTotal => {
   //total = total + singleTotal;
 //});
+//console.log(total);
 
 //And now a better way to do that using REDUCE
 
-function tallyNumbers()
+//this function has 2 arguments- the ACCUMULATOR and the CURRENT VALUE
+//Accumulator - the thing that has been handed to you from the last instance of the loop
+//Current Value - the current thing in the loop
+//tally- the accumulator ---- currentTotal - the current value
+function tallyNumbers(tally, currentTotal) {
+  console.log(`The current tally is ${tally}`);
+  console.log(`The current total is ${currentTotal}`);
+  console.log('----------');
+  //whatever we RETURN from this function is going to be what the Accumulator is equal to
+  //SO we need to RETURN the tally as it stands currently through each iteration PLUS the amount of the currentTotal (the value of each item in the array)
+  // the first return of tally is 0 and current value is 342 (first item in the array)
+  return tally + currentTotal;
+}
+
+
+// A reduce will loop over items in an array and every iteration gives you th eoption to return a value which we can use to accumulate values or distill them down into one value
+
 
 // take your orderTotals array that's way above and run reduce against it
-const allOrders = orderTotals.reduce();
+//reduce takes a SECOND argument- 'what do you want to start the ACCUMULATOR /counting at ?', we will start counting at zero
+//And a THIRD argument
+
+//const orderTotals = [342, 1002, 523, 34, 634, 854, 1644, 2222];
+
+//const allOrders = orderTotals.reduce(tallyNumbers, 0);
+//console.log(allOrders);
+
+  //const inventory = [
+      //{ type: 'shirt', price: 4000 },
+      //{ type: 'pants', price: 4532 },
+     // { type: 'socks', price: 234 },
+      //{ type: 'shirt', price: 2343 },
+      //{ type: 'pants', price: 2343 },
+      //{ type: 'socks', price: 542 },
+      //{ type: 'pants', price: 123 },
+    //];
+
+//first arg is ACCUMULATOR
+//second arg is the ITEM in the array
+function inventoryReducer(totals, item) {
+  console.log(`looping over ${item.type}`);
+  //increment the type by 1
+  //we are checking if a certain property exists in the accumulator (by way of the loop) before we add 1 to it and if doesn't yet we will set it to 1
+  // if totals.shirt + 1 doesn't exist yet it will return NaN and be Falsey and then go on to the next condition and make it 1
+  totals[item.type] = totals[item.type] + 1 || 1;
+  //return the accumulator- the totals variable so the next iteration can use it
+  return totals;
+}
+
+//Another way to write the one line conditional that's in the function above
+//if the shirts already exist in the accumulator
+  //if (totals.shirt) {
+    //take the total accumulated shirts and add 1 to it
+  //totals.shirt = totals.shirt + 1;
+  //} else {
+    //else if it doesn't exist in the accumulator just yet, we need to add the property of shirt first and set it to 1
+    //totals.shirt = 1;
+  //}
 
 
+const inventoryCounts = inventory.reduce(inventoryReducer, {});
+console.log(inventoryCounts);
 
-console.log(total);
+const totalInventoryPrice = inventory.reduce((acc, item) => acc + item.price, 0);
+console.log(totalInventoryPrice);
 
   </script>
 </body>
