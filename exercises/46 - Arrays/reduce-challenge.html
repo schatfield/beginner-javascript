@@ -550,12 +550,12 @@ Terms
 Privacy
 Cookies`
 
-// STEP 2: convert all this etxt to an array if every single character in the text
+// STEP 2: convert all this text to an array of every single character in the text
 // Use .split to split a string and return an array
 // split on nothing ('') - using an empty string with NO space as the separator to split between each character, 
 const everything = text.split(''); //split each character into an item of an array
 
-// Filter all the characters to get rid of anthing that isn't a letter or number
+// STEP 3 Filter all the characters to get rid of anthing that isn't a letter or number
 //if a-z, A-Z, or 0-9, then we want to keep it
   //---------------------------------------------------------------------------
   //Notes about how to write a "matcher" or Reg Ex with the .match method
@@ -567,7 +567,7 @@ function isValidChar(char) {
   return char.match(/[a-zA-Z0-9]/);
 }
 
-//Step 3:
+//Step 4:
 //Function to make all returned characters Lowercase. Pass it to .map method below
 function lowercase(char) {
   return char.toLowerCase();
@@ -577,17 +577,33 @@ function lowercase(char) {
 //const lowercase = char => char.toLowerCase();
 //------------------------------------------------------------
 
-//STEP 4
+//STEP 5:
 // Count how many times each letter and number occurs
-
+function instanceCounter(counts, char) {
+  counts[char] 
+  //if exists
+  ? counts[char] = counts[char] + 1
+  //if does not exist 
+  : counts[char] =1;
+  return counts;
+}
 
 
 
 const result = everything
 .filter(isValidChar) // filter on the matcher to return valid character (what we want)
-.map(lowercase); // convert every letter to lowercase
-.reduce()
-console.log(result);
+.map(lowercase) // convert every letter to lowercase
+.reduce(instanceCounter, {}) // count how many times each letter and number is in the text. Start with an empty object to store your results from the loop in
+
+//Function to pass into sort method
+function sortByValue(a, b) {
+  return a[1] -b[1];
+}
+
+const sortedResult = Object.entries(result).sort(sortByValue);
+
+//Object.entries returns and array of array in key value pairs
+console.log(sortedResult);
 
 
   </script>
