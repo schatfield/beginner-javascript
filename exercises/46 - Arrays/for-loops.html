@@ -20,6 +20,7 @@
       cool: true
     }
 
+
     // For
     //requires 3 things- InitialExpression / Condition / Increment Expression
     //for (Initital Expression; Condition; IncrementExpression) {
@@ -38,19 +39,62 @@
     }
 
 
-    for () {
-      
+    for (let i = 0; i < numbers.length; i++) {
+        console.log(numbers[i]);
     }
 
 
+    // For of 
+    // Used for looping over iterables - something that has a length like a number or a stringformat
+    // helps with sequencing promises with using await
+
+    for (const letter of name) {
+      console.log(letter);
+    }
+
+    for (const number of numbers) {
+      console.log(number)
+    }
+
+    // For in
+    // Used for looping over keys in an Object
+    //Object.entries does the same thing and is probably better
+
+    for ( const number in numbers) {
+     console.log(number)
+    }
+
+    for (const property in wes) {
+      console.log(property);
+    }
+
+    const baseHumanStats = {
+      feet: 2,
+      arms: 2,
+      eyes: 2,
+      head:1
+    };
+
+    function Human(name) {
+      this.name = name;
+    }
+
+    Human.prototype = baseHumanStats;
+    const wes2 = new Human('wes');
+
+    for (const prop in wes2) {
+      //console.log(prop);
+    }
+    console.log(Object.entries(wes2));
 
 
+  // While 
+  // Will take a condition and run infinitley unitl it is false
 
-
-
-
-
-
+  //let cool = true;
+  //while (cool === true) {
+    //console.log('you are cool');
+  }
 
 
 
