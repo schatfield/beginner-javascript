@@ -88,12 +88,17 @@
     console.log(Object.entries(wes2));
 
 
-  // While 
+  // While loop
   // Will take a condition and run infinitley unitl it is false
-
-  //let cool = true;
-  //while (cool === true) {
-    //console.log('you are cool');
+  // checks the condition before the first run of the loop
+  let cool = true;
+  let i = 0;
+  while (cool === true) {
+    console.log('you are cool');
+    i++;
+    if  ( i > 100) {
+      cool = false;
+    }
   }
 
 
