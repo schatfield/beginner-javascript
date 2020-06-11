@@ -43,9 +43,31 @@
       Static Methods
     */
 
-    // Array.of();
+    // Array.of(); returns an array of it's arguments
+    //-------------------------------
+    //Array.of('shawna', 'jack'); 
+    //Returns this:
+    //['shawna', 'jack']
+    //-------------------------------
 
+    //Array.from(); Will take an iterable (something with a length) and return an Array from that iterable with the specified # of empty spots
+    //Array.from() takes a second argument which is a callback function that will return anything you want
+    //--------------------------
+    //Array.from({length:10});
+    //Returns this:
+    //10) [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
+    //---------------------------
     // Make a function that creates a range from x to y with Array.from();
+
+    function createRange2(start, end){
+    const range2 = Array.from({length: end - start }, 
+    function(item, index){
+      return index + start;
+    });
+      return range2;
+    }
+   const myRange2 = createRange2(5,8);
+   console.log(myRange2);
 
     function createRange(start, end) {
       const range = Array.from({ length: end - start + 1 }, function (item, index) {

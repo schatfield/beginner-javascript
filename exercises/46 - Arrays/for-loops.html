@@ -20,7 +20,95 @@
       cool: true
     }
 
+
     // For
+    //requires 3 things- InitialExpression / Condition / Increment Expression
+    //for (Initital Expression; Condition; IncrementExpression) {
+        //statement;
+    //}
+    // great for running a block of code a number of times 
+    //----------------------------------------------
+    //Initial Expression - you can think of this as set up for the code you're going to write. The loop starts here.
+
+    // CONDITION- the condition will run each time before each loop runs- if the condiiton is true the loop will run one more time, if it is false it will no longer run and move on to the next lines of code underneath it
+
+    //Increment Expression- taking the i which we set to zero and incrementing it by 1. iT ALLOWS US TO access this variable called "i" inside of the statement
+    //------------------------------------------------
+    for  (let i = 100; i <= 120; i+= 2) {
+      console.log(i);
+    }
+
+
+    for (let i = 0; i < numbers.length; i++) {
+        console.log(numbers[i]);
+    }
+
+
+    // For of 
+    // Used for looping over iterables - something that has a length like a number or a stringformat
+    // helps with sequencing promises with using await
+
+    for (const letter of name) {
+      console.log(letter);
+    }
+
+    for (const number of numbers) {
+      console.log(number)
+    }
+
+    // For in
+    // Used for looping over keys in an Object
+    //Object.entries does the same thing and is probably better
+
+    for ( const number in numbers) {
+     console.log(number)
+    }
+
+    for (const property in wes) {
+      console.log(property);
+    }
+
+    const baseHumanStats = {
+      feet: 2,
+      arms: 2,
+      eyes: 2,
+      head:1
+    };
+
+    function Human(name) {
+      this.name = name;
+    }
+
+    Human.prototype = baseHumanStats;
+    const wes2 = new Human('wes');
+
+    for (const prop in wes2) {
+      //console.log(prop);
+    }
+    console.log(Object.entries(wes2));
+
+
+  // While loop
+  // Will take a condition and run infinitley unitl it is false
+  // checks the condition before the first run of the loop
+  let cool = true;
+  let i = 0;
+  while (cool === true) {
+    console.log('you are cool');
+    i++;
+    if  ( i > 100) {
+      cool = false;
+    }
+  }
+
+
+
+
+
+
+
+
+
     // for (let i = 100; i <= 120; i += 2) {
     //   console.log(i);
     // }
@@ -31,49 +119,49 @@
 
     // For of
 
-    for (const letter of name) {
-      console.log(letter);
-    }
+    //for (const letter of name) {
+      //console.log(letter);
+  // }
 
-    for (const number of numbers) {
-      console.log(number)
-    }
+    //for (const number of numbers) {
+      //console.log(number)
+    //}
     // For in - used for looping over keys of an object
-    for (const prop in wes) {
-      console.log(prop)
-    }
+    //for (const prop in wes) {
+      //console.log(prop)
+    //}
 
-    const baseHumanStats = {
-      feet: 2,
-      arms: 2,
-      eyes: 2,
-      head: 1
-    };
+    //const baseHumanStats = {
+      //feet: 2,
+     // arms: 2,
+      //eyes: 2,
+      //head: 1
+  //};
 
-    function Human(name) {
-      this.name = name;
-    }
+    //function Human(name) {
+      //this.name = name;
+    //}
 
-    Human.prototype = baseHumanStats;
+   // Human.prototype = baseHumanStats;
 
-    const wes2 = new Human('wes');
+    //const wes2 = new Human('wes');
 
-    console.log(Object.entries(wes2))
+    //console.log(Object.entries(wes2))
 
-    for (const prop in wes2) {
-      console.log(prop);
-    }
+    //for (const prop in wes2) {
+      //console.log(prop);
+    //}
 
     // While Loop
-    let cool = true;
-    let i = 1;
-    while (cool === true) {
-      console.log('You are cool');
-      i++;
-      if (i > 100) {
-        cool = false;
-      }
-    }
+    //let cool = true;
+    //let i = 1;
+    //while (cool === true) {
+      //console.log('You are cool');
+     // i++;
+     // if (i > 100) {
+       // cool = false;
+      //}
+   // }
 
   </script>
 </body>
