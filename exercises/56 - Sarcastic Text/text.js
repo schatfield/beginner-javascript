@@ -14,7 +14,7 @@ function transformText(text) {
  //take the text and loop over each letter
     const mod = Array.from(text).map(filters.sarcastic);
     console.log(mod);
-    result.textContent = text;
+    result.textContent = mod.join('');
 }
 
 // an object holding functions (methods) to create the text modifications
@@ -24,6 +24,7 @@ const filters = {
     //since we're running these methods on a map above, our sarcastic method can take in all the arguments a regular map will including current value and the index (map takes in an array)
     sarcastic(letter, index) {
         // if it is odd, it will return 1 which is a truthy value, so this if statement will trip
+        // if there's an number other than zero at all, upper case it
        if (index % 2){
         return letter.toUpperCase();
        } else {
