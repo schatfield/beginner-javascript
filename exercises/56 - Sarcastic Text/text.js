@@ -21,10 +21,15 @@ function transformText(text) {
 //each property is named for the value in the index.html file
 //the transformText function above is going to run these filter methods in the filters object
 const filters = {
-    //since we're running these methods on a map above, our sarcastic method can take in all the arguments a regular map will (takes in an array)
+    //since we're running these methods on a map above, our sarcastic method can take in all the arguments a regular map will including current value and the index (map takes in an array)
     sarcastic(letter, index) {
-        console.log(letter, index);
-        return letter;
+        // if it is odd, it will return 1 which is a truthy value, so this if statement will trip
+       if (index % 2){
+        return letter.toUpperCase();
+       } else {
+           //if it is even, it will return zero and we will lowercase it
+           return letter.toLowerCase();
+       }
     },
     funky(){
 
