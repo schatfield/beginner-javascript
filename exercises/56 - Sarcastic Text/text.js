@@ -21,6 +21,7 @@ function transformText(text) {
 //each property is named for the value in the index.html file
 //the transformText function above is going to run these filter methods in the filters object
 const filters = {
+    //since we're running these methods on a map above, our sarcastic method can take in all the arguments a regular map will (takes in an array)
     sarcastic(letter, index) {
         console.log(letter, index);
         return letter;
