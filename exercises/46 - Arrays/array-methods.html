@@ -117,8 +117,8 @@
     toppings.unshift(firstItem);
     // Do the last four,but immutable (with spreads and new variables)
     let newToppings = toppings.slice(0, toppings.length - 1);
-    newtoppings = [...newToppings, toppings[toppings.length - 1]];
-    console.log(newtoppings);
+   newToppings = [...newToppings, toppings[toppings.length - 1]];
+    console.log(toppings[toppings.length - 1]);
 
 
     // Make a copy of the toppings array with slice()
