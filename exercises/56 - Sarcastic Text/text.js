@@ -35,13 +35,15 @@ const filters = {
     funky(letter) {
         //first check if there's a funky letter for each letter typed by user
         //funkyLetters[letter] - variable above and the letter passed in we want
-        const funkyLetter = funkyLetters[letter];
+        let funkyLetter = funkyLetters[letter];
+        if (funkyLetter) return funkyLetter;
         //if there is not, check if there is a lowercase version of the letter
+        funkyLetter = funkyLetters[letter.toLowerCase()];
         if (funkyLetter) return funkyLetter;
         //if there is nothing return the original letter passed in unaffected
         return letter;
     },
-    unable(){
+    unable(letter) {
 
     }
 };
