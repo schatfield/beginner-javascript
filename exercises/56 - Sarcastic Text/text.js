@@ -6,7 +6,7 @@ console.log('it works');
 const textArea = document.querySelector('[name="text"]');
 const result = document.querySelector('.result');
 //filterInputs is a nodelist so we wrapped it in Array.from to convert it o an array. this iwll be converted once on page load and this variable will be used in the translateText function to grab the inputs and identify which is selected by the user at at given time
-const filterInputs = Array.from(document.querySelector('[name="filter"]'));
+const filterInputs = Array.from(document.querySelectorAll('[name="filter"]'));
 
 console.log(textArea, result, filterInputs);
 
@@ -40,10 +40,11 @@ function transformText(text) {
     // 2 WAYS: grab the filter and change depending on user selection
     //every time this runs it's going to qerySelector for the thing that's selected. the .value gives the value in the input tag
     //const filter = document.querySelector('[name="filter"]:checked').value;
-    const filter = filterInputs.firstElementChild(input => input.checked).value;
+    const filter = filterInputs.find(input => input.checked).value;
     console.log(filter);
  //take the text and loop over each letter
-    const mod = Array.from(text).map(filters.sarcastic);
+ // saquare brackets on [filter] bc it's a variable, not a property
+    const mod = Array.from(text).map(filters[filter]);
     console.log(mod);
     result.textContent = mod.join('');
 }
