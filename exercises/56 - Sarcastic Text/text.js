@@ -10,6 +10,12 @@ const filterInputs = Array.from(document.querySelectorAll('[name="filter"]'));
 
 console.log(textArea, result, filterInputs);
 
+
+//variable to use for funky text in filters methods for "funky"
+const funkyLetters = {
+    '-': '₋', '!': 'ᵎ', '?': 'ˀ', '(': '⁽', ')': '₎', '+': '⁺', '=': '₌', '0': '⁰', '1': '₁', '2': '²', '4': '₄', '5': '₅', '6': '₆', '7': '⁷', '8': '⁸', '9': '⁹', a: 'ᵃ', A: 'ᴬ', B: 'ᴮ', b: 'ᵦ', C: '𝒸', d: 'ᵈ', D: 'ᴰ', e: 'ₑ', E: 'ᴱ', f: '𝒻', F: 'ᶠ', g: 'ᵍ', G: 'ᴳ', h: 'ʰ', H: 'ₕ', I: 'ᵢ', i: 'ᵢ', j: 'ʲ', J: 'ᴶ', K: 'ₖ', k: 'ₖ', l: 'ˡ', L: 'ᴸ', m: 'ᵐ', M: 'ₘ', n: 'ₙ', N: 'ᴺ', o: 'ᵒ', O: 'ᴼ', p: 'ᵖ', P: 'ᴾ', Q: 'ᵠ', q: 'ᑫ', r: 'ʳ', R: 'ᵣ', S: 'ˢ', s: 'ˢ', t: 'ᵗ', T: 'ₜ', u: 'ᵘ', U: 'ᵤ', v: 'ᵛ', V: 'ᵥ', w: '𝓌', W: 'ʷ', x: 'ˣ', X: 'ˣ', y: 'y', Y: 'Y', z: '𝓏', Z: 'ᶻ'
+  };
+
 // an object holding functions (methods) to create the text modifications
 //each property is named for the value in the index.html file
 //the transformText function above is going to run these filter methods in the filters object
@@ -26,8 +32,14 @@ const filters = {
            return letter.toLowerCase();
        }
     },
-    funky(){
-
+    funky(letter) {
+        //first check if there's a funky letter for each letter typed by user
+        //funkyLetters[letter] - variable above and the letter passed in we want
+        const funkyLetter = funkyLetters[letter];
+        //if there is not, check if there is a lowercase version of the letter
+        if (funkyLetter) return funkyLetter;
+        //if there is nothing return the original letter passed in unaffected
+        return letter;
     },
     unable(){
 
