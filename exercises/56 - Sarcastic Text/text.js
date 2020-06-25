@@ -44,6 +44,7 @@ const filters = {
         return letter;
     },
     unable(letter) {
+        //use '...' in 1 out of 3 spaces enterted by the user
         const random = Math.floor(Math.random() * 3);
         if (letter === ' '  && random === 2) {
             return '...';
@@ -73,3 +74,8 @@ function transformText(text) {
 //grab the text out of the text area? e.target gives us the actual text box and .value gives us whatever the user has passed in 
 textArea.addEventListener('input', e => transformText(e.target.value));
 
+
+filterInputs.forEach(input => 
+    input.addEventListener('input',() =>{
+    transformText(textArea.value);
+}))
