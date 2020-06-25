@@ -44,7 +44,11 @@ const filters = {
         return letter;
     },
     unable(letter) {
-
+        const random = Math.floor(Math.random() * 3);
+        if (letter === ' '  && random === 2) {
+            return '...';
+        }
+        return letter;
     }
 };
 
