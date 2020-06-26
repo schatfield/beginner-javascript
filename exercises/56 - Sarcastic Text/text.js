@@ -74,8 +74,11 @@ function transformText(text) {
 //grab the text out of the text area? e.target gives us the actual text box and .value gives us whatever the user has passed in 
 textArea.addEventListener('input', e => transformText(e.target.value));
 
-
+//when the user clicks on each radio button (this is considered an input and not a click for some reason) the radio button input should trigger each of our filters  and show what's selected
+//loop over the inputs (radio buttons)
+//each input (radio button) has an event listener for an input event
+//when that input event triggers, we runa nother function that runs our transformText function and passes it the value of the text input by the user
 filterInputs.forEach(input => 
-    input.addEventListener('input',() =>{
-    transformText(textArea.value);
-}))
+    input.addEventListener('input',() => {
+        transformText(textArea.value);
+    }));
