@@ -20,8 +20,12 @@ const items = [];
 function handleSubmit(e) {
     e.preventDefault();
     const inputItem = document.querySelector('#item').value;
-    console.log(inputItem);
-    
+    //const name = e.currentTarget.item.value;
+    const item = {
+        name: inputItem,
+        id: Date.now(),
+        complete: false,
+    }    
 }
 
 //listen for a submit event on the form
