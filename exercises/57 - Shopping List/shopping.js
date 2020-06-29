@@ -29,11 +29,20 @@ function handleSubmit(e) {
     };    
     //push the items into our state array
     items.push(item);
-    console.log(`you have ${items.length} item in your state`);
+    //console.log(`you have ${items.length} item in your state`);
     //clear the form
     e.target.reset();
+    //display items after submit happens
+    displayItems();
 }
 
+//display shopping list items on dom
+//use .map to loop over the state array and return some html for each item
+function displayItems() {
+    const html = items.map(item => `<li>${item.name}</li>`);
+    console.log(html);
+
+}
 
 
 
