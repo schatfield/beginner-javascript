@@ -39,9 +39,15 @@ function handleSubmit(e) {
 //display shopping list items on dom
 //use .map to loop over the state array and return some html for each item
 function displayItems() {
-    const html = items.map(item => `<li>${item.name}</li>`);
-    console.log(html);
-
+    const html = items.map(item => `<li class "shopping-item">
+    <input type="checkbox">
+    <span class="itemName">${item.name}</span>
+    <button aria-label="Remove ${item.name}">&times;</button>
+    </li>`
+    )
+    .join('');
+    //set the inner html of the contents in the list variable
+    shoppingList.innerHTML = html;
 }
 
 
