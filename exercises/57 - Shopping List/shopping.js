@@ -21,12 +21,22 @@ function handleSubmit(e) {
     e.preventDefault();
     const inputItem = document.querySelector('#item').value;
     //const name = e.currentTarget.item.value;
+    //this objevt will be pushed into our state array items
     const item = {
         name: inputItem,
         id: Date.now(),
         complete: false,
-    }    
+    };    
+    //push the items into our state array
+    items.push(item);
+    console.log(`you have ${items.length} item in your state`);
+    //clear the form
+    e.target.reset();
 }
+
+
+
+
 
 //listen for a submit event on the form
 //grab shopping form ref, add event listener for the submit event, pass it the handler function to run when the event happens
