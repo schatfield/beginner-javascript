@@ -23,7 +23,7 @@ function handleSubmit(e) {
     //const name = e.currentTarget.item.value;
     //if subkit is hit when input is empty then don't submit an empty entry
     if (!inputItem) return;
-    //this objevt will be pushed into our state array items
+    //this object will be pushed into our state array items
     const item = {
         name: inputItem,
         id: Date.now(),
@@ -31,11 +31,12 @@ function handleSubmit(e) {
     };    
     //push the items into our state array
     items.push(item);
-    //console.log(`you have ${items.length} item in your state`);
+    console.log(`you have ${items.length} item in your state`);
     //clear the form
     e.target.reset();
-    //display items after submit happens
-    displayItems();
+    //fire off a custom event that will tell anyone who cares that the items have been updated
+    //dispatchEvent method lives on all DOM elements, you have to pass it a customEvent - a constructor in the browser
+    shoppingList.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
 //display shopping list items on dom
@@ -58,6 +59,13 @@ function displayItems() {
 //listen for a submit event on the form
 //grab shopping form ref, add event listener for the submit event, pass it the handler function to run when the event happens
 shoppingForm.addEventListener('submit', handleSubmit);
+//passing it the custom event we created 'itemsUpdated' and then a function to run when that custom event happens
+shoppingList.addEventListener('itemsUpdated', displayItems);
+
+//this will show you the breakdown of your custom event in the console
+//shoppingList.addEventListener('itemsUpdated', e => {
+   // console.log(e);
+//})
 
 
 
