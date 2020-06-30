@@ -21,6 +21,8 @@ function handleSubmit(e) {
     e.preventDefault();
     const inputItem = document.querySelector('#item').value;
     //const name = e.currentTarget.item.value;
+    //if subkit is hit when input is empty then don't submit an empty entry
+    if (!inputItem) return;
     //this objevt will be pushed into our state array items
     const item = {
         name: inputItem,
