@@ -61,6 +61,7 @@ function displayItems() {
 shoppingForm.addEventListener('submit', handleSubmit);
 //passing it the custom event we created 'itemsUpdated' and then a function to run when that custom event happens
 shoppingList.addEventListener('itemsUpdated', displayItems);
+shoppingList.addEventListener('itemsUpdated', mirrorToLocalStorage);
 
 //this will show you the breakdown of your custom event in the console
 //shoppingList.addEventListener('itemsUpdated', e => {
@@ -68,7 +69,17 @@ shoppingList.addEventListener('itemsUpdated', displayItems);
 //})
 
 
+//Make a function to mirror our data to localStorage
 
-//listen for user typing input and hits submit
-//keep track of list items and whether they are complete or not
-//render a list of all those items
+//local storage: sort of like a mini databaase that lives inside of your browser.
+//allows users who are using your site to come back with the same browser to sort of pick up where they left off
+//the ability to save some data in the user's browser for a future time
+// local storage is text only by default, so if you try to setItem to localStorage that is an array or object or boolean it will try to convert that item to text first. 
+//use the .toString method to fix this?
+
+function mirrorToLocalStorage() {
+    console.info('save items to local storage');
+    //store your items
+    localStorage.setItem('items', item);
+}
+// now when we add something to the list we need to listen for that event and then mirror all added items to local storage
