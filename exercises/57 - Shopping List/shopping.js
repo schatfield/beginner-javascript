@@ -41,9 +41,16 @@ function handleSubmit(e) {
 //use .map to loop over the state array and return some html for each item
 function displayItems() {
     const html = items.map(item => `<li class "shopping-item">
-    <input type="checkbox">
+    <input 
+      type="checkbox" 
+      value="${item.id}" 
+      ${item.complete ? 'checked' : ''}
+    >
     <span class="itemName">${item.name}</span>
-    <button aria-label="Remove ${item.name}" value="${item.id}">&times;</button>
+    <button 
+      aria-label="Remove ${item.name}" 
+      value="${item.id}">
+      &times;</button>
     </li>`
     )
     .join('');
@@ -92,13 +99,21 @@ function deleteItem(id) {
     items = items.filter(item => item.id !== id);
     console.log(items);
     //re renders the list and udate our localStorage w/o deleted item
-    //displayItems re-renders everything- bound to customEvent 'itemsUpdated'
+    //displayItems re-renders everything- bound to customEvent 'itemsUpdated' below
     //mirrorToLocalStorage updates localStorage-bound to customEvent 'itemsUpdated'
     shoppingList.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
 function markAsComplete(id) {
     console.log('marking ad complete', id);
+    //find the actual item that is being marked as complete by reference
+    //using .find()
+    const itemRef = items.find(item => item.id === id);
+    console.log(itemRef);
+    //toggles from true to false and back again
+    itemRef.complete = !itemRef.complete;
+    //updates items and local storage
+    shoppingList.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
 //listen for a submit event on the form
@@ -114,13 +129,14 @@ shoppingList.addEventListener('itemsUpdated', mirrorToLocalStorage);
 
 //Event Delegation: We listen for the click on the list <ul> (instead of the actual button) but then delegate the click over to the button if that is what was clicked
 shoppingList.addEventListener('click', function(e) {
+    const id = parseInt(e.target.value);
     //.matches checks is an element matches a CSS selector
     if (e.target.matches('button')){
         //e.target.value is the value of the button tag in our displayItems() above
-        deleteItem(parseInt(e.target.value));
+        deleteItem(id);
     }
     if (e.target.matches('input[type="checkbox"')){
-        markAsComplete()
+        markAsComplete(id);
     }
 });
 //this function will run on page load to restore a users local storager from their last session
