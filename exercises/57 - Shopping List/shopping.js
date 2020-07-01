@@ -91,9 +91,15 @@ function deleteItem(id) {
     //update our items array without the deleted item
     items = items.filter(item => item.id !== id);
     console.log(items);
+    //re renders the list and udate our localStorage w/o deleted item
+    //displayItems re-renders everything- bound to customEvent 'itemsUpdated'
+    //mirrorToLocalStorage updates localStorage-bound to customEvent 'itemsUpdated'
+    shoppingList.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
-
+function markAsComplete(id) {
+    console.log('marking ad complete', id);
+}
 
 //listen for a submit event on the form
 //grab shopping form ref, add event listener for the submit event, pass it the handler function to run when the event happens
@@ -113,7 +119,10 @@ shoppingList.addEventListener('click', function(e) {
         //e.target.value is the value of the button tag in our displayItems() above
         deleteItem(parseInt(e.target.value));
     }
-})
+    if (e.target.matches('input[type="checkbox"')){
+        markAsComplete()
+    }
+});
 //this function will run on page load to restore a users local storager from their last session
 restoreFromLocalStorage()
 
