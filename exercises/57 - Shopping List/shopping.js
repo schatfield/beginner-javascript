@@ -103,7 +103,14 @@ shoppingList.addEventListener('itemsUpdated', mirrorToLocalStorage);
 //shoppingList.addEventListener('itemsUpdated', e => {
    // console.log(e);
 //})
-shoppingList
+
+//Event Delegation: We listen for the click on the list <ul> but then delegate the click over to the button if that is what was clicked
+shoppingList.addEventListener('click', function(e) {
+    //.matches checks is an element matches a CSS selector
+    if (e.target.matches('button')){
+        deleteItem();
+    }
+})
 //this function will run on page load to restore a users local storager from their last session
 restoreFromLocalStorage()
 
