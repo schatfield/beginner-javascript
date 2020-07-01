@@ -70,15 +70,20 @@ function mirrorToLocalStorage() {
 }
 // now when we add something to the list we need to listen for that event and then mirror all added items to local storage
 
+//will run when page is loaded to restore from local storage
 function restoreFromLocalStorage() {
     console.info('restoring from ,local storage');
     //pull items from local storage on page load
     //.parse turing the stringified array of object back to an array of objects
    const lsItems = JSON.parse(localStorage.getItem('items'));
+   //check if there's a length of the array stored in lsItems- it may be empty if user has never loaded the app before
    if (lsItems.length) {
-       items = lsItems;
+       //dump our list items into our items variable above that holds our state
+       //using spread operator- .push() takes unlimited args which is why this works. this below is called "speading arguments" - where you take each item of an array and spread it into the method as an argument,
+       //by spreading into a function you take each item and pass it as an arg
+       items.push(...lsItems);
+       //dispatch itemsUpdated custom event
        shoppingList.dispatchEvent(new CustomEvent('itemsUpdated'));
-   
    }
 }
 
