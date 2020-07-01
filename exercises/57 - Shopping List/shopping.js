@@ -84,8 +84,14 @@ function restoreFromLocalStorage() {
        items.push(...lsItems);
        //dispatch itemsUpdated custom event
        shoppingList.dispatchEvent(new CustomEvent('itemsUpdated'));
-   }
+    }
 }
+
+function deleteItem(id) {
+    console.log('deleting item');
+}
+
+
 
 //listen for a submit event on the form
 //grab shopping form ref, add event listener for the submit event, pass it the handler function to run when the event happens
@@ -93,14 +99,13 @@ shoppingForm.addEventListener('submit', handleSubmit);
 //passing it the custom event we created 'itemsUpdated' and then a function to run when that custom event happens
 shoppingList.addEventListener('itemsUpdated', displayItems);
 shoppingList.addEventListener('itemsUpdated', mirrorToLocalStorage);
-
-//this function will run on page load to restore a users local storager from their last session
-restoreFromLocalStorage()
-
 //this will show you the breakdown of your custom event in the console
 //shoppingList.addEventListener('itemsUpdated', e => {
    // console.log(e);
 //})
+shoppingList
+//this function will run on page load to restore a users local storager from their last session
+restoreFromLocalStorage()
 
 
 
