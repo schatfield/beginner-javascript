@@ -1,5 +1,3 @@
-
-
 /*eslint-disable*/
 console.log('it works');
 //first thing- to do anything at all we need to select items from the DOM
@@ -12,7 +10,7 @@ const shoppingList = document.querySelector('.list');
 //you should always be able to recreate the visual part of your application just given the data and relfected as an object or an array of the data
 
 //array for holding the state
-const items = [];
+let items = [];
 
 //listen for submit event bc it covers all use cases for submitting something whether it be by clicking, or hitting enter, etx, submit event covers all
 
@@ -45,7 +43,7 @@ function displayItems() {
     const html = items.map(item => `<li class "shopping-item">
     <input type="checkbox">
     <span class="itemName">${item.name}</span>
-    <button aria-label="Remove ${item.name}">&times;</button>
+    <button aria-label="Remove ${item.name}" value="${item.id}">&times;</button>
     </li>`
     )
     .join('');
@@ -87,8 +85,12 @@ function restoreFromLocalStorage() {
     }
 }
 
+//when the button is clicked, we take the value of that button and pass it to this function and now we have a variable called id
 function deleteItem(id) {
-    console.log('deleting item');
+    console.log('deleting item', id);
+    //update our items array without the deleted item
+    items = items.filter(item => item.id !== id);
+    console.log(items);
 }
 
 
@@ -104,11 +106,12 @@ shoppingList.addEventListener('itemsUpdated', mirrorToLocalStorage);
    // console.log(e);
 //})
 
-//Event Delegation: We listen for the click on the list <ul> but then delegate the click over to the button if that is what was clicked
+//Event Delegation: We listen for the click on the list <ul> (instead of the actual button) but then delegate the click over to the button if that is what was clicked
 shoppingList.addEventListener('click', function(e) {
     //.matches checks is an element matches a CSS selector
     if (e.target.matches('button')){
-        deleteItem();
+        //e.target.value is the value of the button tag in our displayItems() above
+        deleteItem(parseInt(e.target.value));
     }
 })
 //this function will run on page load to restore a users local storager from their last session
