@@ -1,5 +1,3 @@
-
-
 /*eslint-disable*/
 console.log('it works');
 //first thing- to do anything at all we need to select items from the DOM
@@ -12,7 +10,7 @@ const shoppingList = document.querySelector('.list');
 //you should always be able to recreate the visual part of your application just given the data and relfected as an object or an array of the data
 
 //array for holding the state
-const items = [];
+let items = [];
 
 //listen for submit event bc it covers all use cases for submitting something whether it be by clicking, or hitting enter, etx, submit event covers all
 
@@ -43,9 +41,16 @@ function handleSubmit(e) {
 //use .map to loop over the state array and return some html for each item
 function displayItems() {
     const html = items.map(item => `<li class "shopping-item">
-    <input type="checkbox">
+    <input 
+      type="checkbox" 
+      value="${item.id}" 
+      ${item.complete ? 'checked' : ''}
+    >
     <span class="itemName">${item.name}</span>
-    <button aria-label="Remove ${item.name}">&times;</button>
+    <button 
+      aria-label="Remove ${item.name}" 
+      value="${item.id}">
+      &times;</button>
     </li>`
     )
     .join('');
@@ -70,16 +75,45 @@ function mirrorToLocalStorage() {
 }
 // now when we add something to the list we need to listen for that event and then mirror all added items to local storage
 
+//will run when page is loaded to restore from local storage
 function restoreFromLocalStorage() {
     console.info('restoring from ,local storage');
     //pull items from local storage on page load
     //.parse turing the stringified array of object back to an array of objects
    const lsItems = JSON.parse(localStorage.getItem('items'));
+   //check if there's a length of the array stored in lsItems- it may be empty if user has never loaded the app before
    if (lsItems.length) {
-       items = lsItems;
+       //dump our list items into our items variable above that holds our state
+       //using spread operator- .push() takes unlimited args which is why this works. this below is called "speading arguments" - where you take each item of an array and spread it into the method as an argument,
+       //by spreading into a function you take each item and pass it as an arg
+       items.push(...lsItems);
+       //dispatch itemsUpdated custom event
        shoppingList.dispatchEvent(new CustomEvent('itemsUpdated'));
-   
-   }
+    }
+}
+
+//when the button is clicked, we take the value of that button and pass it to this function and now we have a variable called id
+function deleteItem(id) {
+    console.log('deleting item', id);
+    //update our items array without the deleted item
+    items = items.filter(item => item.id !== id);
+    console.log(items);
+    //re renders the list and udate our localStorage w/o deleted item
+    //displayItems re-renders everything- bound to customEvent 'itemsUpdated' below
+    //mirrorToLocalStorage updates localStorage-bound to customEvent 'itemsUpdated'
+    shoppingList.dispatchEvent(new CustomEvent('itemsUpdated'));
+}
+
+function markAsComplete(id) {
+    console.log('marking ad complete', id);
+    //find the actual item that is being marked as complete by reference
+    //using .find()
+    const itemRef = items.find(item => item.id === id);
+    console.log(itemRef);
+    //toggles from true to false and back again
+    itemRef.complete = !itemRef.complete;
+    //updates items and local storage
+    shoppingList.dispatchEvent(new CustomEvent('itemsUpdated'));
 }
 
 //listen for a submit event on the form
@@ -88,14 +122,25 @@ shoppingForm.addEventListener('submit', handleSubmit);
 //passing it the custom event we created 'itemsUpdated' and then a function to run when that custom event happens
 shoppingList.addEventListener('itemsUpdated', displayItems);
 shoppingList.addEventListener('itemsUpdated', mirrorToLocalStorage);
-
-//this function will run on page load to restore a users local storager from their last session
-restoreFromLocalStorage()
-
 //this will show you the breakdown of your custom event in the console
 //shoppingList.addEventListener('itemsUpdated', e => {
    // console.log(e);
 //})
+
+//Event Delegation: We listen for the click on the list <ul> (instead of the actual button) but then delegate the click over to the button if that is what was clicked
+shoppingList.addEventListener('click', function(e) {
+    const id = parseInt(e.target.value);
+    //.matches checks is an element matches a CSS selector
+    if (e.target.matches('button')){
+        //e.target.value is the value of the button tag in our displayItems() above
+        deleteItem(id);
+    }
+    if (e.target.matches('input[type="checkbox"')){
+        markAsComplete(id);
+    }
+});
+//this function will run on page load to restore a users local storager from their last session
+restoreFromLocalStorage()
 
 
 
