@@ -11,11 +11,26 @@ function Gallery(gallery) {
 
   //using gallery instead of document here bc we need to scope everything to the actual gallery that was passed into the querySelector below in gallery1 and gallery2 variables
   const images = Array.from(gallery.querySelectorAll('img'));
-  //we are using docmunet here becasue the heml markup for the modal will be shared bewteen the 2 galleries bc only one modal can be open at a time
+  //we are using docmunet here becasue the html markup for the modal will be shared bewteen the 2 galleries bc only one modal can be open at a time
   const modal = document.querySelector('.modal');
   //slecting things inside the modal, using the modal variable from just above
   const prevButton = modal.querySelector('.prev');
   const nextButton = modal.querySelector('.next');
+
+  //when someone clicks on an image we need to update that modal with the associated images and pop open the modal
+  function showImage(el) {
+    if (!el) {
+      console.info('no image to show');
+      return;
+    }
+    //ELSE update the modal with this info
+    console.log(el);
+  }
+
+  //take images array (selected above in const images) and loop over adding ELs
+  //pass the image tag (using event.currentTarget) of whatever image is clicked to the showImage()
+  // (e) is the event being used as anon callback function
+  images.forEach(image => image.addEventListener('click', (e) => showImage(event.currentTarget)));
 }
 
 //Use it on the page
