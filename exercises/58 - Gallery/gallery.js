@@ -18,6 +18,15 @@ function Gallery(gallery) {
   const nextButton = modal.querySelector('.next');
   let currentImage;
 
+  function openModal() {
+    //first check if the modal is already open
+    if (modal.matches('.open')) {
+      console.info('modal open');
+      return; //stop the function from running
+    }
+    modal.classList.add('open');
+  }
+
   //when someone clicks on an image we need to update that modal with the associated images and pop open the modal
   function showImage(el) {
     if (!el) {
@@ -30,6 +39,7 @@ function Gallery(gallery) {
     modal.querySelector('h2').textContent = el.title;
     modal.querySelector('figure p').textContent = el.dataset.description;
     currentImage = el;
+    openModal();
   }
 
   //take images array (selected above in const images) and loop over adding ELs
