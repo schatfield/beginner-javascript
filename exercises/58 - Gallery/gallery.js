@@ -18,6 +18,44 @@ function Gallery(gallery) {
   const nextButton = modal.querySelector('.next');
   let currentImage;
 
+  function openModal() {
+    //first check if the modal is already open
+    if (modal.matches('.open')) {
+      console.info('modal open');
+      return; //stop the function from running
+    }
+    modal.classList.add('open');
+
+    //Event listners to be bound when we open the modal:
+    window.addEventListener('keyup', handleKeyUp);
+    nextButton.addEventListener('click', showNextImage);
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    //TODO :add event listeners for clicks and keyboard
+    window.removeEventListener('keyup', handleKeyUp);
+    nextButton.removeEventListener('click', showNextImage);
+  }
+
+  function handlClickOutside(e) {
+    //if the thing they actually clicked (the modal) is the same as the the thing we are listening for a click on (modal), close it. 
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  }
+  
+  function handleKeyUp(e) {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  }
+  
+  function showNextImage() {
+    console.log(currentImage.nextElementSibling);
+    
+  }
+
   //when someone clicks on an image we need to update that modal with the associated images and pop open the modal
   function showImage(el) {
     if (!el) {
@@ -30,12 +68,16 @@ function Gallery(gallery) {
     modal.querySelector('h2').textContent = el.title;
     modal.querySelector('figure p').textContent = el.dataset.description;
     currentImage = el;
+    openModal();
   }
 
+  //THESE ARE OUR EVENT LISTENERS!!
   //take images array (selected above in const images) and loop over adding ELs
   //pass the image tag (using event.currentTarget) of whatever image is clicked to the showImage()
   // (e) is the event being used as anon callback function
-  images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget)));
+  images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget))
+  );
+  modal.addEventListener('click', handlClickOutside);
 }
 
 //Use it on the page
