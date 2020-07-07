@@ -33,11 +33,18 @@ function Gallery(gallery) {
   }
 
   function handlClickOutside(e) {
+    //if the thing they actually clicked (the modal) is the same as the the thing we are listening for a click on (modal), close it. 
     if (e.target === e.currentTarget) {
       closeModal();
     }
-
   }
+
+  function handleKeyUp(e) {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  }
+
   //when someone clicks on an image we need to update that modal with the associated images and pop open the modal
   function showImage(el) {
     if (!el) {
@@ -60,6 +67,7 @@ function Gallery(gallery) {
   images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget))
   );
   modal.addEventListener('click', handlClickOutside);
+  window.addEventListener('keyup', handleKeyUp);
 }
 
 //Use it on the page
