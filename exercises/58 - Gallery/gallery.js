@@ -25,11 +25,17 @@ function Gallery(gallery) {
       return; //stop the function from running
     }
     modal.classList.add('open');
+
+    //Event listners to be bound when we open the modal:
+    window.addEventListener('keyup', handleKeyUp);
+    nextButton.addEventListener('click', showNextImage);
   }
 
   function closeModal() {
     modal.classList.remove('open');
     //TODO :add event listeners for clicks and keyboard
+    window.removeEventListener('keyup', handleKeyUp);
+    nextButton.removeEventListener('click', showNextImage);
   }
 
   function handlClickOutside(e) {
@@ -38,11 +44,16 @@ function Gallery(gallery) {
       closeModal();
     }
   }
-
+  
   function handleKeyUp(e) {
     if (event.key === 'Escape') {
       closeModal();
     }
+  }
+  
+  function showNextImage() {
+    console.log(currentImage.nextElementSibling);
+    
   }
 
   //when someone clicks on an image we need to update that modal with the associated images and pop open the modal
@@ -67,7 +78,6 @@ function Gallery(gallery) {
   images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget))
   );
   modal.addEventListener('click', handlClickOutside);
-  window.addEventListener('keyup', handleKeyUp);
 }
 
 //Use it on the page
