@@ -27,6 +27,17 @@ function Gallery(gallery) {
     modal.classList.add('open');
   }
 
+  function closeModal() {
+    modal.classList.remove('open');
+    //TODO :add event listeners for clicks and keyboard
+  }
+
+  function handlClickOutside(e) {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+
+  }
   //when someone clicks on an image we need to update that modal with the associated images and pop open the modal
   function showImage(el) {
     if (!el) {
@@ -42,10 +53,13 @@ function Gallery(gallery) {
     openModal();
   }
 
+  //THESE ARE OUR EVENT LISTENERS!!
   //take images array (selected above in const images) and loop over adding ELs
   //pass the image tag (using event.currentTarget) of whatever image is clicked to the showImage()
   // (e) is the event being used as anon callback function
-  images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget)));
+  images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget))
+  );
+  modal.addEventListener('click', handlClickOutside);
 }
 
 //Use it on the page
