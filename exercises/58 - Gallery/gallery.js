@@ -29,13 +29,15 @@ function Gallery(gallery) {
     //Event listners to be bound when we open the modal:
     window.addEventListener('keyup', handleKeyUp);
     nextButton.addEventListener('click', showNextImage);
+    prevButton.addEventListener('click', showPrevImage);
   }
-
+  
   function closeModal() {
     modal.classList.remove('open');
-    //TODO :add event listeners for clicks and keyboard
+    //TODO: remove event listeners for clicks and keyboard
     window.removeEventListener('keyup', handleKeyUp);
     nextButton.removeEventListener('click', showNextImage);
+    prevButton.removeEventListener('click', showPrevImage);
   }
 
   function handlClickOutside(e) {
@@ -47,22 +49,32 @@ function Gallery(gallery) {
   
   function handleKeyUp(e) {
     if (event.key === 'Escape') {
-      closeModal();
+      return closeModal();
+    }
+    if (event.key === 'ArrowRight') {
+      return showNextImage();
+    }
+    if (event.key === 'ArrowLeft') {
+      return showPrevImage();
     }
   }
   
   function showNextImage() {
-    console.log(currentImage.nextElementSibling);
+    showImage(currentImage.nextElementSibling || gallery.firstElementChild);
     
   }
 
+  function showPrevImage() {
+    showImage(currentImage.previousElementSibling || gallery.lastElementChild);
+    
+  }
   //when someone clicks on an image we need to update that modal with the associated images and pop open the modal
   function showImage(el) {
     if (!el) {
       console.info('no image to show');
       return;
     }
-    //update these things in the modal when clicked: the src, the h2, and p tag
+    //update the modal with this info when clicked: the src, the h2, and p tag
     console.log(el);
     modal.querySelector('img').src = el.src;
     modal.querySelector('h2').textContent = el.title;
@@ -77,7 +89,21 @@ function Gallery(gallery) {
   // (e) is the event being used as anon callback function
   images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget))
   );
+
+  //Loop over each image
+  images.forEach(image => {
+    //attach an event listener for each image
+    image.addEventListener('keyup', e => {
+      //when that is keyup'd, check if it was 'Enter'
+      if (e.key === 'Enter') {
+        //if it was 'Enter', show that image
+        showImage(e.currentTarget);
+      }
+    });
+  });
+
   modal.addEventListener('click', handlClickOutside);
+
 }
 
 //Use it on the page
