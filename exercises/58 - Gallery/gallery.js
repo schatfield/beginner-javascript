@@ -31,12 +31,13 @@ function Gallery(gallery) {
     nextButton.addEventListener('click', showNextImage);
     prevButton.addEventListener('click', showPrevImage);
   }
-
+  
   function closeModal() {
     modal.classList.remove('open');
     //TODO: remove event listeners for clicks and keyboard
     window.removeEventListener('keyup', handleKeyUp);
     nextButton.removeEventListener('click', showNextImage);
+    prevButton.removeEventListener('click', showPrevImage);
   }
 
   function handlClickOutside(e) {
@@ -48,7 +49,13 @@ function Gallery(gallery) {
   
   function handleKeyUp(e) {
     if (event.key === 'Escape') {
-      closeModal();
+      return closeModal();
+    }
+    if (event.key === 'ArrowRight') {
+      return showNextImage();
+    }
+    if (event.key === 'ArrowLeft') {
+      return showPrevImage();
     }
   }
   
@@ -58,7 +65,7 @@ function Gallery(gallery) {
   }
 
   function showPrevImage() {
-    showImage(currentImage.nextElementSibling || gallery.lastElementChild);
+    showImage(currentImage.previousElementSibling || gallery.lastElementChild);
     
   }
   //when someone clicks on an image we need to update that modal with the associated images and pop open the modal
@@ -67,7 +74,7 @@ function Gallery(gallery) {
       console.info('no image to show');
       return;
     }
-    //update these things in the modal when clicked: the src, the h2, and p tag
+    //update the modal with this info when clicked: the src, the h2, and p tag
     console.log(el);
     modal.querySelector('img').src = el.src;
     modal.querySelector('h2').textContent = el.title;
