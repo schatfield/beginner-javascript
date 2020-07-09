@@ -29,6 +29,7 @@ function Gallery(gallery) {
     //Event listners to be bound when we open the modal:
     window.addEventListener('keyup', handleKeyUp);
     nextButton.addEventListener('click', showNextImage);
+    prevButton.addEventListener('click', showPrevImage);
   }
 
   function closeModal() {
@@ -52,10 +53,14 @@ function Gallery(gallery) {
   }
   
   function showNextImage() {
-    showImage(currentImage.nextElementSibling);
+    showImage(currentImage.nextElementSibling || gallery.firstElementChild);
     
   }
 
+  function showPrevImage() {
+    showImage(currentImage.nextElementSibling || gallery.lastElementChild);
+    
+  }
   //when someone clicks on an image we need to update that modal with the associated images and pop open the modal
   function showImage(el) {
     if (!el) {
