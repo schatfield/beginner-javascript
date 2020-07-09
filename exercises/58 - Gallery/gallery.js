@@ -89,6 +89,19 @@ function Gallery(gallery) {
   // (e) is the event being used as anon callback function
   images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget))
   );
+
+  //Loop over each image
+  images.forEach(image => {
+    //attach an event listener for each image
+    image.addEventListener('keyup', e => {
+      //when that is keyup'd, check if it was 'Enter'
+      if (e.key === 'Enter') {
+        //if it was 'Enter', show that image
+        showImage(e.currentTarget);
+      }
+    });
+  });
+
   modal.addEventListener('click', handlClickOutside);
 
 }
