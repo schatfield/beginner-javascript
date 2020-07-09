@@ -33,7 +33,7 @@ function Gallery(gallery) {
 
   function closeModal() {
     modal.classList.remove('open');
-    //TODO :add event listeners for clicks and keyboard
+    //TODO: remove event listeners for clicks and keyboard
     window.removeEventListener('keyup', handleKeyUp);
     nextButton.removeEventListener('click', showNextImage);
   }
@@ -52,7 +52,7 @@ function Gallery(gallery) {
   }
   
   function showNextImage() {
-    console.log(currentImage.nextElementSibling);
+    showImage(currentImage.nextElementSibling);
     
   }
 
@@ -78,6 +78,7 @@ function Gallery(gallery) {
   images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget))
   );
   modal.addEventListener('click', handlClickOutside);
+
 }
 
 //Use it on the page
