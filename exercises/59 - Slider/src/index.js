@@ -6,6 +6,16 @@ function Slider(slider) {
   if (!(slider instanceof Element)) {
     throw new Error('No slider passed in');
   }
+  //create some variables for working with the slider
+  
+  let current;
+  let next;
+  let prev;
+
+  //select the elements needed for the slider
+  const slides = slider.querySelectorAll('.slides');
+  const prevBUtton = document.querySelector('.goToPrev');
+  const nextBUtton = document.querySelector('.goToNext');
 }
 
 
