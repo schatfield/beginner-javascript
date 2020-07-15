@@ -15,8 +15,7 @@ function Slider(slider) {
 
   //select the elements needed for the slider
   //If you look at your HTML elements ask yourslef what you need for the slider to operate- you need all of the slides so it has slides, duh, and the previous and next buttons to navigate through it
-  const slides = slider.querySelectorAll('.slides');
-  console.log(slides);
+  const slides = slider.querySelector('.slides');
   const prevBUtton = document.querySelector('.goToPrev');
   const nextBUtton = document.querySelector('.goToNext');
 
@@ -24,7 +23,10 @@ function Slider(slider) {
     //updating "current" variable - not defining it inside because other functions will need to access it too. 
     current = slider.querySelector('.current') ||
     slides.firstElementChild;
-    console.log(current);
+    prev = current.previousElementSibling || 
+    slides.lastElementChild;
+    next = current.nextElementSibling || slides.firstElementChild;
+    console.log({current, prev, next});
   }
   //When this slider is created, tun the startSlider Function
   startSlider();
