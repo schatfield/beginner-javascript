@@ -28,8 +28,18 @@ function Slider(slider) {
     next = current.nextElementSibling || slides.firstElementChild;
     console.log({current, prev, next});
   }
+
+  function applyClasses() {
+    current.classList.add('current');
+    prev.classList.add('prev');
+    next.classList.add('next'); 
+  }
+
+  
+
   //When this slider is created, tun the startSlider Function
   startSlider();
+  applyClasses();
 }
 
 
