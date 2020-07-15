@@ -7,7 +7,8 @@ function Slider(slider) {
     throw new Error('No slider passed in');
   }
   //create some variables for keeping track of the slides in slider
-  
+  //By creating these variables here, all the functions that live inside of the Slider function will have access to them. 
+  //These aren't golbal variables, they just live insdide the closure of our Slider function - that's the whole concept of a Closure we have variables that exist that several functions can access
   let current;
   let next;
   let prev;
@@ -18,6 +19,15 @@ function Slider(slider) {
   console.log(slides);
   const prevBUtton = document.querySelector('.goToPrev');
   const nextBUtton = document.querySelector('.goToNext');
+
+  function startSlider() {
+    //updating "current" variable - not defining it inside because other functions will need to access it too. 
+    current = slider.querySelector('.current') ||
+    slides.firstElementChild;
+    console.log(current);
+  }
+  //When this slider is created, tun the startSlider Function
+  startSlider();
 }
 
 
