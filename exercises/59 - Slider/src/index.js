@@ -42,10 +42,12 @@ function Slider(slider) {
     current.classList.remove(...classesToRemove);
     next.classList.remove(...classesToRemove);
     if(direction === 'back') {
-      //make a new array of the new values and destructure them over and in to the prev,current and next variables.
-      [prev, current, next]
-
+      //make a new array of the new values and destructure them over and into the prev,current and next variables.
+      [prev, current, next] = [prev.previousElementSibling, prev, current];
+    } else {
+      [prev, current, next] = [current, next, next.nextElementSibling];
     }
+    applyClasses();
   }
   
 
