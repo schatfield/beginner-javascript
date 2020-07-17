@@ -54,6 +54,10 @@ function Slider(slider) {
   //When this slider is created, tun the startSlider Function
   startSlider();
   applyClasses();
+
+  //Event listeners
+  prevBUtton.addEventListener('click', move => ('back'))
+  nextBUtton.addEventListener('click', move)
 }
 
 
