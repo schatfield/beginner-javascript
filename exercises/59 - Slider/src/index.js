@@ -16,8 +16,8 @@ function Slider(slider) {
   //select the elements needed for the slider
   //If you look at your HTML elements ask yourslef what you need for the slider to operate- you need all of the slides so it has slides, duh, and the previous and next buttons to navigate through it
   const slides = slider.querySelector('.slides');
-  const prevBUtton = document.querySelector('.goToPrev');
-  const nextBUtton = document.querySelector('.goToNext');
+  const prevBUtton = slider.querySelector('.goToPrev');
+  const nextBUtton = slider.querySelector('.goToNext');
 
   function startSlider() {
     //updating "current" variable - not defining it inside because other functions will need to access it too. 
@@ -43,9 +43,19 @@ function Slider(slider) {
     next.classList.remove(...classesToRemove);
     if(direction === 'back') {
       //make a new array of the new values and destructure them over and into the prev,current and next variables.
-      [prev, current, next] = [prev.previousElementSibling, prev, current];
+      [prev, current, next] = [
+        //get the prev slide, if there is none, get the last slide from the entire slider and wrap back around
+        prev.previousElementSibling || slides.lastElementChild, 
+        prev, 
+        current
+      ];
     } else {
-      [prev, current, next] = [current, next, next.nextElementSibling];
+      [prev, current, next] = [
+        current, 
+        next, 
+        //get the next slide, or if there is none becasue you're at the end, wrap around and grab the first slide 
+        next.nextElementSibling || slides.firstElementChild
+      ];
     }
     applyClasses();
   }
@@ -56,7 +66,7 @@ function Slider(slider) {
   applyClasses();
 
   //Event listeners
-  prevBUtton.addEventListener('click', move => ('back'))
+  prevBUtton.addEventListener('click', ( )=> move ('back'))
   nextBUtton.addEventListener('click', move)
 }
 
