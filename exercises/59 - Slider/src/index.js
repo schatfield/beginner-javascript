@@ -9,9 +9,9 @@ function Slider(slider) {
   //create some variables for keeping track of the slides in slider
   //By creating these variables here, all the functions that live inside of the Slider function will have access to them. 
   //These aren't golbal variables, they just live insdide the closure of our Slider function - that's the whole concept of a Closure we have variables that exist that several functions can access
+  let prev;
   let current;
   let next;
-  let prev;
 
   //select the elements needed for the slider
   //If you look at your HTML elements ask yourslef what you need for the slider to operate- you need all of the slides so it has slides, duh, and the previous and next buttons to navigate through it
@@ -35,6 +35,18 @@ function Slider(slider) {
     next.classList.add('next'); 
   }
 
+  function move(direction) {
+    //strip all of the classes off the current slides
+    const classesToRemove = ['prev', 'current', 'next'];
+    prev.classList.remove(...classesToRemove);
+    current.classList.remove(...classesToRemove);
+    next.classList.remove(...classesToRemove);
+    if(direction === 'back') {
+      //make a new array of the new values and destructure them over and in to the prev,current and next variables.
+      [prev, current, next]
+
+    }
+  }
   
 
   //When this slider is created, tun the startSlider Function
