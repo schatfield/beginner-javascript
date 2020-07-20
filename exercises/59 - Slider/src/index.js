@@ -15,6 +15,7 @@ function Slider(slider) {
 
   //select the elements needed for the slider
   //If you look at your HTML elements ask yourslef what you need for the slider to operate- you need all of the slides so it has slides, duh, and the previous and next buttons to navigate through it
+  //you use querySelector here to grab the element itself
   const slides = slider.querySelector('.slides');
   const prevBUtton = slider.querySelector('.goToPrev');
   const nextBUtton = slider.querySelector('.goToNext');
@@ -63,6 +64,7 @@ function Slider(slider) {
 
   //When the person creates the slider/ When this slider is created, run the startSlider Function
   startSlider();
+  //when the slider starts run apply classes?
   applyClasses();
 
   //Event listeners
