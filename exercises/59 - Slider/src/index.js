@@ -3,7 +3,7 @@
 //first thing we want to do is check if somebody has passed in a slider
 //use instanceof to check the thing passed in is a valid instance of an Element
 function Slider(slider) {
-  if (!(slider instanceof Element)) {
+  if (!slider instanceof Element) {
     throw new Error('No slider passed in');
   }
   //create some variables for keeping track of the slides in slider
@@ -61,7 +61,7 @@ function Slider(slider) {
   }
   
 
-  //When this slider is created, tun the startSlider Function
+  //When this slider is created, run the startSlider Function
   startSlider();
   applyClasses();
 
@@ -70,6 +70,6 @@ function Slider(slider) {
   nextBUtton.addEventListener('click', move)
 }
 
-
+// the beauty of running both of these at once is that as we are building we can make sure it works for both use cases
 const mySlider = Slider(document.querySelector('.slider'));
 const dogSlider = Slider(document.querySelector('.dog-slider'));
