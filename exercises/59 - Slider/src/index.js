@@ -61,7 +61,7 @@ function Slider(slider) {
   }
   
 
-  //When this slider is created, run the startSlider Function
+  //When the person creates the slider/ When this slider is created, run the startSlider Function
   startSlider();
   applyClasses();
 
