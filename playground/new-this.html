@@ -43,6 +43,16 @@
   // this will be true because it is :)
   console.log(pepperoniPizza instanceof Pizza);
 
+  const button1 = document.querySelector('.one');
+  const button2 = document.querySelector('.two');
+
+  function tellMeAboutTheButton() {
+    console.log(this);
+  }
+
+  button1.addEventListener('click', tellMeAboutTheButton);
+  button2.addEventListener('click', tellMeAboutTheButton);
+
   </script>
 </body>
 
