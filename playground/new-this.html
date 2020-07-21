@@ -9,6 +9,7 @@
 </head>
 
 <body>
+/* these are instances of the constructor html Button that lives in the browser */
   <button class="one">Button 1</button>
   <button class="two">Button 2</button>
   <script>
@@ -47,6 +48,8 @@
   const button2 = document.querySelector('.two');
 
   function tellMeAboutTheButton() {
+    //the this keyword is equal to the button that was clicked, they are instances of the constructor html Button that lives in the browser
+    //the this keyword is always scoped to a function
     console.log(this);
   }
 
