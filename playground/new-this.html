@@ -32,8 +32,15 @@ these are instances of the constructor html Button that lives in the browser
   const span = document.createElement('span');
   console.log(span);
 
-  function Pizza(topping) {
-    console.log(`making a pizza with ${topping}`);
+//the function thqt makes an object is called a constructor
+//Pizza() is a constructor
+  function Pizza(toppings = [], customer) {
+    console.log('making a pizza');
+    // save the toppings that were passed in to this instance of pizza
+    this.toppings = toppings;
+    // save the customer deets that were passed in to this instance of pizza
+    this.customer = customer;
+    this.id = Math.floor(Math.random() * 16777215).toString(16);
   }
 //By using the new keyword in JS that creates a new object that is an instance of whatever function you made it from.
   const pepperoniPizza = new Pizza();
