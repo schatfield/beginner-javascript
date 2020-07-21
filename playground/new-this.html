@@ -49,24 +49,32 @@ these are instances of the constructor html Button that lives in the browser
   const button1 = document.querySelector('.one');
   const button2 = document.querySelector('.two');
 
-  function tellMeAboutTheButton() {
     //the this keyword is equal to the button that was clicked, they are instances of the constructor html Button that lives in the browser
     //the this keyword is always scoped to a function - doesn't work the same with an arrow function
-    console.log(this);
+  function tellMeAboutTheButton() {
+    console.log('outside Im equal to the button', this);
+    //every time you create a new function it will change what the value that 'this' is equal to
+    setTimeout(function() {
+      console.log('inside Im equal to the window', this);
+      this.textContent = 'you clicked me';
+    }, 1000);
   }
 
-const tellMeAboutTheButtonToo = () => {
-  //doesn't work the same with an arrow function
-    console.log(this);
-}
+//doesn't work the same with an arrow function - unless it's inside another function
+// the this keyword will be equal to whatever the this keyword was at a higher level function. if there is no higher level function, it wil be eqial to the Window
+// if you have an arrow function inside another function (higher level function), the 'this' keyword will grab whatever the 'this' is eqaul to in the higher order function
+
+//const tellMeAboutTheButtonToo = () => {
+    //console.log(this);
+//}
 // 'this' is the thing to the left of the dot 
 // Binding: the tellMeAboutTheButton function is BOUND to each button
 //when something is bound to something it means that the 'this' keyword is going to be equal to the thing it is bound to
   button1.addEventListener('click', tellMeAboutTheButton);
   button2.addEventListener('click', tellMeAboutTheButton);
 
-  button1.addEventListener('click', tellMeAboutTheButtonToo);
-  button2.addEventListener('click', tellMeAboutTheButtonToo);
+  //button1.addEventListener('click', tellMeAboutTheButtonToo);
+  //button2.addEventListener('click', tellMeAboutTheButtonToo);
 
   </script>
 </body>
