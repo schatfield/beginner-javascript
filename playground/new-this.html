@@ -38,18 +38,26 @@ these are instances of the constructor html Button that lives in the browser
     console.log('making a pizza');
     // save the toppings that were passed in to this instance of pizza
     this.toppings = toppings;
-    // save the customer deets that were passed in to this instance of pizza
     this.customer = customer;
     this.id = Math.floor(Math.random() * 16777215).toString(16);
   }
-//By using the new keyword in JS that creates a new object that is an instance of whatever function you made it from.
-  const pepperoniPizza = new Pizza();
+
+  const pepperoniPizza = new Pizza(['pepperoni'], 'shawna chatfield');
   console.log(pepperoniPizza);
+  const canadianPizza = new Pizza(['pineapple', 'canadian bacon'], 'eddy the duke');
+  console.log(canadianPizza);
+  
+//By using the new keyword in JS that creates a new object that is an instance of whatever function you made it from.
+  
+  //const pepperoniPizza = new Pizza();
+  //console.log(pepperoniPizza);
+  
   // .constructor will tell us what function made me
   // the thing that made me what the Pizza() function
-  console.log(pepperoniPizza.constructor);
+  //console.log(pepperoniPizza.constructor);
+  
   // this will be true because it is :)
-  console.log(pepperoniPizza instanceof Pizza);
+  //console.log(pepperoniPizza instanceof Pizza);
 
 //whether you make a new button via HTML and it gets renedered to the DOM or you use document.createElement, these actions will create a new button that is an instance of the HTML button that lives in the browser
 
