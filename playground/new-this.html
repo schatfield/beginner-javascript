@@ -9,7 +9,7 @@
 </head>
 
 <body>
-/* these are instances of the constructor html Button that lives in the browser */
+these are instances of the constructor html Button that lives in the browser 
   <button class="one">Button 1</button>
   <button class="two">Button 2</button>
   <script>
@@ -44,17 +44,29 @@
   // this will be true because it is :)
   console.log(pepperoniPizza instanceof Pizza);
 
+//whether you make a new button via HTML and it gets renedered to the DOM or you use document.createElement, these actions will create a new button that is an instance of the HTML button that lives in the browser
+
   const button1 = document.querySelector('.one');
   const button2 = document.querySelector('.two');
 
   function tellMeAboutTheButton() {
     //the this keyword is equal to the button that was clicked, they are instances of the constructor html Button that lives in the browser
-    //the this keyword is always scoped to a function
+    //the this keyword is always scoped to a function - doesn't work the same with an arrow function
     console.log(this);
   }
 
+const tellMeAboutTheButtonToo = () => {
+  //doesn't work the same with an arrow function
+    console.log(this);
+}
+// 'this' is the thing to the left of the dot 
+// Binding: the tellMeAboutTheButton function is BOUND to each button
+//when something is bound to something it means that the 'this' keyword is going to be equal to the thing it is bound to
   button1.addEventListener('click', tellMeAboutTheButton);
   button2.addEventListener('click', tellMeAboutTheButton);
+
+  button1.addEventListener('click', tellMeAboutTheButtonToo);
+  button2.addEventListener('click', tellMeAboutTheButtonToo);
 
   </script>
 </body>
