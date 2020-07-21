@@ -31,9 +31,17 @@
   const span = document.createElement('span');
   console.log(span);
 
-  function Pizza() {
-    console.log('making a pizza');
+  function Pizza(topping) {
+    console.log(`making a pizza with ${topping}`);
   }
+//By using the new keyword in JS that creates a new object that is an instance of whatever function you made it from.
+  const pepperoniPizza = new Pizza();
+  console.log(pepperoniPizza);
+  // .constructor will tell us what function made me
+  // the thing that made me what the Pizza() function
+  console.log(pepperoniPizza.constructor);
+  // this will be true because it is :)
+  console.log(pepperoniPizza instanceof Pizza);
 
   </script>
 </body>
