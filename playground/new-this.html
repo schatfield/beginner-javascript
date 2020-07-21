@@ -25,6 +25,16 @@
   //const wes = { name: 'wes' };
   const names = new Array('wes', 'kait');
   const wes = new Object( { name: 'wes' } );
+
+// why don't we use "new" here? 
+//because document.createElement will say new for us
+  const span = document.createElement('span');
+  console.log(span);
+
+  function Pizza() {
+    console.log('making a pizza');
+  }
+
   </script>
 </body>
 
