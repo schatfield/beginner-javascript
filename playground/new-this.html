@@ -9,6 +9,7 @@
 </head>
 
 <body>
+these are instances of the constructor html Button that lives in the browser 
   <button class="one">Button 1</button>
   <button class="two">Button 2</button>
   <script>
@@ -31,17 +32,67 @@
   const span = document.createElement('span');
   console.log(span);
 
-  function Pizza(topping) {
-    console.log(`making a pizza with ${topping}`);
+//the function thqt makes an object is called a constructor
+//Pizza() is a constructor
+// IN THE FUNCTION BELOW: 'this' keyword when you're creating an object is used to store information about that instance. it's used for storing data and functionality on each instance of the constructor.
+ 
+  function Pizza(toppings = [], customer) {
+    console.log('making a pizza');
+    // save the toppings that were passed in to this instance of pizza
+    this.toppings = toppings;
+    this.customer = customer;
+    this.id = Math.floor(Math.random() * 16777215).toString(16);
   }
-//By using the new keyword in JS that creates a new object that is an instance of whatever function you made it from.
-  const pepperoniPizza = new Pizza();
+
+// pepperoniPizza is an instance of Pizza(), and it has it's own unique data that needs to stay with that pizza, 
+  const pepperoniPizza = new Pizza(['pepperoni'], 'shawna chatfield');
   console.log(pepperoniPizza);
+  const canadianPizza = new Pizza(['pineapple', 'canadian bacon'], 'eddy the duke');
+  console.log(canadianPizza);
+
+//By using the new keyword in JS that creates a new object that is an instance of whatever function you made it from.
+  
+  //const pepperoniPizza = new Pizza();
+  //console.log(pepperoniPizza);
+  
   // .constructor will tell us what function made me
   // the thing that made me what the Pizza() function
-  console.log(pepperoniPizza.constructor);
+  //console.log(pepperoniPizza.constructor);
+  
   // this will be true because it is :)
-  console.log(pepperoniPizza instanceof Pizza);
+  //console.log(pepperoniPizza instanceof Pizza);
+
+//whether you make a new button via HTML and it gets renedered to the DOM or you use document.createElement, these actions will create a new button that is an instance of the HTML button that lives in the browser
+
+  const button1 = document.querySelector('.one');
+  const button2 = document.querySelector('.two');
+
+    //the this keyword is equal to the button that was clicked, they are instances of the constructor html Button that lives in the browser
+    //the this keyword is always scoped to a function - doesn't work the same with an arrow function
+  function tellMeAboutTheButton() {
+    console.log('outside Im equal to the button', this);
+    //every time you create a new function it will change what the value that 'this' is equal to
+    setTimeout(function() {
+      console.log('inside Im equal to the window', this);
+      this.textContent = 'you clicked me';
+    }, 1000);
+  }
+
+//doesn't work the same with an arrow function - unless it's inside another function
+// the this keyword will be equal to whatever the this keyword was at a higher level function. if there is no higher level function, it wil be eqial to the Window
+// if you have an arrow function inside another function (higher level function), the 'this' keyword will grab whatever the 'this' is eqaul to in the higher order function
+
+//const tellMeAboutTheButtonToo = () => {
+    //console.log(this);
+//}
+// 'this' is the thing to the left of the dot 
+// Binding: the tellMeAboutTheButton function is BOUND to each button
+//when something is bound to something it means that the 'this' keyword is going to be equal to the thing it is bound to
+  button1.addEventListener('click', tellMeAboutTheButton);
+  button2.addEventListener('click', tellMeAboutTheButton);
+
+  //button1.addEventListener('click', tellMeAboutTheButtonToo);
+  //button2.addEventListener('click', tellMeAboutTheButtonToo);
 
   </script>
 </body>
