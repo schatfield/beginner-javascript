@@ -6,9 +6,11 @@ function Gallery(gallery) {
   if (!gallery) {
     throw new Error('No Gallery Found');
   }
+  //save reference to the gallery div that was passed in to Gallery
+  this.gallery = gallery;
+
   // select the elements we need
   // since we need to select these things for each of our instances, we are selecting the things we need inside this function instead of outside of it. this will scope the variables to the function- they live only inside this function that way gallery1 and 2 will never clash with each other
-
   //using gallery instead of document here bc we need to scope everything to the actual gallery that was passed into the querySelector below in gallery1 and gallery2 variables
   const images = Array.from(gallery.querySelectorAll('img'));
   //we are using docmunet here becasue the html markup for the modal will be shared bewteen the 2 galleries bc only one modal can be open at a time
