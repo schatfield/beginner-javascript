@@ -109,5 +109,6 @@ function Gallery(gallery) {
 //Use it on the page
 //the selectors are being passed in as arguments to the gallery param in the Gallery function above
 
-const gallery1 = Gallery(document.querySelector('.gallery1'));
-const gallery2 = Gallery(document.querySelector('.gallery2'));
+const gallery1 = new Gallery(document.querySelector('.gallery1'));
+const gallery2 = new Gallery(document.querySelector('.gallery2'));
+console.log(gallery1, gallery2);
