@@ -12,34 +12,34 @@ function Gallery(gallery) {
   // select the elements we need
   // since we need to select these things for each of our instances, we are selecting the things we need inside this function instead of outside of it. this will scope the variables to the function- they live only inside this function that way gallery1 and 2 will never clash with each other
   //using gallery instead of document here bc we need to scope everything to the actual gallery that was passed into the querySelector below in gallery1 and gallery2 variables
-  const images = Array.from(gallery.querySelectorAll('img'));
+  this.images = Array.from(gallery.querySelectorAll('img'));
   //we are using docmunet here becasue the html markup for the modal will be shared bewteen the 2 galleries bc only one modal can be open at a time
-  const modal = document.querySelector('.modal');
+  this.modal = document.querySelector('.modal');
   //slecting things inside the modal, using the modal variable from just above
-  const prevButton = modal.querySelector('.prev');
-  const nextButton = modal.querySelector('.next');
+  this.prevButton = this.modal.querySelector('.prev');
+  this.nextButton = this.modal.querySelector('.next');
   let currentImage;
 
   function openModal() {
     //first check if the modal is already open
-    if (modal.matches('.open')) {
+    if (this.modal.matches('.open')) {
       console.info('modal open');
       return; //stop the function from running
     }
-    modal.classList.add('open');
+    this.modal.classList.add('open');
 
     //Event listners to be bound when we open the modal:
     window.addEventListener('keyup', handleKeyUp);
-    nextButton.addEventListener('click', showNextImage);
-    prevButton.addEventListener('click', showPrevImage);
+    this.nextButton.addEventListener('click', showNextImage);
+    this.prevButton.addEventListener('click', showPrevImage);
   }
   
   function closeModal() {
-    modal.classList.remove('open');
+    this.modal.classList.remove('open');
     //TODO: remove event listeners for clicks and keyboard
     window.removeEventListener('keyup', handleKeyUp);
-    nextButton.removeEventListener('click', showNextImage);
-    prevButton.removeEventListener('click', showPrevImage);
+    this.nextButton.removeEventListener('click', showNextImage);
+    this.prevButton.removeEventListener('click', showPrevImage);
   }
 
   function handlClickOutside(e) {
@@ -78,9 +78,9 @@ function Gallery(gallery) {
     }
     //update the modal with this info when clicked: the src, the h2, and p tag
     console.log(el);
-    modal.querySelector('img').src = el.src;
-    modal.querySelector('h2').textContent = el.title;
-    modal.querySelector('figure p').textContent = el.dataset.description;
+    this.modal.querySelector('img').src = el.src;
+    this.modal.querySelector('h2').textContent = el.title;
+    this.modal.querySelector('figure p').textContent = el.dataset.description;
     currentImage = el;
     openModal();
   }
@@ -89,11 +89,11 @@ function Gallery(gallery) {
   //take images array (selected above in const images) and loop over adding ELs
   //pass the image tag (using event.currentTarget) of whatever image is clicked to the showImage()
   // (e) is the event being used as anon callback function
-  images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget))
+  this.images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget))
   );
 
   //Loop over each image
-  images.forEach(image => {
+  this.images.forEach(image => {
     //attach an event listener for each image
     image.addEventListener('keyup', e => {
       //when that is keyup'd, check if it was 'Enter'
@@ -104,7 +104,7 @@ function Gallery(gallery) {
     });
   });
 
-  modal.addEventListener('click', handlClickOutside);
+  this.modal.addEventListener('click', handlClickOutside);
 
 }
 
