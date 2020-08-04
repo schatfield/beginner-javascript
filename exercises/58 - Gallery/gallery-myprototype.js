@@ -57,7 +57,7 @@ function Gallery(gallery) {
       return showNextImage();
     }
     if (event.key === 'ArrowLeft') {
-      return showPrevImage();
+      return showPrevImage(); 
     }
   }
   
