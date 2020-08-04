@@ -50,7 +50,7 @@ Gallery.prototype.openModal = function() {
     console.info('modal open');
     return; //stop the function from running
   }
-  this.modal.classList.add('open');
+  this.modal.classList.add('open'); 
 
   //Event listeners to be bound when we open the modal:
   window.addEventListener('keyup', (e) => this.handleKeyUp(e));
