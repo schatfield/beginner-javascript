@@ -160,6 +160,14 @@
 
     console.log(toys);
 
+    const chatify = (name) => {
+      return `${name} Choochoo`;
+    }
+
+  function lowercase(array) {
+    return array.toString().toLowerCase();
+  }
+
     function bosify(name) {
       return `${name} Bos`;
     }
@@ -168,10 +176,16 @@
       return `${word[0].toUpperCase()}${word.slice(1)}`;
     }
 
-    const fullNames = ['wes', 'kait', 'poppy']
+    const fullNames = ['SHOONOO', 'JACK', 'ENKI']
+      .map(lowercase)
       .map(capitalize)
-      .map(bosify);
+      .map(chatify);
     console.log(fullNames);
+
+    const bosFamily = ['wes', 'kait', 'poppy']
+    .map(capitalize)
+    .map(bosify);
+    console.log(bosFamily);
 
 
     const orderTotalsWithTax = orderTotals.map(total => total * 1.13);
