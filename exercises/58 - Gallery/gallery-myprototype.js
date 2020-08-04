@@ -20,76 +20,13 @@ function Gallery(gallery) {
   this.nextButton = this.modal.querySelector('.next');
  
 
-  function openModal() {
-    //first check if the modal is already open
-    if (this.modal.matches('.open')) {
-      console.info('modal open');
-      return; //stop the function from running
-    }
-    this.modal.classList.add('open');
-
-    //Event listners to be bound when we open the modal:
-    window.addEventListener('keyup', handleKeyUp);
-    this.nextButton.addEventListener('click', showNextImage);
-    this.prevButton.addEventListener('click', showPrevImage);
-  }
   
-  function closeModal() {
-    this.modal.classList.remove('open');
-    //TODO: remove event listeners for clicks and keyboard
-    window.removeEventListener('keyup', handleKeyUp);
-    this.nextButton.removeEventListener('click', showNextImage);
-    this.prevButton.removeEventListener('click', showPrevImage);
-  }
-
-  function handlClickOutside(e) {
-    //if the thing they actually clicked (the modal) is the same as the the thing we are listening for a click on (modal), close it. 
-    if (e.target === e.currentTarget) {
-      closeModal();
-    }
-  }
-  
-  function handleKeyUp(e) {
-    if (event.key === 'Escape') {
-      return closeModal();
-    }
-    if (event.key === 'ArrowRight') {
-      return showNextImage();
-    }
-    if (event.key === 'ArrowLeft') {
-      return showPrevImage();
-    }
-  }
-  
-  function showNextImage() {
-    showImage(currentImage.nextElementSibling || gallery.firstElementChild);
-    
-  }
-
-  function showPrevImage() {
-    showImage(currentImage.previousElementSibling || gallery.lastElementChild);
-    
-  }
-  //when someone clicks on an image we need to update that modal with the associated images and pop open the modal
-  function showImage(el) {
-    if (!el) {
-      console.info('no image to show');
-      return;
-    }
-    //update the modal with this info when clicked: the src, the h2, and p tag
-    console.log(el);
-    this.modal.querySelector('img').src = el.src;
-    this.modal.querySelector('h2').textContent = el.title;
-    this.modal.querySelector('figure p').textContent = el.dataset.description;
-    this.currentImage = el;
-    openModal();
-  }
 
   //THESE ARE OUR EVENT LISTENERS!!
   //take images array (selected above in const images) and loop over adding ELs
   //pass the image tag (using event.currentTarget) of whatever image is clicked to the showImage()
   // (e) is the event being used as anon callback function
-  this.images.forEach(image => image.addEventListener('click', (event) => showImage(event.currentTarget))
+  this.images.forEach(image => image.addEventListener('click', (event) => this.showImage(event.currentTarget))
   );
 
   //Loop over each image
@@ -104,8 +41,76 @@ function Gallery(gallery) {
     });
   });
 
-  this.modal.addEventListener('click', handlClickOutside);
+  this.modal.addEventListener('click', this.handlClickOutside);
+}
 
+Gallery.prototype.openModal = function() {
+  //first check if the modal is already open
+  if (this.modal.matches('.open')) {
+    console.info('modal open');
+    return; //stop the function from running
+  }
+  this.modal.classList.add('open');
+
+  //Event listners to be bound when we open the modal:
+  window.addEventListener('keyup', this.handleKeyUp);
+  this.nextButton.addEventListener('click', this.showNextImage);
+  this.prevButton.addEventListener('click', this.showPrevImage);
+}
+
+Gallery.prototype.closeModal = function() {
+  this.modal.classList.remove('open');
+  //TODO: remove event listeners for clicks and keyboard
+  window.removeEventListener('keyup', handleKeyUp);
+  this.nextButton.removeEventListener('click', showNextImage);
+  this.prevButton.removeEventListener('click', showPrevImage);
+}
+
+Gallery.prototype.handlClickOutside = function(e) {
+  //if the thing they actually clicked (the modal) is the same as the the thing we are listening for a click on (modal), close it. 
+  if (e.target === e.currentTarget) {
+    this.closeModal();
+  }
+}
+
+Gallery.prototype.handleKeyUp = function(e) {
+  if (event.key === 'Escape') {
+    return this.closeModal();
+  }
+  if (event.key === 'ArrowRight') {
+    return this.showNextImage();
+  }
+  if (event.key === 'ArrowLeft') {
+    return this.showPrevImage();
+  }
+}
+Gallery.prototype.showNextImage = function() {
+  console.log(this);
+  this.showImage(
+    this.currentImage.nextElementSibling || this.gallery.firstElementChild
+    );
+}
+
+Gallery.prototype.showPrevImage = function() {
+  this.showImage(
+    this.currentImage.previousElementSibling || this.gallery.lastElementChild
+    );
+}
+
+//when someone clicks on an image we need to update that modal with the associated images and pop open the modalGallery.prototype.showImage = function(el) {
+  
+Gallery.prototype.showImage = function(el) {
+if (!el) {
+    console.info('no image to show');
+    return;
+  }
+  //update the modal with this info when clicked: the src, the h2, and p tag
+  console.log(el);
+  this.modal.querySelector('img').src = el.src;
+  this.modal.querySelector('h2').textContent = el.title;
+  this.modal.querySelector('figure p').textContent = el.dataset.description;
+  this.currentImage = el;
+  this.openModal();
 }
 
 //Use it on the page
