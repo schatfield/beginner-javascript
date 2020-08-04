@@ -52,18 +52,18 @@ Gallery.prototype.openModal = function() {
   }
   this.modal.classList.add('open');
 
-  //Event listners to be bound when we open the modal:
-  window.addEventListener('keyup', this.handleKeyUp);
-  this.nextButton.addEventListener('click', this.showNextImage);
+  //Event listeners to be bound when we open the modal:
+  window.addEventListener('keyup', (e) => this.handleKeyUp(e));
+  this.nextButton.addEventListener('click', () => this.showNextImage());
   this.prevButton.addEventListener('click', this.showPrevImage);
 }
 
 Gallery.prototype.closeModal = function() {
   this.modal.classList.remove('open');
   //TODO: remove event listeners for clicks and keyboard
-  window.removeEventListener('keyup', handleKeyUp);
-  this.nextButton.removeEventListener('click', showNextImage);
-  this.prevButton.removeEventListener('click', showPrevImage);
+  window.removeEventListener('keyup', this.handleKeyUp);
+  this.nextButton.removeEventListener('click', this.showNextImage);
+  this.prevButton.removeEventListener('click', this.showPrevImage);
 }
 
 Gallery.prototype.handlClickOutside = function(e) {
@@ -85,7 +85,7 @@ Gallery.prototype.handleKeyUp = function(e) {
   }
 }
 Gallery.prototype.showNextImage = function() {
-  console.log(this);
+  console.log('SHOWING NEXT IMAGE');
   this.showImage(
     this.currentImage.nextElementSibling || this.gallery.firstElementChild
     );
