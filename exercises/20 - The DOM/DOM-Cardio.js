@@ -125,9 +125,11 @@ const buttons = document.querySelectorAll('.delete');
 // make out delete function
 function deleteCard() {
     const buttonThatGotClicked = event.currentTarget;
-    // buttonThatGotClicked.parentElement.remove();
-    console.log(event.currentTarget);
-    console.log('DELETE CARD TO DO')
+  
+    buttonThatGotClicked.parentElement.remove();
+    buttonThatGotClicked.closest('.playerCard').remove()
+    // console.log(event.currentTarget);
+    // console.log('DELETE CARD TO DO')
 }
 
 // loop over them and attach a listener
