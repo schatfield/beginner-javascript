@@ -18,72 +18,14 @@ function Gallery(gallery) {
   //slecting things inside the modal, using the modal variable from just above
   this.prevButton = this.modal.querySelector('.prev');
   this.nextButton = this.modal.querySelector('.next');
-  let currentImage;
-
-  function openModal() {
-    //first check if the modal is already open
-    if (this.modal.matches('.open')) {
-      console.info('modal open');
-      return; //stop the function from running
-    }
-    this.modal.classList.add('open');
-
-    //Event listners to be bound when we open the modal:
-    window.addEventListener('keyup', handleKeyUp);
-    this.nextButton.addEventListener('click', showNextImage);
-    this.prevButton.addEventListener('click', showPrevImage);
-  }
   
-  function closeModal() {
-    this.modal.classList.remove('open');
-    //TODO: remove event listeners for clicks and keyboard
-    window.removeEventListener('keyup', handleKeyUp);
-    this.nextButton.removeEventListener('click', showNextImage);
-    this.prevButton.removeEventListener('click', showPrevImage);
-  }
+  // bind our methods to the instance when we need them - binding it here is important bc we are creating and instance property of the same prototype function / saving reference to the functions, BOUND with this. Bind lets us explicitly supply what "this" will be equal to. BC in our constructor (where this is scoped) "this" is equal to the instance of this.functionName we are creating a new function that has the value of "this" we need bound to it. it won't then change value when used in a callback. 
+  //This allows us to hold remove event listeners from the reference we're making here
+  this.showNextImage = this.showNextImage.bind(this);
+  this.showPrevImage = this.showPrevImage.bind(this);
+  this.handleKeyUp = this.handleKeyUp.bind(this);
+  this.handlClickOutside = this.handlClickOutside.bind(this);
 
-  function handlClickOutside(e) {
-    //if the thing they actually clicked (the modal) is the same as the the thing we are listening for a click on (modal), close it. 
-    if (e.target === e.currentTarget) {
-      closeModal();
-    }
-  }
-  
-  function handleKeyUp(e) {
-    if (event.key === 'Escape') {
-      return closeModal();
-    }
-    if (event.key === 'ArrowRight') {
-      return showNextImage();
-    }
-    if (event.key === 'ArrowLeft') {
-      return showPrevImage(); 
-    }
-  }
-  
-  function showNextImage() {
-    showImage(currentImage.nextElementSibling || gallery.firstElementChild);
-    
-  }
-
-  function showPrevImage() {
-    showImage(currentImage.previousElementSibling || gallery.lastElementChild);
-    
-  }
-  //when someone clicks on an image we need to update that modal with the associated images and pop open the modal
-  function showImage(el) {
-    if (!el) {
-      console.info('no image to show');
-      return;
-    }
-    //update the modal with this info when clicked: the src, the h2, and p tag
-    console.log(el);
-    this.modal.querySelector('img').src = el.src;
-    this.modal.querySelector('h2').textContent = el.title;
-    this.modal.querySelector('figure p').textContent = el.dataset.description;
-    currentImage = el;
-    openModal();
-  }
 
   //THESE ARE OUR EVENT LISTENERS!!
   //take images array (selected above in const images) and loop over adding ELs
@@ -116,8 +58,8 @@ Gallery.prototype.openModal = function() {
   this.modal.classList.add('open'); 
 
   //Event listeners to be bound when we open the modal:
-  window.addEventListener('keyup', (e) => this.handleKeyUp(e));
-  this.nextButton.addEventListener('click', () => this.showNextImage());
+  window.addEventListener('keyup', this.handleKeyUp);
+  this.nextButton.addEventListener('click', this.showNextImage);
   this.prevButton.addEventListener('click', this.showPrevImage);
 }
 
@@ -148,7 +90,6 @@ Gallery.prototype.handleKeyUp = function(e) {
   }
 }
 Gallery.prototype.showNextImage = function() {
-  console.log('SHOWING NEXT IMAGE');
   this.showImage(
     this.currentImage.nextElementSibling || this.gallery.firstElementChild
     );
