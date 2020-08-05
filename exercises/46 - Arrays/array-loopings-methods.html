@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+46<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -152,13 +152,21 @@
     // Map, Filter, Reduce
     console.clear();
 
-    function addArms(face) {
+    const addArms = (face) => {
       return `👋 ${face} 👋`;
     }
 
     const toys = faces.map(addArms);
 
     console.log(toys);
+
+    const chatify = (name) => {
+      return `${name} Choochoo`;
+    }
+
+  function lowercase(array) {
+    return array.toString().toLowerCase();
+  }
 
     function bosify(name) {
       return `${name} Bos`;
@@ -168,10 +176,16 @@
       return `${word[0].toUpperCase()}${word.slice(1)}`;
     }
 
-    const fullNames = ['wes', 'kait', 'poppy']
+    const fullNames = ['SHOONOO', 'JACK', 'ENKI']
+      .map(lowercase)
       .map(capitalize)
-      .map(bosify);
+      .map(chatify);
     console.log(fullNames);
+
+    const bosFamily = ['wes', 'kait', 'poppy']
+    .map(capitalize)
+    .map(bosify);
+    console.log(bosFamily);
 
 
     const orderTotalsWithTax = orderTotals.map(total => total * 1.13);
@@ -232,7 +246,7 @@
     console.log(student2);
 
     // Reduce!
-    console.clear();
+    //console.clear();
 
     function tallyNumbers(tally, currentTotal) {
       console.log(`The current tally is ${tally}`);
@@ -258,7 +272,7 @@
 
     const totalInventoryPrice = inventory.reduce((acc, item) => acc + item.price, 0);
     console.log(totalInventoryPrice);
-
+   
   </script>
 </body>
 
