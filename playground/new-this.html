@@ -36,6 +36,20 @@ these are instances of the constructor html Button that lives in the browser
 //Pizza() is a constructor
 // IN THE FUNCTION BELOW: 'this' keyword when you're creating an object is used to store information about that instance. it's used for storing data and functionality on each instance of the constructor.
  
+  
+String.prototype.sarcastic = function() {
+ // make sarcastic 
+ const sarcastic = this.split('').map((char, i) => {
+   if (i%2) {
+     //console.log(i);
+     return char.toUpperCase();
+   } else {
+     return char.toLowerCase();
+   }
+ }).join('');
+  return sarcastic;
+}
+
   function Pizza(toppings = [], customer) {
     console.log('making a pizza');
     // save the toppings that were passed in to this instance of pizza
