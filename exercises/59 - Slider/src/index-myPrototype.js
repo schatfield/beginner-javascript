@@ -80,4 +80,13 @@ function Slider(slider) {
   const dogSlider = new Slider(document.querySelector('.dog-slider'));
   //console.log(mySlider, dogSlider);
   
-  
+  window.dogSlider = dogSlider;
+
+  window.addEventListener('keyup', function(e) {
+      if (e.key === 'ArrowRight') {
+          dogSlider.move();
+      } 
+      if (e.key === 'ArrowLeft') {
+        dogSlider.move('back');
+      }
+  });
