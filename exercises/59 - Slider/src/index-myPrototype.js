@@ -6,37 +6,40 @@ function Slider(slider) {
     if (!slider instanceof Element) {
       throw new Error('No slider passed in');
     }
-    //save reference to the slider div that was passed in to Slider
 
-    this.slider= slider;
-
+    
     //select the elements needed for the slider
-    //If you look at your HTML elements ask yourslef what you need for the slider to operate- you need all of the slides so it has slides, duh, and the previous and next buttons to navigate through it
-    //you use querySelector here to grab the element itself
-    this.slides = this.slider.querySelector('.slides');
-    this.prevBUtton = this.slider.querySelector('.goToPrev');
-    this.nextBUtton = this.slider.querySelector('.goToNext');
-    console.log(this.prevBUtton);
+    console.log(slider);
+    this.slides = slider.querySelector('.slides');
+    //save reference to the slider that's passed in
+    //WHY: the slider that gets passed in needs to be saved on the instance so we can querySelector it in the future
+    this.slider = slider;
+    //these variables are only accessibleinsid the constructor and NOT needed anywhere inside the protype method so not neccessary to put them on 'this'
+    const prevBUtton = slider.querySelector('.goToPrev');
+    const nextBUtton = slider.querySelector('.goToNext');
   
   //When the person creates the slider/ When this slider is created, run the startSlider Function
-    startSlider();
-    //when the slider starts run apply classes?
-    applyClasses();
+    this.startSlider();
+    this.applyClasses();
 
     //Event listeners
-    this.prevBUtton.addEventListener('click', this.move('back'))
-    this.nextBUtton.addEventListener('click', this.move)
+    prevBUtton.addEventListener('click', () => this.move('back'))
+    nextBUtton.addEventListener('click', this.move)
   }
 
 //when and where should this function be called?
   Slider.prototype.startSlider = function() {
-    //updating "current" variable - not defining it inside because other functions will need to access it too. 
-    this.current = this.slider.querySelector('.current') ||
-    this.slides.firstElementChild;
-    this.prev = this.current.previousElementSibling || 
-    this.slides.lastElementChild;
-    this.next = this.current.nextElementSibling || this.slides.firstElementChild;
-    console.log({current, prev, next});
+      //debugger;
+    this.current =
+        this.slider.querySelector('.current') ||
+        this.slides.firstElementChild;
+    this.prev = 
+        this.current.previousElementSibling || 
+        this.slides.lastElementChild;
+    this.next = 
+        this.current.nextElementSibling || 
+        this.slides.firstElementChild;
+    console.log(this.current, this.prev, this.next);
   }
 
   Slider.prototype.applyClasses = function() {
@@ -72,7 +75,9 @@ function Slider(slider) {
   
   
   // the beauty of running both of these at once is that as we are building we can make sure it works for both use cases
-  const mySlider = Slider(document.querySelector('.slider'));
-  const dogSlider = Slider(document.querySelector('.dog-slider'));
+  //the new keyword will create a new instance of the Slider for each of the variables below
+  const mySlider = new Slider(document.querySelector('.slider'));
+  const dogSlider = new Slider(document.querySelector('.dog-slider'));
+  console.log(mySlider, dogSlider);
   
   
