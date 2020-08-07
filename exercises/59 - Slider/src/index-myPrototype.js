@@ -7,7 +7,6 @@ function Slider(slider) {
       throw new Error('No slider passed in');
     }
 
-    
     //select the elements needed for the slider
     console.log(slider);
     this.slides = slider.querySelector('.slides');
@@ -23,8 +22,10 @@ function Slider(slider) {
     this.applyClasses();
 
     //Event listeners
-    prevBUtton.addEventListener('click', () => this.move('back'))
-    nextBUtton.addEventListener('click', this.move)
+    //this.move = this.move.bind(this);
+    //Arrow function and 'this': the arrow functions are bound instead of the 'this.move' to the event listeners and that's what we want
+    prevBUtton.addEventListener('click', () => this.move('back'));
+    nextBUtton.addEventListener('click', () => this.move());
   }
 
 //when and where should this function be called?
@@ -39,7 +40,7 @@ function Slider(slider) {
     this.next = 
         this.current.nextElementSibling || 
         this.slides.firstElementChild;
-    console.log(this.current, this.prev, this.next);
+    //console.log(this.current, this.prev, this.next);
   }
 
   Slider.prototype.applyClasses = function() {
@@ -49,6 +50,7 @@ function Slider(slider) {
   }
 
   Slider.prototype.move = function(direction) {
+      console.log(this);
     //strip all of the classes off the current slides
     const classesToRemove = ['prev', 'current', 'next'];
     this.prev.classList.remove(...classesToRemove);
@@ -70,14 +72,12 @@ function Slider(slider) {
         this.next.nextElementSibling || this.slides.firstElementChild
       ];
     }
-    applyClasses();
+    this.applyClasses();
   }
   
-  
-  // the beauty of running both of these at once is that as we are building we can make sure it works for both use cases
-  //the new keyword will create a new instance of the Slider for each of the variables below
+ //the new keyword will create a new instance of the Slider for each of the variables below
   const mySlider = new Slider(document.querySelector('.slider'));
   const dogSlider = new Slider(document.querySelector('.dog-slider'));
-  console.log(mySlider, dogSlider);
+  //console.log(mySlider, dogSlider);
   
   
