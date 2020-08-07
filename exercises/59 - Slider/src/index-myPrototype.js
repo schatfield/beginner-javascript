@@ -24,11 +24,11 @@ function Slider(slider) {
     //Event listeners
     //this.move = this.move.bind(this);
     //Arrow function and 'this': the arrow functions are bound instead of the 'this.move' to the event listeners and that's what we want
+    //WHY: binds the arow function and leaves the this.move function free to access the instance so it can reference prev, current, and next DOM elements
     prevBUtton.addEventListener('click', () => this.move('back'));
     nextBUtton.addEventListener('click', () => this.move());
   }
 
-//when and where should this function be called?
   Slider.prototype.startSlider = function() {
       //debugger;
     this.current =
