@@ -33,7 +33,7 @@
 const jenna = { name: 'jenna'};
 
 
-//Bind: we can use the .bind to change what the 'this' keyword is equal to 
+//Bind: we can use the .bind to change what the 'this' keyword is equal to inside of a function or method
 
 //the below says: create a function called sayHi, that when called it's 'this' keyword will be equal to whatever is passed into the .bind method
   const sayHi = person.sayHi.bind(jenna);
@@ -41,12 +41,30 @@ const jenna = { name: 'jenna'};
   //QS Example 
 //by calling bind against document.querySelector, we say when the $ function is run use 'document' as the 'this' value
   const $ = document.querySelector.bind(document);
+  const lookFor = document.querySelectorAll.bind(document);
 
   const wrapper = document.querySelector('.wrapper');
   const p = wrapper.querySelector('p');
   console.log(p);
   console.log($('p'));
+  console.log('all p tags', lookFor('p'));
 
+//you can also use bind to prep a function that has arguments pre loaded
+
+const bill = {
+  total: 1000,
+  calculate(taxRate) {
+    console.log(this, 'this');
+    return this.total + (this.total *taxRate);
+  }
+}
+const total = bill.calculate(0.20);
+console.log(total);
+
+//if i wanted to use this calculate function from the bill object and store it in an external variable:
+
+const calculate = bill.calculate.bind(bill);
+console.log(calculate(0.30));
 
   </script>
 </body>
