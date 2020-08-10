@@ -29,9 +29,9 @@
       return `hey ${this.name}`;
     }
   };
+
 const jenna = { name: 'jenna'};
 
-//take sayHi method and put it in it's own variable
 
 //Bind: we can use the .bind to change what the 'this' keyword is equal to 
 
@@ -39,8 +39,14 @@ const jenna = { name: 'jenna'};
   const sayHi = person.sayHi.bind(jenna);
   
   //QS Example 
+//by calling bind against document.querySelector, we say when the $ function is run use 'document' as the 'this' value
+  const $ = document.querySelector.bind(document);
 
-  const $ = document.querySelector;
+  const wrapper = document.querySelector('.wrapper');
+  const p = wrapper.querySelector('p');
+  console.log(p);
+  console.log($('p'));
+
 
   </script>
 </body>
