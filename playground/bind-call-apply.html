@@ -63,8 +63,9 @@ console.log(total);
 
 //if i wanted to use this calculate function from the bill object and store it in an external variable:
 
-const calculate = bill.calculate.bind(bill);
-console.log(calculate(0.30));
+//const calculate = bill.calculate.bind(bill);
+const calculateMe = bill.calculate.bind({ total:500 }, 0.06);
+console.log(calculateMe());
 
 
 
