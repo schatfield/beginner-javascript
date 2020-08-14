@@ -15,55 +15,59 @@
     <p>Hey im in a wrapper</p>
   </div>
   <script>
-    const person = {
-      name: 'Wes Bos',
-      sayHi() {
-        console.log(this);
-        console.log(`hey ${this.name}`);
-        return `hey ${this.name}`;
-      }
-    };
 
-    const jenna = { name: 'Jenna' };
+  //bind , call, and apply - will change the scope of what the 'this' keyword is equal to inside of a function or method
 
-    const sayHi = person.sayHi.bind({ name: 'Harry' });
 
-    // QS Example
-    // by calling bind against querySelector, we say when the $ function is run, use `document` as the `this` value.
-    const $ = document.querySelector.bind(document);
-    const lookFor = document.querySelectorAll.bind(document);
+// when method are called, the way that they get their 'this' value is they look to the left of the dot and see what they are bound against. 
+//the sayHi method will give us the boject it was run against- which is person.
+  const person = {
+    name: 'shawna',
+    sayHi() {
+      console.log(this, 'this');
+      console.log('hey');
+      return `hey ${this.name}`;
+    }
+  };
 
-    const wrapper = document.querySelector('.wrapper');
-    const p = wrapper.querySelector('p');
-    console.log(p);
-    console.log($('p'));
-    console.log(lookFor('p'));
+const jenna = { name: 'jenna'};
 
-    const bill = {
-      total: 1000,
-      calculate: function (taxRate) {
-        console.log(this);
-        return this.total + (this.total * taxRate);
-      },
-      describe(mealType, drinkType, taxRate) {
-        console.log(`Your meal of ${mealType} with a drink of ${drinkType} was ${this.calculate(taxRate)}`);
-      }
-    };
 
-    const total = bill.calculate(0.13);
-    const calc = bill.calculate.bind({ total: 500 }, 0.06);
+//Bind: we can use the .bind to change what the 'this' keyword is equal to inside of a function or method
 
-    console.log(calc());
-    const total2 = bill.calculate.call({ total: 500 }, 0.06);
-    console.log(total2);
+//the below says: create a function called sayHi, that when called it's 'this' keyword will be equal to whatever is passed into the .bind method
+  const sayHi = person.sayHi.bind(jenna);
+  
+  //QS Example 
+//by calling bind against document.querySelector, we say when the $ function is run use 'document' as the 'this' value
+  const $ = document.querySelector.bind(document);
+  const lookFor = document.querySelectorAll.bind(document);
 
-    const total3 = bill.calculate.apply({ total: 325 }, [0.60]);
-    console.log(total3);
+  const wrapper = document.querySelector('.wrapper');
+  const p = wrapper.querySelector('p');
+  console.log(p);
+  console.log($('p'));
+  console.log('all p tags', lookFor('p'));
 
-    const myMeal = bill.describe.call(bill, 'pizza', 'beer', 0.13);
-    console.log(myMeal);
-    const myMeal2 = bill.describe.apply(bill, ['pizza', 'beer', 0.13]);
-    console.log(myMeal2);
+//you can also use bind to prep a function that has arguments pre loaded
+
+const bill = {
+  total: 1000,
+  calculate(taxRate) {
+    console.log(this, 'this');
+    return this.total + (this.total *taxRate);
+  }
+}
+const total = bill.calculate(0.20);
+console.log(total);
+
+//if i wanted to use this calculate function from the bill object and store it in an external variable:
+
+//const calculate = bill.calculate.bind(bill);
+const calculateMe = bill.calculate.bind({ total:500 }, 0.06);
+console.log(calculateMe());
+
+
 
   </script>
 </body>
