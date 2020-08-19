@@ -56,6 +56,10 @@ const bill = {
   calculate(taxRate) {
     console.log(this, 'this');
     return this.total + (this.total *taxRate);
+  },
+  describe(mealType, drinkType, taxRate) {
+    console.log(`your meal of ${mealType} and ${drinkType} was
+    ${this.calculate(taxRate)}`);
   }
 }
 const total = bill.calculate(0.20);
@@ -66,6 +70,19 @@ console.log(total);
 //const calculate = bill.calculate.bind(bill);
 const calculateMe = bill.calculate.bind({ total:500 }, 0.06);
 console.log(calculateMe());
+
+//Call & Apply
+
+//if you need to bind a function and call it immediately, use "call"
+const total2 = bill.calculate.call({ total:500 }, 0.06);
+console.log(total2)
+
+// apply accepts a single array of arguments
+const total3 = bill.calculate.apply( { total:325 }, [0.06]);
+console.log(total3)
+
+const myMeal = bill.describe.call(bill, 'pizza', 'beer', 0.10);
+console.log(myMeal);
 
 
 
