@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>
+    Array Methods!
+  </title>
+  <link rel="stylesheet" href="../../base.css">
+</head>
+
+<body>
+  <script>
+    const toppings = ['Mushrooms ', 'Tomatoes', 'Eggs', 'Chili', 'Lettuce', 'Avocado', 'Chiles', 'Bacon', 'Pickles', 'Onions', 'Cheese'];
+
+    const buns = ['egg', 'wonder', 'brioche'];
+
+    const meats = {
+      beyond: 10,
+      beef: 5,
+      pork: 7
+    };
+
+    const prices = {
+      hotDog: 453,
+      burger: 765,
+      sausage: 634,
+      corn: 234,
+    };
+
+    const orderTotals = [342, 1002, 523, 34, 634, 854, 1644, 2222];
+
+    const feedback = [
+      { comment: 'Love the burgs', rating: 4 },
+      { comment: 'Horrible Service', rating: 2 },
+      { comment: 'Smoothies are great, liked the burger too', rating: 5 },
+      { comment: 'Ambiance needs work', rating: 3 },
+      { comment: 'I DONT LIKE BURGERS', rating: 1 },
+    ];
+
+    /*
+      Static Methods
+    */
+
+    // Array.of(); returns an array of it's arguments
+    //-------------------------------
+    //Array.of('shawna', 'jack'); 
+    //Returns this:
+    //['shawna', 'jack']
+    //-------------------------------
+
+    //Array.from(); Will take an iterable (something with a length) and return an Array from that iterable with the specified # of empty spots
+    //Array.from() takes a second argument which is a callback function that will return anything you want
+    //--------------------------
+    //Array.from({length:10});
+    //Returns this:
+    //10) [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
+    //---------------------------
+    // Make a function that creates a range from x to y with Array.from();
+
+    function createRange2(start, end){
+    const range2 = Array.from({length: end - start }, 
+    function(item, index){
+      return index + start;
+    });
+      return range2;
+    }
+   const myRange2 = createRange2(5,8);
+   console.log(myRange2);
+
+    function createRange(start, end) {
+      const range = Array.from({ length: end - start + 1 }, function (item, index) {
+        return index + start;
+      });
+      return range;
+    }
+
+    const myRange = createRange(3, 7);
+
+    // Check if the last array you created is really an array with Array.isArray();
+    console.log(Array.isArray(myRange));
+
+    // Take the meats object and make three arrays with Object.entries(), Object.keys, Object.values()
+
+    console.log(Object.entries(meats));
+    console.log(Object.keys(meats));
+    console.log(Object.values(meats));
+
+    Object.entries(meats).forEach(([meat, qty]) => {
+      // const key = entry[0];
+      // const value = entry[1];
+      // const [key, value] = entry;
+      console.log(meat, qty);
+    });
+    /*
+      Instance Methods
+    */
+
+    //Display all bun types with "or" - using .join()
+    //Note about .join() : takes an argument which is what you want to join on
+
+    const bunTypes = buns.join(" or ");
+    console.log(bunTypes);
+
+    //We have a string "hot dogs, hamburgers, sausages, corn" -using .split() trurn it into an array
+    //Note about .split()- this is a string method that converts strings to array
+    // if you split on nothing you get each character alone
+
+    const foodString = "hot dogs, hamburgers, sausages, corn";
+
+    const foodArray = foodString.split(",");
+    console.log(foodArray);
+
+    //Take the last item off the "toppings" array with .pop()
+    //Note about .pop() method: Will return to you the last item in an array. 
+    //Mutable, will change original array.
+
+    const lastItem = toppings.pop();
+    console.log(lastItem, toppings);
+
+    //Add the last item back to toppings with .push()
+    //Notes about .push() method: will add an item to the end of an array.
+    // When you pushh an item into an array and you console.log it, it will return to you the new length of the array in case you need it
+
+    const restoreItem = toppings.push(lastItem);
+    console.log(restoreItem, toppings);
+
+    //Take the first item off toppings with .shift()
+
+    const firstItem = toppings.shift();
+    console.log(firstItem, toppings);
+
+    //add it back in with .unshift()
+
+    const restoreFirstItem = toppings.unshift(firstItem);
+    console.log(restoreFirstItem, toppings);
+
+
+    //Do the last four challenges but without mutating the original array. Immutable strategy - use spreads and new variables
+    //Note about .slice() method: .slice can be used to make a copy.
+
+    //first srgument is the index position you want the slice to start at
+    //second argument is the index position you want it to stop at
+    //using .length will let the slice go for the entirety of the array after where you started
+
+    let newToppings = toppings.slice(0, toppings.length -1);
+    console.log(newToppings);
+
+    //spreads the newToppings contents and adds back on the last item by making reference to the original arrayn an grabbing only the last item
+    newToppings = [...newToppings, toppings[toppings.length -1]]
+
+    console.log(newToppings);
+
+    let newToppings2 = toppings.slice(1, toppings.length);
+    console.log(newToppings2);
+
+    //referencing the original toppings array 0th index position and spreading in the copy made with slice that has the arry w/o first item
+    newToppings2 = [toppings[0],...newToppings2];
+    console.log(newToppings2);
+
+    //Make a copy of the toppings array with slice()
+
+    const toppingsCopy = toppings.slice(0, toppings.length);
+    console.log(toppingsCopy);
+
+    //Make a copy of the toppings array with a spread
+
+    const toppingsCopy2 = [...toppings];
+
+    //Take out items 3 to 5 of your new toppings array with .splice()
+
+    //slice() has 2 args
+    //first is where to start
+    //second is where to stop (index position)
+    console.log(toppingsCopy2.slice(2,5));
+
+    //.splice() has 2 arguments:
+    // first is index position to start at 
+    //second is the amount of index positions it should go for in the aray
+    console.log(toppingsCopy2.splice(2,3));
+    
+
+    /*
+      Looping Methods (next)
+    */
+
+  </script>
+</body>
+
+</html>
