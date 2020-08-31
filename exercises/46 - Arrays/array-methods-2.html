@@ -138,15 +138,48 @@
 
 
     //Do the last four challenges but without mutating the original array. Immutable strategy - use spreads and new variables
+    //Note about .slice() method: .slice can be used to make a copy.
 
-    
+    //first srgument is the index position you want the slice to start at
+    //second argument is the index position you want it to stop at
+    //using .length will let the slice go for the entirety of the array after where you started
 
+    let newToppings = toppings.slice(0, toppings.length -1);
+    console.log(newToppings);
+
+    //spreads the newToppings contents and adds back on the last item by making reference to the original arrayn an grabbing only the last item
+    newToppings = [...newToppings, toppings[toppings.length -1]]
+
+    console.log(newToppings);
+
+    let newToppings2 = toppings.slice(1, toppings.length);
+    console.log(newToppings2);
+
+    //referencing the original toppings array 0th index position and spreading in the copy made with slice that has the arry w/o first item
+    newToppings2 = [toppings[0],...newToppings2];
+    console.log(newToppings2);
 
     //Make a copy of the toppings array with slice()
 
-    //Make a copy of the toppingd array with a spread
+    const toppingsCopy = toppings.slice(0, toppings.length);
+    console.log(toppingsCopy);
+
+    //Make a copy of the toppings array with a spread
+
+    const toppingsCopy2 = [...toppings];
 
     //Take out items 3 to 5 of your new toppings array with .splice()
+
+    //slice() has 2 args
+    //first is where to start
+    //second is where to stop (index position)
+    console.log(toppingsCopy2.slice(2,5));
+
+    //.splice() has 2 arguments:
+    // first is index position to start at 
+    //second is the amount of index positions it should go for in the aray
+    console.log(toppingsCopy2.splice(2,3));
+    
 
     /*
       Looping Methods (next)
