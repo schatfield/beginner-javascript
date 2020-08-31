@@ -105,11 +105,48 @@
 
     //We have a string "hot dogs, hamburgers, sausages, corn" -using .split() trurn it into an array
     //Note about .split()- this is a string method that converts strings to array
+    // if you split on nothing you get each character alone
 
     const foodString = "hot dogs, hamburgers, sausages, corn";
 
     const foodArray = foodString.split(",");
     console.log(foodArray);
+
+    //Take the last item off the "toppings" array with .pop()
+    //Note about .pop() method: Will return to you the last item in an array. 
+    //Mutable, will change original array.
+
+    const lastItem = toppings.pop();
+    console.log(lastItem, toppings);
+
+    //Add the last item back to toppings with .push()
+    //Notes about .push() method: will add an item to the end of an array.
+    // When you pushh an item into an array and you console.log it, it will return to you the new length of the array in case you need it
+
+    const restoreItem = toppings.push(lastItem);
+    console.log(restoreItem, toppings);
+
+    //Take the first item off toppings with .shift()
+
+    const firstItem = toppings.shift();
+    console.log(firstItem, toppings);
+
+    //add it back in with .unshift()
+
+    const restoreFirstItem = toppings.unshift(firstItem);
+    console.log(restoreFirstItem, toppings);
+
+
+    //Do the last four challenges but without mutating the original array. Immutable strategy - use spreads and new variables
+
+    
+
+
+    //Make a copy of the toppings array with slice()
+
+    //Make a copy of the toppingd array with a spread
+
+    //Take out items 3 to 5 of your new toppings array with .splice()
 
     /*
       Looping Methods (next)
