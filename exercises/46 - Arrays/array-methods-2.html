@@ -97,7 +97,19 @@
       Instance Methods
     */
 
-    
+    //Display all bun types with "or" - using .join()
+    //Note about .join() : takes an argument which is what you want to join on
+
+    const bunTypes = buns.join(" or ");
+    console.log(bunTypes);
+
+    //We have a string "hot dogs, hamburgers, sausages, corn" -using .split() trurn it into an array
+    //Note about .split()- this is a string method that converts strings to array
+
+    const foodString = "hot dogs, hamburgers, sausages, corn";
+
+    const foodArray = foodString.split(",");
+    console.log(foodArray);
 
     /*
       Looping Methods (next)
