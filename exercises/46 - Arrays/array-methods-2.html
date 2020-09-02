@@ -275,7 +275,11 @@ const students = [
             console.log(nextTopping);
         }
         //if it's the last item in the array, say goodbye
-        console.log("---goodbye----");
+        index === originalArray.length -1 
+            ? console.log("---goodbye----")
+            : console.log('Getting the next topping');  
+            
+        index === originalArray.length && console.log('goodbye');    
     }
 
     toppings.forEach(logTopping);
