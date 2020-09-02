@@ -263,12 +263,19 @@ const students = [
 //parameters ar placeholders
 
     function logTopping(topping, index, originalArray) {
-        console.log(topping, index, originalArray);
         //debugger;
         //log the topping
+        console.log(topping);
         //log the prev topping if there is one 
+
         //log the next topping if there is one
+        const nextTopping = originalArray[index + 1];
+       
+     if (nextTopping){
+         console.log(nextTopping);
+        }
         //if it's the last item in the array, say goodbye
+        console.log("---goodbye----");
     }
 
     toppings.forEach(logTopping);
