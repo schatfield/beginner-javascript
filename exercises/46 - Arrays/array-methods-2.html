@@ -111,6 +111,20 @@ const students = [
       { comment: 'I DONT LIKE BURGERS', rating: 1 },
     ];
 
+    const faces = ['😃', '🤠', '🤡', '🤑', '😵', '🌞', '🐶', '😺'];
+
+    const inventory = [
+      { type: 'shirt', price: 4000 },
+      { type: 'pants', price: 4532 },
+      { type: 'socks', price: 234 },
+      { type: 'shirt', price: 2343 },
+      { type: 'pants', price: 2343 },
+      { type: 'socks', price: 542 },
+      { type: 'pants', price: 123 },
+    ];
+
+
+
     /*
       Static Methods
     */
@@ -292,9 +306,79 @@ const students = [
         console.log(topping);
     });
 
+//Map, Filter, Reduce
+
+//Map - take in something, do something to it, return it. Returns exactly what you pass in with the changes you asked to make.
+//It will always take in an item do some work wit it and hen return the new value.
+
+console.clear();
+
+function addArms(face) {
+    return `arm ${face} arm`;
+}
+
+const toys = faces.map(addArms);
+console.log(toys);
 
 
+function bosify(name) {
+    return `${name} Bos`;
+}
 
+function capitalize(word) {
+    return `${word[0].toUpperCase()}${word.slice(1)}`;
+}
+
+const fullNames = ['wes', 'kait', 'poppy'].map(capitalize).map(bosify);
+
+console.log(fullNames);
+
+
+const orderTotalsWithTax = orderTotals.map(total => total * 1.13);
+console.log(orderTotalsWithTax);
+
+
+//Array().fill() : Array.() = how many times do you want the fill to happen
+// .fill() : what do you want to fill it with
+
+function attachBody(face, body) {
+    return `
+        ${face}
+      ${body.repeat(3)}
+     ${Array(3).fill(body).join(' ')}
+ hand  ${body.repeat(2)}  hand
+     ${Array(2).fill(body).join('   ')}
+     ${Array(2).fill(body).join('   ')}
+    foot foot 
+    `
+}
+
+faces.map(face => attachBody(face, '🐶')).forEach(body => console.log(body));
+
+//Map can also be used for any tyoe of data including arrays of objects that come back from an APIs
+
+//Massage the people objects to change the format of the data to how we need it
+
+//Do NOT update the dom inside of a map- this is whatforEach is for
+
+const cleanPeople = people.map(function (person) {
+    //console.log(person);
+    // timestamp
+    const birthday = new Date(person.birthday).getTime();
+    //now timestamp .now() is static method that lives on mama Date object
+    const now = Date.now();
+    //get their birthday
+    //figure out old they are
+    const age = Math.floor((now - birthday) / 31536000000);
+    console.log(age);
+    //return their full name and bday in an object
+    return {
+        age: age,
+        name: `${person.names.first}${person.names.last}`
+    }
+});
+
+console.table(cleanPeople);
 
   </script>
 </body>
