@@ -111,6 +111,20 @@ const students = [
       { comment: 'I DONT LIKE BURGERS', rating: 1 },
     ];
 
+    const faces = ['😃', '🤠', '🤡', '🤑', '😵', '🌞', '🐶', '😺'];
+
+    const inventory = [
+      { type: 'shirt', price: 4000 },
+      { type: 'pants', price: 4532 },
+      { type: 'socks', price: 234 },
+      { type: 'shirt', price: 2343 },
+      { type: 'pants', price: 2343 },
+      { type: 'socks', price: 542 },
+      { type: 'pants', price: 123 },
+    ];
+
+
+
     /*
       Static Methods
     */
@@ -292,6 +306,18 @@ const students = [
         console.log(topping);
     });
 
+//Map, Filter, Reduce
+
+//Map - take in something, do something to it, return it. Returns exactly what you pass in with the changes you asked to make.
+
+console.clear();
+
+function addArms(face) {
+    return `arm ${face} arm`;
+}
+
+const toys = faces.map(addArms);
+console.log(toys);
 
 
 
