@@ -309,6 +309,7 @@ const students = [
 //Map, Filter, Reduce
 
 //Map - take in something, do something to it, return it. Returns exactly what you pass in with the changes you asked to make.
+//It will always take in an item do some work wit it and hen return the new value.
 
 console.clear();
 
@@ -332,6 +333,9 @@ const fullNames = ['wes', 'kait', 'poppy'].map(capitalize).map(bosify);
 
 console.log(fullNames);
 
+
+const orderTotalsWithTax = orderTotals.map(total => total * 1.13);
+console.log(orderTotalsWithTax);
 
 
 
