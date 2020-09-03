@@ -355,6 +355,31 @@ function attachBody(face, body) {
 
 faces.map(face => attachBody(face, '🐶')).forEach(body => console.log(body));
 
+//Map can also be used for any tyoe of data including arrays of objects that come back from an APIs
+
+//Massage the people objects to change the format of the data to how we need it
+
+//Do NOT update the dom inside of a map- this is whatforEach is for
+
+const cleanPeople = people.map(function (person) {
+    //console.log(person);
+    // timestamp
+    const birthday = new Date(person.birthday).getTime();
+    //now timestamp .now() is static method that lives on mama Date object
+    const now = Date.now();
+    //get their birthday
+    //figure out old they are
+    const age = Math.floor((now - birthday) / 31536000000);
+    console.log(age);
+    //return their full name and bday in an object
+    return {
+        age: age,
+        name: `${person.names.first}${person.names.last}`
+    }
+});
+
+console.table(cleanPeople);
+
   </script>
 </body>
 
