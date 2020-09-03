@@ -337,7 +337,19 @@ console.log(fullNames);
 const orderTotalsWithTax = orderTotals.map(total => total * 1.13);
 console.log(orderTotalsWithTax);
 
+function attachBody(face, body) {
+    return `
+        ${face}
+      ${body.repeat(3)}
+     ${Array(3).fill(body).join(' ')}
+ hand  ${body.repeat(2)}  hand
+     ${Array(2).fill(body).join('   ')}
+     ${Array(2).fill(body).join('   ')}
+    foot foot 
+    `
+}
 
+faces.map(face => attachBody(face, '🐶')).forEach(body => console.log(body));
 
   </script>
 </body>
