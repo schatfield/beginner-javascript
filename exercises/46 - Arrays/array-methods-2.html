@@ -257,6 +257,10 @@ const students = [
       Looping Methods (next)
 
       forEach executes a provided function once for each element in an array. The method takes 3 arguments - the element, the index, the original array
+
+      forEach DOESN'T actually return any values to you so we don't store a result in a variable - it will be undefined. 
+      
+      It just goes off and does some work for every item that is in that array.
     */
 
 //arguments are actual values 
@@ -278,7 +282,7 @@ const students = [
         index === originalArray.length -1 
             ? console.log("---goodbye----")
             : console.log('Getting the next topping');  
-            
+
         index === originalArray.length && console.log('goodbye');    
     }
 
