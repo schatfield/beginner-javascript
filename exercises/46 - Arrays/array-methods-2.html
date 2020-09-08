@@ -380,6 +380,17 @@ const cleanPeople = people.map(function (person) {
 
 console.table(cleanPeople);
 
+
+//Filter works like this: loop over every item int he array and decide Yes I want it or No I don't want it
+const over40 = cleanPeople.filter(function (person) {
+    if (person.age > 40){
+        return true;
+    } else {
+        return false;
+    }
+});
+
+
   </script>
 </body>
 
