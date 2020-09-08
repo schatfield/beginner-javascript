@@ -402,15 +402,18 @@ function findByID(id) {
     }
 };
 
-
+//Take in a property: a key and a value, the function looks into the object for whatever property you specified is equal to whatever value you specified
+// square bracket notation bc: the property we are looking for is being passed in as a variable or as an arg to the functiion
 function findByProp(prop, propWeAreLookingFor) {
     return function isStudent(student) {
-        return
+        return student[prop] === propWeAreLookingFor;
     }
 }
 
-const studentId = students.find(findByID('565a'));
+const studentId = students.find(findByProp('id','565a'));
+const studentId2 = students.find(findByProp('first_name','Flory'));
 console.log(studentId);
+console.log(studentId2);
 
 
   </script>
