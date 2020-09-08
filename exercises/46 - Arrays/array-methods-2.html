@@ -381,14 +381,19 @@ const cleanPeople = people.map(function (person) {
 console.table(cleanPeople);
 
 
-//Filter works like this: loop over every item int he array and decide Yes I want it or No I don't want it
-const over40 = cleanPeople.filter(function (person) {
-    if (person.age > 40){
-        return true;
-    } else {
-        return false;
-    }
-});
+//Filter return an array of all the things you want.
+//It works like this: loop over every item int he array and decide Yes I want it or No I don't want it
+
+const over40 = cleanPeople.filter(person => person.age > 40);
+console.table(over40);
+
+if (over40.length){
+    console.log('there are people')
+}
+
+//Find will return a single item that you're looking for
+
+const students= student.find()
 
 
   </script>
