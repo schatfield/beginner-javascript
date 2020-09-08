@@ -395,13 +395,21 @@ if (over40.length){
 
 //const studentId = students.filter(stud => stud.id === '565a');
 
+//higher order function- function that returns another function
+function findByID(id) {
+    return function isStudent(student) {
+        return student.id === id;
+    }
+};
 
-function fin
-function isStudent(student) {
-return student.id === id;
+
+function findByProp(prop, propWeAreLookingFor) {
+    return function isStudent(student) {
+        return
+    }
 }
 
-const studentId = students.find(isStudent);
+const studentId = students.find(findByID('565a'));
 console.log(studentId);
 
 
