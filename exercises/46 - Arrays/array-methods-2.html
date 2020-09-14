@@ -457,8 +457,7 @@ function tallyNumbers(tally, currentTotal) {
 
     The Reduce callback function that you write and pass to the METHOD: whatever you return from this function is going to be what the accumulator (ARG 1) is equal to 
 
-    It has it's own args- it gives us our accumulator and it gives us our item
-
+    It has it's own arguments
      */
 
 const allOrders = orderTotals.reduce(tallyNumbers, 0);
@@ -469,9 +468,15 @@ console.log(allOrders);
 
 
 //callback function to pass to reduce method as the accumulator ARG 1
-function inventoryReducer(totals, ) {
+// This reduer funcction it gives us our accumulator (totals) and it gives us our item (item)
 
-}
+function inventoryReducer(totals, item) {
+    console.log(`Looping over ${item.type}`);
+    //increment the item type by 1
+    totals.shirt = totals.shirt + 1;
+    //return the totals, so the next iteration can use it to increment on
+
+};
 
 //we also want to know what should we start with ARG 2. In this cas an empty object
 const inventoryCounts = inventory.reduce(inventoryReducer,{});
