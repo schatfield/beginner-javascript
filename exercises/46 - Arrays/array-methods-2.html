@@ -473,13 +473,22 @@ console.log(allOrders);
 function inventoryReducer(totals, item) {
     console.log(`Looping over ${item.type}`);
     //increment the item type by 1
-    totals.shirt = totals.shirt + 1;
-    //return the totals, so the next iteration can use it to increment on
-
+    //checking to see if a shirt  exists on our totals yet and if it does, increment it by 1, if it doesn't, add the property of shirt and set set it to 1
+    totals[item.type] = totals[item.type] + 1 || 1;
+    /* if (totals.shirt) {
+        totals.shirt = totals.shirt + 1;
+        //totals.shirt++ is the same thing as the above
+    } else {
+        totals.shirt = 1;
+    } 
+    */
+    //return the totals, so the next loop can use it to increment on
+    return totals;
 };
 
 //we also want to know what should we start with ARG 2. In this cas an empty object
 const inventoryCounts = inventory.reduce(inventoryReducer,{});
+console.log(inventoryCounts);
 
 
   </script>
