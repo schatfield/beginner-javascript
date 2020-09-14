@@ -433,18 +433,33 @@ console.log(total); */
 
 // Callback function to pass to the reduce method
 
-//reduce has 2 args: the accumulator and the current value
-// the accumulator: is going to be the thing handed to you from the previous instance of the loop
-//the curent value is the current thing 
+
+
 
 function tallyNumbers(tally, currentTotal) {
     console.log(`the curent tally is ${tally}`);
     console.log(`the curent total is ${currentTotal}`);
     console.log('-------');
+    //whatever you retrun from this function is going to be what the accumulator (ARG 1) is equal to
+
+    //return curent tally PLUS the amount of the current total
+    return tally + currentTotal;
 
 }
 
-const allOrders = orderTotals.reduce(tallyNumbers);
+/* reduce has 2 args: the accumulator and the current value.
+    ARG 1, the accumulator: is going to be the thing handed to you from the previous instance of the loop
+
+    ARG 2, the curent value is what you want to start the accumulator at. It is usually '0'
+    
+    When adding OR reducing to one value: 
+    The curent value will change in each iteration of the array 
+
+     */
+
+
+const allOrders = orderTotals.reduce(tallyNumbers, 0);
+console.log(allOrders);
 
   </script>
 </body>
