@@ -447,13 +447,17 @@ function tallyNumbers(tally, currentTotal) {
 
 }
 
-/* reduce has 2 args: the accumulator and the current value.
+/* Reduce Method has 2 args: the accumulator and the initial value.
     ARG 1, the accumulator: is going to be the thing handed to you from the previous instance of the loop
 
-    ARG 2, the curent value is what you want to start the accumulator at. It is usually '0'
+    ARG 2, the initial value is what you want to start the accumulator at. It is usually '0'
     
     When adding OR reducing to one value: 
     The curent value will change in each iteration of the array 
+
+    The Reduce callback function that you write and pass to the METHOD: whatever you return from this function is going to be what the accumulator (ARG 1) is equal to 
+
+    It has it's own args- it gives us our accumulator and it gives us our item
 
      */
 
@@ -465,13 +469,13 @@ console.log(allOrders);
 
 
 //callback function to pass to reduce method as the accumulator ARG 1
-function inventoryReducer() {
+function inventoryReducer(totals, ) {
 
 }
 
-const inventoryCounts = inventory.reduce(inventoryReducer, );
+//we also want to know what should we start with ARG 2. In this cas an empty object
+const inventoryCounts = inventory.reduce(inventoryReducer,{});
 
-//we also want to know what should we start with ARG 2
 
   </script>
 </body>
