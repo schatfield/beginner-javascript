@@ -457,9 +457,21 @@ function tallyNumbers(tally, currentTotal) {
 
      */
 
-
 const allOrders = orderTotals.reduce(tallyNumbers, 0);
 console.log(allOrders);
+
+
+//Inventory array: how many instances of shirt pants socks are there
+
+
+//callback function to pass to reduce method as the accumulator ARG 1
+function inventoryReducer() {
+
+}
+
+const inventoryCounts = inventory.reduce(inventoryReducer, );
+
+//we also want to know what should we start with ARG 2
 
   </script>
 </body>
