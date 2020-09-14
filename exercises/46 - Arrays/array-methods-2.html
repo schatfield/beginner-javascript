@@ -420,6 +420,14 @@ console.clear();
 //Reduce
 //Takes in an array of data and it will return to you a result or single value
 
+//side effect: when you update a variable that exists outside of the function. NOT the best way to do things
+
+let total = 0;
+orderTotals.forEach(singleTotal => {
+    total = total + singleTotal;
+});
+
+console.log(total);
 
 
 
