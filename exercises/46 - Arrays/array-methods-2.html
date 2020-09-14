@@ -422,15 +422,29 @@ console.clear();
 
 //side effect: when you update a variable that exists outside of the function. NOT the best way to do things
 
-let total = 0;
+/* let total = 0;
 orderTotals.forEach(singleTotal => {
     total = total + singleTotal;
 });
 
-console.log(total);
+console.log(total); */
 
+//We need a callback function that will run once for every single itme in the array
 
+// Callback function to pass to the reduce method
 
+//reduce has 2 args: the accumulator and the current value
+// the accumulator: is going to be the thing handed to you from the previous instance of the loop
+//the curent value is the current thing 
+
+function tallyNumbers(tally, currentTotal) {
+    console.log(`the curent tally is ${tally}`);
+    console.log(`the curent total is ${currentTotal}`);
+    console.log('-------');
+
+}
+
+const allOrders = orderTotals.reduce(tallyNumbers);
 
   </script>
 </body>
