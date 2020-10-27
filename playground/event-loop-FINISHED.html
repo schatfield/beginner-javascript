@@ -38,7 +38,25 @@
   </style>
   <div class="go">Click Me</div>
   <script>
-    function go(e) {
+
+  console.log('starting');
+  setTimeout(function() {
+    console.log('running');
+  }, 2000);
+  console.log('ending');
+
+// 1. Change the text to GO when clicked.
+// 2. Make it a circle after 2 seconds.
+// 3. Make it red after 0.5s
+ // 4. make it square after 0.25s
+  // 5. make it purple
+    // 6. fade out after 0.5s
+
+  </script>
+</body>
+
+</html>
+{% comment %} function go(e) {
       const el = e.currentTarget;
       // 1. Change the text to GO when clicked.
       el.textContent = 'GO';
@@ -67,10 +85,4 @@
           }, 500)
         }, 500)
       }, 500)
-    }
-
-
-  </script>
-</body>
-
-</html>
+    } {% endcomment %}
