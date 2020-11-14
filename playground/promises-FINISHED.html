@@ -11,9 +11,16 @@
 <body>
   <script>
       function makePizza() {
-        const pizzaPromise = new Promise();
+        const pizzaPromise = new Promise(function(resolve, reject) {
+          //when you are ready you can resolve this promise
+          resolve('pizza');
+          //if something went wrong we can reject this promise
+        });
         return pizzaPromise;
       }
+
+      const pizza = makePizza();
+      console.log(pizza);
 
     /*function makePizza(toppings = []) { {% endcomment %}
       return new Promise(function (resolve, reject) {
