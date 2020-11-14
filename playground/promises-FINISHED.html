@@ -10,7 +10,12 @@
 
 <body>
   <script>
-    function makePizza(toppings = []) {
+      function makePizza() {
+        const pizzaPromise = new Promise();
+        return pizzaPromise;
+      }
+
+    /*function makePizza(toppings = []) { {% endcomment %}
       return new Promise(function (resolve, reject) {
         // reject if people try with pineapple
         if (toppings.includes('pineapple')) {
@@ -24,7 +29,7 @@
         }, amountOfTimeToBake);
         // if something went wrong, we can reject this promise;
       });
-    }
+    }*/
 
     // console.log('First');
     makePizza(['pepperoni'])
