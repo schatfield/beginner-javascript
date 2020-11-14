@@ -10,6 +10,7 @@
 
 <body>
   <script>
+  //this function doesn't give us a pizza, it returns a promise of a pizza, at some point in the future the pizza will be reolved or rejected
       function makePizza() {
         const pizzaPromise = new Promise(function(resolve, reject) {
           //when you are ready you can resolve this promise
@@ -19,6 +20,7 @@
         return pizzaPromise;
       }
 
+      //here we are using the function above
       const pizza = makePizza();
       console.log(pizza);
 
