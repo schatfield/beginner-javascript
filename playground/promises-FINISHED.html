@@ -14,7 +14,7 @@
       function makePizza() {
         const pizzaPromise = new Promise(function(resolve, reject) {
           //when you are ready you can resolve this promise
-          resolve('pizza');
+          resolve(`here is your pizza with the toppings ${toppings.join(' '}`);;
           //if something went wrong we can reject this promise
         });
         return pizzaPromise;
