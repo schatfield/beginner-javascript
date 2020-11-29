@@ -10,23 +10,31 @@
 
 <body>
   <script>
-    function makePizza(toppings = []) {
-      return new Promise(function (resolve, reject) {
-        // reject if people try with pineapple
-        if (toppings.includes('pineapple')) {
-          reject('Seriously? Get out 🍍');
-        }
-        const amountOfTimeToBake = 500 + (toppings.length * 200);
-        // wait 1 second for the pizza to cook:
-        setTimeout(function () {
-          // when you are ready, you can resolve this promise
-          resolve(`Here is your pizza 🍕 with the toppings ${toppings.join(' ')}`);
-        }, amountOfTimeToBake);
-        // if something went wrong, we can reject this promise;
+  //this function doesn't give us a pizza, it returns a promise of a pizza, at some point in the future the pizza will be reolved or rejected
+      function makePizza(toppings) {
+        const pizzaPromise = new Promise(function (resolve, reject) {
+          //wait one second for the pizza to cook
+          setTimeout(function () {
+          //when you are ready you can resolve this promise
+          resolve(`here is your pizza with the toppings ${toppings.join(' ')}`);
+        }, 1000);
+        //if something went wrong we can reject this promise
       });
+        return pizzaPromise;
     }
 
-    // console.log('First');
+      //here we are using the function above
+
+      const pepperoniPromise = makePizza(['pepperoni', 'cheese']);
+      //const canadianPromise = makePizza(['pepperoni', 'mushrooms', 'onions']);
+      console.log(pepperoniPromise);
+
+      pepperoniPromise.then(function (pizza) {
+        console.log('AH GOT IT');
+        console.log(pizza);
+      });  
+
+    /*
     makePizza(['pepperoni'])
       .then(function (pizza) {
         console.log(pizza);
@@ -87,7 +95,8 @@
 
     dinnerPromise2.then(results => {
       console.log(results);
-    })
+    }) 
+    */
   </script>
 </body>
 
